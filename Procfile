@@ -1,2 +1,2 @@
-web: cd backend && bundle exec rails server -p $PORT
-frontend: cd test_front && npm run dev
+web: cd backend && pwd && bundle exec rails server -p $PORT
+frontend: cd test_front && pwd && npm run dev
