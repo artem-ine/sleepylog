@@ -1,6 +1,6 @@
 echo "running $0"
 
-cd $(realpath $0)
+cd $(dirname $0)
 cd ..
 echo "running in $(pwd)"
 
