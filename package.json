@@ -3,6 +3,6 @@
   "version": "1.0.0",
     "scripts": {
     "heroku-prebuild": "cd test_front && npm install && npm run build",
-    "start": "cd test_front && PORT=$PORT npm run dev"
+    "start": "cd test_front && vite --port $PORT"
   }
 }
