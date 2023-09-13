@@ -1,4 +1,4 @@
-const BASE_URL = "https://sleepylog-992f57ae98df.herokuapp.com/api/articles";
+const BASE_URL = "https://sleepylog-992f57ae98df.herokuapp.com/api/";
 
 const fetchApi = async (endpoint, options = {}) => {
   const response = await fetch(`${BASE_URL}${endpoint}`, options);
@@ -6,8 +6,6 @@ const fetchApi = async (endpoint, options = {}) => {
   if (!response.ok) {
     throw new Error(`Error fetching data from ${endpoint}`);
   }
-
-  return response;
 
   const data = await response.json();
   return data;
