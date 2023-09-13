@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="bg-primary border-gray-200 dark:bg-gray-900">
+    <nav className="bg-primary border-gray-200 dark:bg-secondary">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center">
           <img
@@ -10,7 +10,7 @@ function Navbar() {
             className="h-8 mr-3 rounded"
             alt="Flowbite Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-black">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">
             sleepyLog
           </span>
         </a>
