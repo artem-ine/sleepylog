@@ -7,7 +7,7 @@ const fetchApi = async (endpoint, options = {}) => {
     throw new Error(`Error fetching data from ${endpoint}`);
   }
 
-  const data = await response.json();
+  const data = await response.text();
   return data;
 };
 
