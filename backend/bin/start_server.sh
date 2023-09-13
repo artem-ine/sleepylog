@@ -11,9 +11,5 @@ bundle install
 # Run database migrations
 bundle exec rails db:migrate
 
-# Seed the database (if needed)
-bundle exec rails db:seed
-
-
 # Start the Rails server
 bundle exec rails server -p $RAILS_PORT
