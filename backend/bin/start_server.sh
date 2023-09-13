@@ -8,9 +8,9 @@ echo "running in $(pwd)"
 bundle install
 # bundle exec rake assets:precompile
 
-# Run database migrations
-bundle exec rails db:create
-bundle exec rails db:migrate
+# # Run database migrations
+# bundle exec rails db:create
+# bundle exec rails db:migrate
 
 # # Seed the database (if needed)
 # bundle exec rails db:seed
