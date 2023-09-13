@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-primary border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://github.com/artem-ine/" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img
             src="https://avatars.githubusercontent.com/u/111379402?s=400&u=860af1f097493c0f312ba908e500631ba21af9fb&v=4"
             className="h-8 mr-3 rounded"
             alt="Flowbite Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            artem-ine
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">
+            sleepyLog
           </span>
         </a>
         <button
