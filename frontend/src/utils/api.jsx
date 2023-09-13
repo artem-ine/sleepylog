@@ -1,4 +1,4 @@
-const BASE_URL = "https://sleepylog-992f57ae98df.herokuapp.com/api/";
+const BASE_URL = "http://localhost:8080/";
 
 const fetchApi = async (endpoint, options = {}) => {
   const response = await fetch(`${BASE_URL}${endpoint}`, options);
