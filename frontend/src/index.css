@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Lazydog";
+    src: url("fonts/Lazydog.otf") format("opentype");
+  }
+    @font-face {
+    font-family: "Gravitas One";
+    src: url("fonts/GravitasOne-Regular.ttf") format("truetype");
+  }
+}
+
 :root{
   min-height: 100vh;
 }

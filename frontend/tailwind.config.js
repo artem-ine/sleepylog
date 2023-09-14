@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        heading: ["Gravitas One"],
+        logo: ["Lazydog"],
+      },
+    },
     colors: {
       primary: "#AB92BF",
       secondary: "#655A7C",
