@@ -2,6 +2,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_to :json
   
     private
+
+    def sign_up_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :username)
+    end
   
     def respond_with(resource, _opts = {})
       register_success && return if resource.persisted?
