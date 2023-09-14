@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating: 
+  duration: 1.5
+  start_time: 2023-09-14 11:55:18
+  end_time: 2023-09-14 11:55:18
+  notes: MyText
+
+two:
+  rating: 
+  duration: 1.5
+  start_time: 2023-09-14 11:55:18
+  end_time: 2023-09-14 11:55:18
+  notes: MyText

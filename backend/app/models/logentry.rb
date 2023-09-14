@@ -1,0 +1,2 @@
+class Logentry < ApplicationRecord
+end
