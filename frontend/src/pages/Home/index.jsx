@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"; // Import useState and useEffect
 import fetchApi from "../../utils/api";
+import Dashboard from "../../components/Dashboard";
 
 // const userService = {
 //   getUser: async () => {
@@ -27,12 +28,16 @@ function Home() {
   // }, []);
 
   return (
-    <div id="main" className="flex justify-center pt-10">
-      <h1 className="text-xl font-heading flex">
-        Welcome to artemine's boilerplate.
-        {/* <p>{userData}</p>  */}
-      </h1>
-    </div>
+    <>
+      <Dashboard />
+      {/* <div id="main" className="flex justify-center pt-10">
+        <h1 className="text-xl font-heading flex">
+          Welcome to artemine's boilerplate. */}
+      {/* <p>{userData}</p> */}
+      {/* </h1>
+      </div> */}
+    </>
+
   );
 }
 

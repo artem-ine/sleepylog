@@ -4,11 +4,11 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <main className="bg-white dark:bg-black text-black dark:text-white">
       <Navbar />
       <Home />
       <Footer />
-    </>
+    </main>
   );
 }
 
