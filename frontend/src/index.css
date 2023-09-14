@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Rozha+One&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +6,10 @@
   @font-face {
     font-family: "Lazydog";
     src: url("fonts/Lazydog.otf") format("opentype");
+  }
+    @font-face {
+    font-family: "Gravitas One";
+    src: url("fonts/GravitasOne-Regular.ttf") format("truetype");
   }
 }
 

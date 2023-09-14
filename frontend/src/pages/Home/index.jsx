@@ -28,7 +28,7 @@ function Home() {
 
   return (
     <div id="main" className="flex justify-center pt-10">
-      <h1 className="text-xl font-bold flex">
+      <h1 className="text-xl font-heading flex">
         Welcome to artemine's boilerplate.
         <p>{userData}</p> {/* Render userData from state */}
       </h1>
