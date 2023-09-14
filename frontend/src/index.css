@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   @font-face {
     font-family: "Lazydog";
@@ -19,4 +20,11 @@
 
 main{
   min-height: 100vh;
+}
+
+.calendar-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ff5733; 
+  border-radius: 50%;
 }
