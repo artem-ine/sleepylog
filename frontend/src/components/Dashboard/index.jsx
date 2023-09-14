@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Calendar from "./Calendar";
 import Stats from "./Stats";
 import Profile from "./Profile";
+import snork from "../../assets/images/snork.png";
+import mimi from "../../assets/images/mimi.png";
 
 function Dashboard() {
   const [selectedTab, setSelectedTab] = useState("calendar");
@@ -10,10 +12,20 @@ function Dashboard() {
 
   return (
     <div>
-      {/* Welcome message */}
-      <h1>Welcome to Your Dashboard</h1>
+      <h1 className="font-heading">Welcome to Your Dashboard, ____</h1>
+      <p>
+        Welcome to your dashboard. Below you will find your logbook, information
+        on your sleeping patterns, and access to your profile. Remember to track
+        your sleep as often as you can! The more consistent you are with your
+        entries, the better and more accurate the metrics will be.{" "}
+      </p>
 
-      {/* Tab Navigation */}
+      <h1>
+        <img src={snork} alt="moon sleeping wearing a nightcap" />
+        Add an entry!
+        <img src={mimi} alt="sun looking happy wearing a sunhat" />
+      </h1>
+
       <div className="tab-nav">
         <button
           onClick={() => setSelectedTab("calendar")}
