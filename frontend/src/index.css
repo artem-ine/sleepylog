@@ -25,6 +25,53 @@ main{
 .calendar-dot {
   width: 8px;
   height: 8px;
-  background-color: #ff5733; 
+  background-color: #AFC1D6; 
   border-radius: 50%;
+}
+
+.react-calendar{
+  background-color: #AB92BF;
+}
+
+.react-calendar__navigation {
+  background-color: #AB92BF;
+  color: #150C1D;
+}
+
+.react-calendar__tile {
+  background-color: #655A7C;
+  color: #150C1D;
+}
+
+.react-calendar__tile:hover {
+  background-color: #AB92BF;
+  color: #150C1D;
+}
+
+
+.react-calendar__tile--now {
+  background-color: #AB92BF;
+  color: #150C1D;
+}
+
+.react-calendar__tile:hover {
+  background-color: #AB92BF;
+  color: #150C1D;
+}
+
+
+.react-calendar__tile--active {
+  background-color: #655A7C;
+  color: #150C1D;
+}
+
+.react-calendar__tile:hover {
+  background-color: #AB92BF;
+  color: #150C1D;
+}
+
+
+.react-calendar__month-view__weekdays__weekday {
+  background-color: #AB92BF;
+  color: #150C1D;
 }

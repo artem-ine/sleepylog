@@ -56,7 +56,7 @@ function CalendarView() {
 
   return (
     <div className="calendar-view-container">
-      <div className="calendar-container">
+      <div className="calendar-container bg-primary">
         <Calendar
           onChange={handleDateChange}
           value={selectedDate}
