@@ -1,1 +1,2 @@
 -- check if dotenv works with heroku
+-- fix navbar hamburger menu color + decide on links
