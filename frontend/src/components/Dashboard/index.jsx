@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "./Calendar";
+import CalendarView from "./Calendar";
 import Stats from "./Stats";
 import Profile from "./Profile";
 import snork from "../../assets/images/snork.png";
@@ -55,7 +55,7 @@ function Dashboard() {
         </button>
       </div>
 
-      {selectedTab === "calendar" && <Calendar />}
+      {selectedTab === "calendar" && <CalendarView />}
       {selectedTab === "stats" && <Stats />}
       {selectedTab === "profile" && <Profile />}
     </div>
