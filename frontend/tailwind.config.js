@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         heading: ["Gravitas One"],
+        logo: ["Lazydog"],
       },
     },
     colors: {

@@ -10,8 +10,8 @@ function Navbar() {
             className="h-8 mr-3 rounded"
             alt="Flowbite Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">
-            sleepyLog
+          <span className="self-center text-2xl whitespace-nowrap font-logo text-black dark:text-white">
+            SLEEPYLOG
           </span>
         </a>
         <button

@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Lazydog";
+    src: url("fonts/Lazydog.otf") format("opentype");
+  }
+}
+
 :root{
   min-height: 100vh;
 }
