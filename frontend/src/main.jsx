@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home";
 import SignUp from "./pages/Sign Up";
+import LogIn from "./pages/Log In";
 import Dashboard from "./components/Dashboard";
 import ErrorPage from "./pages/ErrorPage/index.jsx";
 import "./index.css";
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path: "/dashboard",
-        element: <Dashboard />,
+        path: "/login",
+        element: <LogIn />,
       },
     ],
   },
