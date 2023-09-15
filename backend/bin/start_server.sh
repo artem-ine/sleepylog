@@ -10,7 +10,6 @@ bundle install
 
 # # Run database migrations
 bundle exec rails db:migrate
-bundle exec rails db:seed
 
 # # Seed the database (if needed)
 # bundle exec rails db:seed
