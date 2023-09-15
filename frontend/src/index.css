@@ -75,3 +75,13 @@ main{
   background-color: #AB92BF;
   color: #150C1D;
 }
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px; /* Adjust the margin as needed for spacing */
+}
