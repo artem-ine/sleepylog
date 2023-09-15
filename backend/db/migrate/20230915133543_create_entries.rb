@@ -1,6 +1,6 @@
-class CreateLogEntries < ActiveRecord::Migration[7.0]
+class CreateEntries < ActiveRecord::Migration[7.0]
   def change
-    create_table :logentries do |t|
+    create_table :entries do |t|
       t.integer :rating
       t.float :duration
       t.datetime :start_time
