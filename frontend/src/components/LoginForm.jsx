@@ -32,8 +32,13 @@ function LoginForm() {
         setAuth({
           isAuthenticated: true,
           user: data.user,
+          userId: data.user_id,
           token: data.jwt,
         });
+
+        console.log("User data after login:", data.user);
+        console.log("User ID after login:", data.user_id);
+
         const token = data.jwt;
         Cookies.set("token", token);
         console.log(data.jwt);

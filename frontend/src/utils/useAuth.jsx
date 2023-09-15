@@ -16,7 +16,9 @@ export const useAuth = () => {
       },
     };
 
-    fetchApi("/api/users/me", options)
+    const userId = auth.userId;
+
+    fetchApi(`/api/users/${userId}`, options)
       .then((userData) => {
         setAuth({
           isAuthenticated: true,
