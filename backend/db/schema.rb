@@ -33,23 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_133543) do
     t.index ["user_id"], name: "index_logbooks_on_user_id"
   end
 
-  create_table "logentries", force: :cascade do |t|
-    t.integer "rating"
-    t.float "duration"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "test_data", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
