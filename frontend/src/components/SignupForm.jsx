@@ -30,7 +30,7 @@ function SignupForm() {
   return (
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
-        <form className="bg-primary shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <form className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
             <h1 className="font-heading text-center text-black mb-5">Sign up</h1>
             <label className="block text-black text-sm font-bold mb-2" htmlFor="username">
@@ -86,10 +86,10 @@ function SignupForm() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Sign up !
+              Sign up
             </button>
           </div>
         </form>
