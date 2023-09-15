@@ -1,2 +1,1 @@
-api: backend/bin/start_server.sh
-web: cd frontend && pwd && npm run dev -- --port $PORT
+web: backend/bin/start_server.sh "${RAILS_PORT:-3000}" & cd frontend && npm run dev -- --port $PORT

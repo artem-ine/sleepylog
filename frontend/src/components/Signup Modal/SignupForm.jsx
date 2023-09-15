@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
+import useErrorHandler from "../../utils/errorHandler";
 
 function SignupForm() {
   const { setAuth } = useAuth();
@@ -43,11 +44,11 @@ function SignupForm() {
         navigate("/");
       } else {
         const errorMessage = data.message || "Registration failed.";
-        showError(errorMessage);
+        console.log(errorMessage);
       }
     } catch (error) {
       console.error(error);
-      showError("An error occurred during registration.");
+      console.log("An error occurred during registration.");
     }
   };
 
