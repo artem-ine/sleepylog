@@ -8,7 +8,6 @@ const railsPort = process.env.RAILS_PORT
   ? parseInt(process.env.RAILS_PORT)
   : 3000;
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
