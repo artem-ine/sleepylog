@@ -18,6 +18,7 @@ export default defineConfig({
       "/api": {
         target: `http://localhost:${railsPort}`,
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
         secure: false,
       },
     },
