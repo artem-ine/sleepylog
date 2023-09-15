@@ -12,6 +12,8 @@ function Profile() {
     password: "",
   });
 
+  console.log(auth.user.username);
+
   useEffect(() => {
     if (auth.isAuthenticated) {
       const jwtToken = auth.token;
