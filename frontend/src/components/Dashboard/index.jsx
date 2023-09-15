@@ -4,15 +4,19 @@ import Stats from "./Stats";
 import Profile from "./Profile";
 import snork from "../../assets/images/snork.png";
 import mimi from "../../assets/images/mimi.png";
+import { useAuth } from "../../utils/useAuth";
 
 function Dashboard() {
+  const { auth } = useAuth();
   const [selectedTab, setSelectedTab] = useState("calendar");
 
   // Your component code here...
 
   return (
     <div className="flex flex-col items-center p-10">
-      <h1 className="font-heading">Welcome to Your Dashboard, ____</h1>
+      <h1 className="font-heading">
+        Welcome to Your Dashboard, {auth.user.username}
+      </h1>
       <p>
         Welcome to your dashboard. Below you will find your logbook, information
         on your sleeping patterns, and access to your profile. Remember to track
