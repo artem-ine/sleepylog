@@ -32,7 +32,6 @@ function LoginForm() {
         setAuth({
           isAuthenticated: true,
           user: data.user,
-          userId: data.user_id,
           token: data.jwt,
         });
 
@@ -56,10 +55,18 @@ function LoginForm() {
   return (
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
-        <form className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <form
+          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-4">
-            <h1 className="font-heading text-center text-black text-2xl mb-5">Log in</h1>
-            <label htmlFor="email" className="block text-black text-sm font-bold mb-2">
+            <h1 className="font-heading text-center text-black text-2xl mb-5">
+              Log in
+            </h1>
+            <label
+              htmlFor="email"
+              className="block text-black text-sm font-bold mb-2"
+            >
               Email:
             </label>
             <input
@@ -72,7 +79,10 @@ function LoginForm() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-black text-sm font-bold mb-2">
+            <label
+              htmlFor="password"
+              className="block text-black text-sm font-bold mb-2"
+            >
               Password:
             </label>
             <input
@@ -92,9 +102,7 @@ function LoginForm() {
               Submit
             </button>
           </div>
-          {error && (
-            <p className="text-xs italic">{error}</p>
-          )}
+          {error && <p className="text-xs italic">{error}</p>}
         </form>
       </div>
     </div>
