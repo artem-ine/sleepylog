@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import { useAuth } from "../../utils/useAuth";
-
 function LoginForm() {
   const navigate = useNavigate();
   const { setAuth } = useAuth();
@@ -39,7 +38,7 @@ function LoginForm() {
         console.log("Token", data.jwt);
 
         const token = data.jwt;
-        Cookies.set("token", token,);
+        Cookies.set("token", token);
         console.log(data.jwt);
         navigate("/");
       } else {

@@ -1,32 +1,39 @@
 // RegistrationForm.js
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../utils/useAuth";
+import { useAuth } from "../../utils/useAuth";
 
 function SignupForm() {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [password_confirmation, setPassword_Confirmation] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password_confirmation, setPassword_Confirmation] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ user: { username, email, password, password_confirmation: password_confirmation } }),
-    });
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username,
+            email,
+            password,
+            password_confirmation: password_confirmation,
+          },
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
+      if (response.ok) {
         setAuth((prevAuth) => ({
           ...prevAuth,
           isAuthenticated: true,
@@ -47,10 +54,18 @@ function SignupForm() {
   return (
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
-        <form className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <form
+          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-4">
-            <h1 className="font-heading text-center text-black mb-5">Sign up</h1>
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="username">
+            <h1 className="font-heading text-center text-black mb-5">
+              Sign up
+            </h1>
+            <label
+              className="block text-black text-sm font-bold mb-2"
+              htmlFor="username"
+            >
               Username
             </label>
             <input
@@ -63,7 +78,10 @@ function SignupForm() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-black text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -76,7 +94,10 @@ function SignupForm() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-black text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -89,7 +110,10 @@ function SignupForm() {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-black text-sm font-bold mb-2" htmlFor="passwordConfirmation">
+            <label
+              className="block text-black text-sm font-bold mb-2"
+              htmlFor="passwordConfirmation"
+            >
               Password Confirmation
             </label>
             <input
