@@ -49,38 +49,49 @@ function LoginForm() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Connexion</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password:
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-        {error && <p className="error">{error}</p>}
-      </form>
+    <div className="flex justify-center items-center mt-20">
+      <div className="w-full max-w-xs">
+        <form className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <h1 className="font-heading text-center text-black text-2xl mb-5">Log in</h1>
+            <label htmlFor="email" className="block text-black text-sm font-bold mb-2">
+              Email:
+            </label>
+            <input
+              type="text"
+              id="email"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-black text-sm font-bold mb-2">
+              Password:
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="mb-6">
+            <button
+              type="submit"
+              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            >
+              Submit
+            </button>
+          </div>
+          {error && (
+            <p className="text-xs italic">{error}</p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }
