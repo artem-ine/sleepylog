@@ -30,13 +30,14 @@ function SignupForm() {
   return (
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
-        <form className="bg-primary shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <form className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
+            <h1 className="font-heading text-center text-black mb-5">Sign up</h1>
             <label className="block text-black text-sm font-bold mb-2" htmlFor="username">
               Username
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Username"
@@ -49,7 +50,7 @@ function SignupForm() {
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               placeholder="Email"
@@ -62,7 +63,7 @@ function SignupForm() {
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"
@@ -75,7 +76,7 @@ function SignupForm() {
               Password Confirmation
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="password_Confirmation"
               type="password"
               placeholder="Password Confirmation"
@@ -85,10 +86,10 @@ function SignupForm() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-secondary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Sign up !
+              Submit
             </button>
           </div>
         </form>
