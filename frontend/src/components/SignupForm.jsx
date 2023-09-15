@@ -37,7 +37,7 @@ function SignupForm() {
               Username
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Username"
@@ -50,7 +50,7 @@ function SignupForm() {
               Email
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
               placeholder="Email"
@@ -63,7 +63,7 @@ function SignupForm() {
               Password
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"
@@ -76,7 +76,7 @@ function SignupForm() {
               Password Confirmation
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
               id="password_Confirmation"
               type="password"
               placeholder="Password Confirmation"
