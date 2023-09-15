@@ -81,7 +81,7 @@ class UsersController < ActionController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :current_password)
+      params.require(:user).permit(:username, :email, :password, :current_password)
     end
 
     private
