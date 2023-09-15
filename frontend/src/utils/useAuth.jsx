@@ -18,7 +18,7 @@ export const useAuth = () => {
 
     const userId = auth.userId;
 
-    fetchApi(`/api/users/${userId}`, options)
+    fetchApi(`http://127.0.0.1:3000/users/${userId}`, options)
       .then((userData) => {
         setAuth({
           isAuthenticated: true,

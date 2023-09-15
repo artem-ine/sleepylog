@@ -1,3 +1,4 @@
+class UsersController < ActionController  
   before_action :set_user, only: %i[ show update destroy ]
   before_action :authenticate_user!, only: %i[ create update destroy ]
 
@@ -91,4 +92,5 @@
       user_id = jwt_payload['sub']
       User.find(user_id.to_s)
     end
+end
 end
