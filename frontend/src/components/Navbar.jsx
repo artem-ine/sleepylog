@@ -70,12 +70,6 @@ function Navbar() {
                   >
                     Log in
                   </Link>
-                  <Link
-                    to="/signup"
-                    className="block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                  >
-                    Sign up
-                  </Link>
                 </>
               ) : (
                 <button onClick={handleLogout} className="bg-secondary dark:bg-primary text-white dark:text-black border border-black font-bold text-sm py-2 px-4 rounded-xl">
