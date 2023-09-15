@@ -10,8 +10,6 @@ function Dashboard() {
   const { auth } = useAuth();
   const [selectedTab, setSelectedTab] = useState("calendar");
 
-  // Your component code here...
-
   return (
     <div className="flex flex-col items-center p-10">
       <h1 className="font-heading">
@@ -24,36 +22,45 @@ function Dashboard() {
         entries, the better and more accurate the metrics will be.{" "}
       </p>
 
+      <br />
+
       <div className="flex">
         <img
           src={snork}
           alt="moon sleeping wearing a nightcap"
-          className="object-contain"
+          className="h-20"
         />
         <h1 className="flex items-center">Add an entry!</h1>
         <img
           src={mimi}
           alt="sun looking happy wearing a sunhat"
-          className="object-contain"
+          className="h-20"
         />
       </div>
+      <br />
 
       <div className="tab-nav">
         <button
           onClick={() => setSelectedTab("calendar")}
-          className={selectedTab === "calendar" ? "active" : ""}
+          className={
+            selectedTab === "calendar" ? "active pr-10 font-bold" : "pr-10"
+          }
         >
           Calendar
         </button>
         <button
           onClick={() => setSelectedTab("stats")}
-          className={selectedTab === "stats" ? "active" : ""}
+          className={
+            selectedTab === "stats" ? "active pr-10 font-bold" : "pr-10"
+          }
         >
           Stats
         </button>
         <button
           onClick={() => setSelectedTab("profile")}
-          className={selectedTab === "profile" ? "active" : ""}
+          className={
+            selectedTab === "profile" ? "active pr-10 font-bold" : "pr-10"
+          }
         >
           Profile
         </button>

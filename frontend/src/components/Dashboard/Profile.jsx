@@ -18,7 +18,7 @@ function Profile() {
     if (auth.isAuthenticated) {
       const jwtToken = auth.token;
 
-      fetch(`http://127.0.0.1:3000/users/${auth.user.user_id}`, {
+      fetch(`/users/${auth.user.user_id}`, {
         method: "get",
         headers: {
           Authorization: `Bearer ${jwtToken}`,
@@ -51,7 +51,7 @@ function Profile() {
       password: updatedProfile.password,
     };
 
-    fetch(`http://localhost:1337/api/users/${profileData.id}`, {
+    fetch(`/users/${auth.user.user_id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -125,9 +125,9 @@ function Profile() {
               </div>
             ) : (
               <div>
-                <h2>Welcome to your profile, {profileData.username}!</h2>
+                <h2>Welcome to your profile, {auth.user.username}!</h2>
                 <p>Email: {profileData.email}</p>
-                <p>Description: {profileData.description}</p>
+                <p>Username: {auth.user.username}</p>
                 <button onClick={() => setEditing(true)}>Update Profile</button>
               </div>
             )}
