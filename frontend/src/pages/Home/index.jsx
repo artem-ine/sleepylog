@@ -9,16 +9,19 @@ function Home() {
 
   return (
     <>
+      {" "}
       <Navbar />
-      {auth.isAuthenticated && (
-        <div>
-          <Dashboard />
+      <main className="bg-white dark:bg-black text-black dark:text-white">
+        {auth.isAuthenticated && (
+          <div>
+            <Dashboard />
+          </div>
+        )}
+        <h1>not logged in</h1>
+        <div id="outlet">
+          <Outlet />
         </div>
-      )}
-      <h1>not logged in</h1>
-      <div id="outlet">
-        <Outlet />
-      </div>
+      </main>
       <Footer />
     </>
   );
