@@ -1,43 +1,16 @@
-import { useState, useEffect } from "react"; // Import useState and useEffect
-import fetchApi from "../../utils/api";
-import Dashboard from "../../components/Dashboard";
-
-// const userService = {
-//   getUser: async () => {
-//     const data = await fetchApi(`/articles`);
-//     return data;
-//   },
-//   // Other methods for user-related API calls
-// };
+import { Outlet } from "react-router-dom";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 function Home() {
-  // const [userData, setUserData] = useState(null); // Initialize a state variable
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const user = await userService.getUser();
-  //       setUserData(user); // Update the state with the fetched data
-  //     } catch (error) {
-  //       // Handle errors here
-  //       console.error(error);
-  //     }
-  //   }
-
-  //   fetchData(); // Call the fetchData function when the component mounts
-  // }, []);
-
   return (
     <>
-      <Dashboard />
-      {/* <div id="main" className="flex justify-center pt-10">
-        <h1 className="text-xl font-heading flex">
-          Welcome to artemine's boilerplate. */}
-      {/* <p>{userData}</p> */}
-      {/* </h1>
-      </div> */}
+      <Navbar />
+      <div id="outlet">
+        <Outlet />
+      </div>
+      <Footer />
     </>
-
   );
 }
 
