@@ -86,10 +86,10 @@ function SignupForm() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-secondary border border-black hover:bg-blue-700 text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Sign up
+              Submit
             </button>
           </div>
         </form>
