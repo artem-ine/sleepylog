@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import { useAuth } from "../../utils/useAuth";
+
 function LoginForm() {
   const navigate = useNavigate();
   const { setAuth } = useAuth();
@@ -15,7 +16,7 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:3000/users/sign_in", {
+      const response = await fetch("/api/users/sign_in", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
