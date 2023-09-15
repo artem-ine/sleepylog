@@ -1,4 +1,4 @@
-class LogbooksController < ActionController
+class LogbooksController < ActionController::API
 
   def index
     @logbooks = Logbook.all
@@ -41,6 +41,4 @@ class LogbooksController < ActionController
   def logbook_params
     params.require(:logbook).permit(:user_id, :name) # Adjust this according to your logbook attributes
   end
-end
-
 end
