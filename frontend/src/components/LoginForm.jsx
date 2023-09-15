@@ -37,7 +37,7 @@ function LoginForm() {
         const token = data.jwt;
         Cookies.set("token", token);
         console.log(data.jwt);
-        navigate("/profile");
+        navigate("/");
       } else {
         const errorMessage = data.message || "Login failed.";
         showError(errorMessage);

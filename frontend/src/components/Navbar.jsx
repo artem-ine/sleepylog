@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { useAuth } from "../utils/useAuth";
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
+  const { auth, handleLogout } = useAuth();
 
   const toggleMenu = () => {
     setNavbar(!navbar);
@@ -60,18 +62,26 @@ function Navbar() {
               >
                 Home
               </Link>
-              <Link
-                to="/login"
-                className="block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-              >
-                Log in
-              </Link>
-              <Link
-                to="/signup"
-                className="block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-              >
-                Sign up
-              </Link>
+              {!auth.isAuthenticated ? (
+                <>
+                  <Link
+                    to="/login"
+                    className="block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="block py-2 pl-3 pr-4 text-black bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              ) : (
+                <button onClick={handleLogout} className="btn btn-primary">
+                  Logout
+                </button>
+              )}
             </ul>
           </div>
         </div>
