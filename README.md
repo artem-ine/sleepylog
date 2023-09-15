@@ -4,3 +4,4 @@
 
 -- fix navbar hamburger menu color + decide on links
 
+-- fix protected/private routes (slash login works when logged in)
