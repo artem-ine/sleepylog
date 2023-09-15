@@ -1,4 +1,4 @@
-class CreateLogentries < ActiveRecord::Migration[7.0]
+class CreateLogEntries < ActiveRecord::Migration[7.0]
   def change
     create_table :logentries do |t|
       t.integer :rating
