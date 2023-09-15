@@ -36,10 +36,10 @@ function LoginForm() {
         });
 
         console.log("User data after login:", data.user);
-        console.log("User ID after login:", data.user_id);
+        console.log("Token", data.jwt);
 
         const token = data.jwt;
-        Cookies.set("token", token);
+        Cookies.set("token", token,);
         console.log(data.jwt);
         navigate("/");
       } else {

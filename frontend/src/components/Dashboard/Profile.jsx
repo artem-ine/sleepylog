@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 function Profile() {
   const { auth } = useAuth();
-  const [profileData, setProfileData] = useState({});
+  const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
   const [updatedProfile, setUpdatedProfile] = useState({
     username: "",
