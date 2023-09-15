@@ -1,7 +1,6 @@
 import { useAtom } from "jotai";
 import Cookies from "js-cookie";
 import { authAtom } from "./authAtom";
-import fetchApi from "./api";
 
 export const useAuth = () => {
   const [auth, setAuth] = useAtom(authAtom);
@@ -9,14 +8,13 @@ export const useAuth = () => {
   const jwtToken = Cookies.get("token");
 
   if (jwtToken && !auth.isAuthenticated) {
-    const options = {
+    fetch(`/api/users/${auth.user}`, {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
         "Content-Type": "application/json",
       },
-    };
-
-    fetchApi("/api/users/me", options)
+    })
+      .then((response) => response.json())
       .then((userData) => {
         setAuth({
           isAuthenticated: true,
