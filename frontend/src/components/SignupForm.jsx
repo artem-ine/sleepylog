@@ -32,6 +32,7 @@ function SignupForm() {
       <div className="w-full max-w-xs">
         <form className="bg-primary shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
+            <h1 className="font-heading text-center text-black mb-5">Sign up</h1>
             <label className="block text-black text-sm font-bold mb-2" htmlFor="username">
               Username
             </label>
