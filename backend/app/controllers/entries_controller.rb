@@ -1,4 +1,4 @@
-class EntriesController < ActionController
+class EntriesController < ActionController:API
 
   def index
     @logbook = Logbook.find(params[:logbook_id])
