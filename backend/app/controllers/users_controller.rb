@@ -1,3 +1,4 @@
+class UsersController < ActionController  
   before_action :set_user, only: %i[ show update destroy ]
   before_action :authenticate_user!, only: %i[ create update destroy ]
 
@@ -80,7 +81,7 @@
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :current_password)
+      params.require(:user).permit(:username, :email, :password, :current_password)
     end
 
     private
@@ -91,4 +92,5 @@
       user_id = jwt_payload['sub']
       User.find(user_id.to_s)
     end
+end
 end

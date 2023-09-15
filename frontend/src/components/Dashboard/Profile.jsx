@@ -1,81 +1,140 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../utils/useAuth";
+import { useEffect } from "react";
 
 function Profile() {
-  const { auth, handleLogout } = useAuth();
-
-  // State to track whether the profile is in edit mode
-  const [isEditing, setIsEditing] = React.useState(false);
-
-  // State to store modified profile data
-  const [modifiedProfileData, setModifiedProfileData] = React.useState({
-    email: auth.user.email,
-    username: auth.user.username,
+  const { auth } = useAuth();
+  const [profileData, setProfileData] = useState({});
+  const [editing, setEditing] = useState(false);
+  const [updatedProfile, setUpdatedProfile] = useState({
+    username: "",
+    email: "",
+    password: "",
   });
 
-  const handleModifyProfileClick = () => {
-    setIsEditing(true);
-  };
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      const jwtToken = auth.token;
 
-  const handleSaveProfileClick = () => {
-    // Perform an API request to update the user's profile with modifiedProfileData
-    // You can use fetch or an API client library like Axios
+      fetch(`http://127.0.0.1:3000/users/${auth.user.user_id}`, {
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setProfileData(data);
+          console.log("setProfileData:");
+          console.log(data);
+          setUpdatedProfile({
+            username: data.username,
+            email: data.email,
+            password: data.password,
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching profile data:", error);
+        });
+    }
+  }, [auth.isAuthenticated, auth.token]);
 
-    // Assuming a successful update, update the auth state
-    // This is a simplified example, please handle errors appropriately
-    const updatedUser = { ...auth.user, ...modifiedProfileData };
-    auth.setAuth({ ...auth, user: updatedUser });
+  const handleUpdate = () => {
+    const jwtToken = auth.token;
 
-    // Exit edit mode
-    setIsEditing(false);
-  };
+    const updatedData = {
+      username: updatedProfile.username,
+      email: updatedProfile.email,
+      password: updatedProfile.password,
+    };
 
-  const handleDeleteAccountClick = () => {
-    // Implement your logic to delete the user's account here
-    // You can show a confirmation dialog to confirm the deletion
-
-    // Assuming a successful deletion, log the user out and redirect to the login page
-    handleLogout();
+    fetch(`http://localhost:1337/api/users/${profileData.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setProfileData(data);
+        setEditing(false);
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
   };
 
   return (
     <div>
-      <h2>Profile</h2>
-      {isEditing ? (
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            value={modifiedProfileData.email}
-            onChange={(e) =>
-              setModifiedProfileData({
-                ...modifiedProfileData,
-                email: e.target.value,
-              })
-            }
-          />
-          <br />
-          <label>Username:</label>
-          <input
-            type="text"
-            value={modifiedProfileData.username}
-            onChange={(e) =>
-              setModifiedProfileData({
-                ...modifiedProfileData,
-                username: e.target.value,
-              })
-            }
-          />
-          <br />
-          <button onClick={handleSaveProfileClick}>Save Profile</button>
-        </div>
+      {auth.isAuthenticated ? (
+        profileData ? (
+          <div>
+            {editing ? (
+              <div>
+                <h2>Update Your Profile</h2>
+                <form onSubmit={handleUpdate}>
+                  <label>
+                    Username:
+                    <input
+                      type="text"
+                      value={updatedProfile.username}
+                      onChange={(e) =>
+                        setUpdatedProfile({
+                          ...updatedProfile,
+                          username: e.target.value,
+                        })
+                      }
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Email:
+                    <input
+                      type="text"
+                      value={updatedProfile.email}
+                      onChange={(e) =>
+                        setUpdatedProfile({
+                          ...updatedProfile,
+                          email: e.target.value,
+                        })
+                      }
+                    />
+                  </label>
+                  <br />
+                  <label>
+                    Password:
+                    <input
+                      type="text"
+                      onChange={(e) =>
+                        setUpdatedProfile({
+                          ...updatedProfile,
+                          password: e.target.value,
+                        })
+                      }
+                    />
+                  </label>
+                  <br />
+                  <button type="submit">Update</button>
+                  <button onClick={() => setEditing(false)}>Cancel</button>
+                </form>
+              </div>
+            ) : (
+              <div>
+                <h2>Welcome to your profile, {profileData.username}!</h2>
+                <p>Email: {profileData.email}</p>
+                <p>Description: {profileData.description}</p>
+                <button onClick={() => setEditing(true)}>Update Profile</button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <p>Loading profile data...</p>
+        )
       ) : (
-        <div>
-          <p>Email: {auth.user.email}</p>
-          <p>Username: {auth.user.username}</p>
-          <button onClick={handleModifyProfileClick}>Modify Profile</button>
-          <button onClick={handleDeleteAccountClick}>Delete Account</button>
-        </div>
+        <p>You must be logged in to view your profile.</p>
       )}
     </div>
   );
