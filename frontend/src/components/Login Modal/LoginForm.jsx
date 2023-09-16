@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import { useAuth } from "../../utils/useAuth";
 
-function LoginForm() {
+function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
   const { setAuth } = useAuth();
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ function LoginForm() {
         });
 
         Cookies.set("token", token);
-        navigate("/");
+        onLoginSuccess();
       } else {
         const errorMessage = data.message || "Login failed.";
         showError(errorMessage);
