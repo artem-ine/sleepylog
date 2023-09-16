@@ -41,7 +41,6 @@ function SignupForm() {
           user: data.user,
           token: data.jwt,
         }));
-        console.log(data.jwt);
         navigate("/");
       } else {
         const errorMessage = data.message || "Registration failed.";

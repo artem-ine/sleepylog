@@ -12,35 +12,8 @@ function Profile() {
     password: "",
   });
 
-  console.log(auth.user.username);
-
-  useEffect(() => {
-    if (auth.isAuthenticated) {
-      const jwtToken = auth.token;
-
-      fetch(`/users/${auth.user.user_id}`, {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setProfileData(data);
-          console.log("setProfileData:");
-          console.log(data);
-          setUpdatedProfile({
-            username: data.username,
-            email: data.email,
-            password: data.password,
-          });
-        })
-        .catch((error) => {
-          console.error("Error fetching profile data:", error);
-        });
-    }
-  }, [auth.isAuthenticated, auth.token]);
+  console.log(auth.user.email);
+  console.log(auth.user.id);
 
   const handleUpdate = () => {
     const jwtToken = auth.token;
@@ -126,8 +99,7 @@ function Profile() {
             ) : (
               <div>
                 <h2>Welcome to your profile, {auth.user.username}!</h2>
-                <p>Email: {profileData.email}</p>
-                <p>Username: {auth.user.username}</p>
+                <p>Email: {auth.user.email}</p>
                 <button onClick={() => setEditing(true)}>Update Profile</button>
               </div>
             )}

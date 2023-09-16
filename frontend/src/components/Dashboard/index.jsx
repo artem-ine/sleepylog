@@ -13,7 +13,7 @@ function Dashboard() {
   return (
     <div className="flex flex-col items-center p-10">
       <h1 className="font-heading">
-        Welcome to Your Dashboard, {auth.user.username}
+        Welcome to Your Dashboard, {auth.user.email}!
       </h1>
       <p>
         Welcome to your dashboard. Below you will find your logbook, information
