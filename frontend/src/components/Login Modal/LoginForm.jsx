@@ -25,22 +25,20 @@ function LoginForm() {
           user: { email: email, password: password },
         }),
       });
-
       const data = await response.json();
 
       if (response.ok) {
+        const authToken = response.headers.get("Authorization");
+
+        const token = authToken ? authToken.split(" ")[1] : null;
+
         setAuth({
           isAuthenticated: true,
           user: data.user,
-          token: data.jwt,
+          token: token,
         });
 
-        console.log("User data after login:", data.user);
-        console.log("Token", data.jwt);
-
-        const token = data.jwt;
         Cookies.set("token", token);
-        console.log(data.jwt);
         navigate("/");
       } else {
         const errorMessage = data.message || "Login failed.";
@@ -51,7 +49,6 @@ function LoginForm() {
       showError("An error occurred during login.");
     }
   };
-
   return (
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">

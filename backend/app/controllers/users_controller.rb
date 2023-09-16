@@ -3,7 +3,7 @@ class UsersController < ActionController::API
   before_action :authenticate_user!, only: %i[create update destroy]
 
   def index
-    if current_user&.is_admin
+    if current_user
       @users = User.all
       render json: @users
     else
@@ -12,7 +12,7 @@ class UsersController < ActionController::API
   end
 
   def show
-    if current_user&.is_admin || current_user&.id == @user.id
+    if current_user || current_user&.id == @user.id
       render json: @user
     else
       render json: { error: "Action réservée aux administrateurs et à l'utilisateur du compte." }, status: :unprocessable_entity
@@ -84,8 +84,6 @@ class UsersController < ActionController::API
   def user_params
     params.require(:user).permit(:username, :email, :password, :current_password)
   end
-
-  private
 
   def get_user_from_token
     jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1],
