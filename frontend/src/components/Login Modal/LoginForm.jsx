@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import { useAuth } from "../../utils/useAuth";
+import jwt_decode from "jwt-decode";
 
 function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function LoginForm({ onLoginSuccess }) {
 
     try {
       const response = await fetch("/api/users/sign_in", {
-        method: "post",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -25,20 +26,23 @@ function LoginForm({ onLoginSuccess }) {
           user: { email: email, password: password },
         }),
       });
-      const data = await response.json();
 
       if (response.ok) {
-        const authToken = response.headers.get("Authorization");
+        const data = await response.json();
 
-        const token = authToken ? authToken.split(" ")[1] : null;
+        const token = response.headers.get("Authorization");
+        console.log("loggin in:" + token);
+        // const token = authToken ? authToken.split(" ")[1] : null;
 
-        setAuth({
-          isAuthenticated: true,
-          user: data.user,
-          token: token,
-        });
-
+        // setAuth({
+        //   isAuthenticated: true,
+        //   user: data.user,
+        //   token: token,
+        // });
+        console.log("check token + user data:", data.user + token);
         Cookies.set("token", token);
+        const decToken = jwt_decode(token);
+        console.log("dec tok" + decToken.sub);
         onLoginSuccess();
       } else {
         const errorMessage = data.message || "Login failed.";

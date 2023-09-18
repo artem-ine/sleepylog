@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
     def jwt_key
         Rails.application.credentials.jwt_key
     end
@@ -31,4 +30,5 @@ class ApplicationController < ActionController::API
     def logged_in?
         !!current_user
     end
+
 end
