@@ -12,6 +12,7 @@ function SignupForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPassword_Confirmation] = useState("");
+  const { error, showError } = useErrorHandler;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,23 +33,24 @@ function SignupForm() {
         }),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
+        const data = await response.json();
+        const token = response.headers.get("Authorization");
+        console.log("sign up:" + token);
         setAuth((prevAuth) => ({
           ...prevAuth,
           isAuthenticated: true,
           user: data.user,
-          token: data.jwt,
+          token: token,
         }));
-        navigate("/");
+        console.log("signup user data" + data.user);
       } else {
         const errorMessage = data.message || "Registration failed.";
-        console.log(errorMessage);
+        showError(errorMessage);
       }
     } catch (error) {
       console.error(error);
-      console.log("An error occurred during registration.");
+      showError("An error occurred during registration.");
     }
   };
 
