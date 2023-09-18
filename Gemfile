@@ -9,7 +9,8 @@ gem "rails", "~> 7.0.8"
 gem "faker"
 gem "devise"
 gem "devise-jwt"
-gem "dotenv"
+gem "dotenv-rails", groups: [:development, :test]
+
 
 
 # Use postgresql as the database for Active Record
