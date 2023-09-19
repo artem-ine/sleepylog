@@ -85,3 +85,13 @@ main{
   justify-content: center;
   margin-top: 16px; /* Adjust the margin as needed for spacing */
 }
+
+.scrollable-notes {
+  max-height: 100px;
+  /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.calendar-view-container {
+  width: 350px;
+}
