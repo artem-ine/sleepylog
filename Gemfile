@@ -12,7 +12,6 @@ gem "devise-jwt"
 gem "dotenv-rails", groups: [:development, :test]
 
 
-
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 

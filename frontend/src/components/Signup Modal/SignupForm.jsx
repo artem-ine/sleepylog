@@ -37,12 +37,6 @@ function SignupForm() {
         const data = await response.json();
         const token = response.headers.get("Authorization");
         console.log("sign up:" + token);
-        // setAuth((prevAuth) => ({
-        //   ...prevAuth,
-        //   isAuthenticated: true,
-        //   user: data.user,
-        //   token: token,
-        // }));
         console.log("signup user data" + data.user);
       } else {
         const errorMessage = data.message || "Registration failed.";
