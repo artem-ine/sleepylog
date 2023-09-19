@@ -8,11 +8,8 @@ function Profile() {
   const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
   const [updatedProfile, setUpdatedProfile] = useState({
-    username: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-    current_password: "",
+    username: auth.user.username,
+    email: auth.user.email,
   });
 
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
@@ -48,7 +45,6 @@ function Profile() {
           const data = await response.json();
           setProfileData(data);
         } else {
-          // Handle error when fetching profile data
           console.error("Error fetching profile data", response.status);
         }
       } catch (error) {
@@ -67,7 +63,6 @@ function Profile() {
     const updatedData = {
       username: updatedProfile.username,
       email: updatedProfile.email,
-      password: updatedProfile.password,
     };
 
     console.log("Updated Data:", updatedData);
@@ -103,7 +98,7 @@ function Profile() {
                 <input
                   className="text-black"
                   type="text"
-                  value={auth.user.username}
+                  value={updatedProfile.username}
                   onChange={(e) =>
                     setUpdatedProfile({
                       ...updatedProfile,
@@ -118,7 +113,7 @@ function Profile() {
                 <input
                   className="text-black"
                   type="text"
-                  value={auth.user.email}
+                  value={updatedProfile.email}
                   onChange={(e) =>
                     setUpdatedProfile({
                       ...updatedProfile,
@@ -137,6 +132,7 @@ function Profile() {
           <div>
             <h2>Welcome to your profile, {auth.user.username}!</h2>
             <p>Email: {auth.user.email}</p>
+            <p>Username: {auth.user.username}</p>
             <button onClick={handleEditClick}>Edit My Profile</button>
             <button onClick={openPasswordModal}>Change password</button>
           </div>
