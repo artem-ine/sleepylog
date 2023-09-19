@@ -18,11 +18,9 @@ function Profile() {
   console.log(auth.user.id);
 
   const handleEditClick = () => {
-  // When the user clicks "Edit My Profile," set the editing state to true
     setEditing(true);
   };
 
-    // Use useEffect to fetch profile data when the component mounts
   useEffect(() => {
     const fetchProfileData = async () => {
       const jwtToken = auth.token;
@@ -94,7 +92,7 @@ function Profile() {
                 <input
                   className="text-black"
                   type="text"
-                  value={updatedProfile.username}
+                  value={auth.user.username}
                   onChange={(e) =>
                     setUpdatedProfile({
                       ...updatedProfile,
@@ -109,7 +107,7 @@ function Profile() {
                 <input
                   className="text-black"
                   type="text"
-                  value={updatedProfile.email}
+                  value={auth.user.email}
                   onChange={(e) =>
                     setUpdatedProfile({
                       ...updatedProfile,
@@ -139,11 +137,11 @@ function Profile() {
                   type="password"
                   value={updatedProfile.password_confirmation}
                   onChange={(e) =>
-                  setUpdatedProfile({
-                    ...updatedProfile,
-                    password_confirmation: e.target.value,
-                  })
-                }
+                    setUpdatedProfile({
+                      ...updatedProfile,
+                      password_confirmation: e.target.value,
+                    })
+                  }
                 />
               </label>
               <br />
@@ -154,13 +152,13 @@ function Profile() {
                   type="password"
                   value={updatedProfile.current_password}
                   onChange={(e) =>
-                  setUpdatedProfile({
-                    ...updatedProfile,
-                    current_password: e.target.value,
-                  })
-                }
-              />
-            </label>
+                    setUpdatedProfile({
+                      ...updatedProfile,
+                      current_password: e.target.value,
+                    })
+                  }
+                />
+              </label>
               <br />
               <button type="submit">Update</button>
               <button onClick={() => setEditing(false)}>Cancel</button>
