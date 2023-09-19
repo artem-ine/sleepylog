@@ -10,10 +10,47 @@ function Profile() {
     username: "",
     email: "",
     password: "",
+    password_confirmation: "",
+    current_password: "",
   });
 
   console.log(auth.user.email);
   console.log(auth.user.id);
+
+  const handleEditClick = () => {
+  // When the user clicks "Edit My Profile," set the editing state to true
+    setEditing(true);
+  };
+
+    // Use useEffect to fetch profile data when the component mounts
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      const jwtToken = auth.token;
+
+      try {
+        const response = await fetch(`/api/users/${auth.user.id}`, {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setProfileData(data);
+        } else {
+          // Handle error when fetching profile data
+          console.error("Error fetching profile data", response.status);
+        }
+      } catch (error) {
+        console.error("Error fetching profile data:", error.message);
+      }
+    };
+
+    if (auth.isAuthenticated) {
+      fetchProfileData();
+    }
+  }, [auth.isAuthenticated, auth.user.id]);
 
   const handleUpdate = () => {
     const jwtToken = auth.token;
@@ -24,8 +61,10 @@ function Profile() {
       password: updatedProfile.password,
     };
 
-    fetch(`/users/${auth.user.user_id}`, {
-      method: "PUT",
+    console.log("Updated Data:", updatedData);
+
+    fetch(`/api/users/${auth.user.id}`, {
+      method: "PATCH",
       headers: {
         Authorization: `Bearer ${jwtToken}`,
         "Content-Type": "application/json",
@@ -34,6 +73,7 @@ function Profile() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("Response from server:", data);
         setProfileData(data);
         setEditing(false);
       })
@@ -44,72 +84,96 @@ function Profile() {
 
   return (
     <div>
-      {auth.isAuthenticated ? (
-        profileData ? (
+      <div>
+        {editing ? (
           <div>
-            {editing ? (
-              <div>
-                <h2>Update Your Profile</h2>
-                <form onSubmit={handleUpdate}>
-                  <label>
-                    Username:
-                    <input
-                      type="text"
-                      value={updatedProfile.username}
-                      onChange={(e) =>
-                        setUpdatedProfile({
-                          ...updatedProfile,
-                          username: e.target.value,
-                        })
-                      }
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Email:
-                    <input
-                      type="text"
-                      value={updatedProfile.email}
-                      onChange={(e) =>
-                        setUpdatedProfile({
-                          ...updatedProfile,
-                          email: e.target.value,
-                        })
-                      }
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Password:
-                    <input
-                      type="text"
-                      onChange={(e) =>
-                        setUpdatedProfile({
-                          ...updatedProfile,
-                          password: e.target.value,
-                        })
-                      }
-                    />
-                  </label>
-                  <br />
-                  <button type="submit">Update</button>
-                  <button onClick={() => setEditing(false)}>Cancel</button>
-                </form>
-              </div>
-            ) : (
-              <div>
-                <h2>Welcome to your profile, {auth.user.username}!</h2>
-                <p>Email: {auth.user.email}</p>
-                <button onClick={() => setEditing(true)}>Update Profile</button>
-              </div>
-            )}
+            <h2>Edit Your Profile</h2>
+            <form onSubmit={handleUpdate}>
+              <label>
+                Username:
+                <input
+                  className="text-black"
+                  type="text"
+                  value={updatedProfile.username}
+                  onChange={(e) =>
+                    setUpdatedProfile({
+                      ...updatedProfile,
+                      username: e.target.value,
+                    })
+                  }
+                />
+              </label>
+              <br />
+              <label>
+                Email:
+                <input
+                  className="text-black"
+                  type="text"
+                  value={updatedProfile.email}
+                  onChange={(e) =>
+                    setUpdatedProfile({
+                      ...updatedProfile,
+                      email: e.target.value,
+                    })
+                  }
+                />
+              </label>
+              <br />
+              <label>
+                Password:
+                <input
+                  className="text-black"
+                  type="password"
+                  onChange={(e) =>
+                    setUpdatedProfile({
+                      ...updatedProfile,
+                      password: e.target.value,
+                    })
+                  }
+                />
+              </label>
+              <label>
+                Password Confirmation:
+                <input
+                  className="text-black"
+                  type="password"
+                  value={updatedProfile.password_confirmation}
+                  onChange={(e) =>
+                  setUpdatedProfile({
+                    ...updatedProfile,
+                    password_confirmation: e.target.value,
+                  })
+                }
+                />
+              </label>
+              <br />
+              <label>
+                Current Password:
+                <input
+                  className="text-black"
+                  type="password"
+                  value={updatedProfile.current_password}
+                  onChange={(e) =>
+                  setUpdatedProfile({
+                    ...updatedProfile,
+                    current_password: e.target.value,
+                  })
+                }
+              />
+            </label>
+              <br />
+              <button type="submit">Update</button>
+              <button onClick={() => setEditing(false)}>Cancel</button>
+            </form>
           </div>
         ) : (
-          <p>Loading profile data...</p>
-        )
-      ) : (
-        <p>You must be logged in to view your profile.</p>
-      )}
+          <div>
+            <h2>Welcome to your profile, {auth.user.username}!</h2>
+            <p>Email: {auth.user.email}</p>
+            <button onClick={handleEditClick}>Edit My Profile</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
