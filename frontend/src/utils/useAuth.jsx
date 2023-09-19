@@ -8,14 +8,10 @@ export const useAuth = () => {
   const [auth, setAuth] = useAtom(authAtom);
 
   const jwtToken = Cookies.get("token");
-  console.log("useauth " + jwtToken);
 
   if (jwtToken && !auth.isAuthenticated) {
     try {
       const decodedToken = jwt_decode(jwtToken);
-
-      console.log("Decoded Token:", decodedToken);
-      console.log("Decoded Token ID:", decodedToken.sub);
 
       fetch(`/api/users/${decodedToken.sub}`, {
         headers: {
@@ -30,7 +26,6 @@ export const useAuth = () => {
             user: userData,
             token: jwtToken,
           });
-          console.log("userdata:" + userData.email);
         })
         .catch((error) => {
           console.error("Error fetching user data:", error);
@@ -43,7 +38,6 @@ export const useAuth = () => {
   const handleLogout = () => {
     const authToken = Cookies.get("token");
     const jwtToken = authToken ? authToken.split(" ")[1] : null;
-    console.log(jwtToken);
 
     if (jwtToken) {
       fetch("/api/users/sign_out", {

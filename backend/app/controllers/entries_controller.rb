@@ -1,9 +1,10 @@
 class EntriesController < ActionController::API
 
   def index
-    @logbook = Logbook.find(params[:logbook_id])
-    @entries = @logbook.entries
-    render json: @entries
+    user = current_user 
+    logbook = user.logbook
+    entries = logbook.entries
+    render json: entries
   end
 
   def create
@@ -51,7 +52,7 @@ class EntriesController < ActionController::API
   private
 
   def entry_params
-    params.require(:entry).permit(:logbook_id, :date, :duration, :quality, :notes) 
+    params.require(:entry).permit(:logbook_id, :start_time, :end_time, :duration, :rating, :notes) 
   end
 
 end
