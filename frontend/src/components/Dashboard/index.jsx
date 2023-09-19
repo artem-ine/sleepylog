@@ -6,6 +6,7 @@ import snork from "../../assets/images/snork.png";
 import mimi from "../../assets/images/mimi.png";
 import { useAuth } from "../../utils/useAuth";
 import EntryModal from "./Entries Modal";
+import EntryForm from "./Entries Modal/Entries";
 
 function Dashboard() {
   const { auth } = useAuth();
@@ -45,7 +46,10 @@ function Dashboard() {
         <EntryModal
           isOpen={entryModalIsOpen}
           onRequestClose={closeEntryModal}
-        />
+          onEntrySuccess={closeEntryModal}
+        >
+          <EntryForm onEntrySuccess={closeEntryModal} />
+        </EntryModal>
         <img
           src={mimi}
           alt="sun looking happy wearing a sunhat"

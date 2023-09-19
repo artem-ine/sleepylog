@@ -4,10 +4,10 @@ import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import { useAuth } from "../../utils/useAuth";
 import jwt_decode from "jwt-decode";
+import PropTypes from "prop-types";
 
 function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,18 +32,14 @@ function LoginForm({ onLoginSuccess }) {
 
         const token = response.headers.get("Authorization");
         console.log("loggin in:" + token);
-        // const token = authToken ? authToken.split(" ")[1] : null;
-
-        // setAuth({
-        //   isAuthenticated: true,
-        //   user: data.user,
-        //   token: token,
-        // });
         console.log("check token + user data:", data.user + token);
         Cookies.set("token", token);
         const decToken = jwt_decode(token);
         console.log("dec tok" + decToken.sub);
-        onLoginSuccess();
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
+        navigate("/");
       } else {
         const errorMessage = data.message || "Login failed.";
         showError(errorMessage);
@@ -111,3 +107,7 @@ function LoginForm({ onLoginSuccess }) {
 }
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+  onLoginSuccess: PropTypes.func,
+};

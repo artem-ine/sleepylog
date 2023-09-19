@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useAuth } from "../../../utils/useAuth";
 import useErrorHandler from "../../../utils/errorHandler";
+import PropTypes from "prop-types";
 
-function EntryForm() {
+function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
   const [rating, setRating] = useState("");
@@ -36,13 +36,10 @@ function EntryForm() {
       });
 
       if (response.ok) {
-        const responseData = await response.json();
-
         if (onEntrySuccess) {
-          onEntrySuccess(responseData);
+          onEntrySuccess();
         }
-
-        navigate("/dashboard");
+        navigate("/");
       } else {
         const errorData = await response.json();
         showError(errorData.error);
@@ -157,3 +154,7 @@ function EntryForm() {
 }
 
 export default EntryForm;
+
+EntryForm.propTypes = {
+  onEntrySuccess: PropTypes.func,
+};

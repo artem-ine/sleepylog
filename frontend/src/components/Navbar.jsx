@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useAuth } from "../utils/useAuth";
 import LogInModal from "./Login Modal";
 import SignupModal from "./Signup Modal";
+import LoginForm from "./Login Modal/LoginForm";
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -102,7 +103,13 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <LogInModal isOpen={loginModalIsOpen} onRequestClose={closeLoginModal} />
+      <LogInModal
+        isOpen={loginModalIsOpen}
+        onRequestClose={closeLoginModal}
+        onEntrySuccess={closeLoginModal}
+      >
+        <LoginForm onEntrySuccess={closeLoginModal} />
+      </LogInModal>
       <SignupModal
         isOpen={signupModalIsOpen}
         onRequestClose={closeSignupModal}

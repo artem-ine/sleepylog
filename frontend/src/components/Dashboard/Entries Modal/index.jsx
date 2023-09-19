@@ -9,7 +9,7 @@ const EntryModal = ({ isOpen, onRequestClose }) => {
       contentLabel="Entries Modal"
       className="ReactModal__Body--open"
     >
-      <EntryForm />
+      <EntryForm onEntrySuccess={onRequestClose} />
       <div className="modal-actions">
         <button
           onClick={onRequestClose}
