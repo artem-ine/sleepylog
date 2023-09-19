@@ -5,10 +5,21 @@ import Profile from "./Profile";
 import snork from "../../assets/images/snork.png";
 import mimi from "../../assets/images/mimi.png";
 import { useAuth } from "../../utils/useAuth";
+import EntryModal from "./Entries Modal";
 
 function Dashboard() {
   const { auth } = useAuth();
   const [selectedTab, setSelectedTab] = useState("calendar");
+
+  const [entryModalIsOpen, setEntryModalIsOpen] = useState(false);
+
+  const openEntryModal = () => {
+    setEntryModalIsOpen(true);
+  };
+
+  const closeEntryModal = () => {
+    setEntryModalIsOpen(false);
+  };
 
   return (
     <div className="flex flex-col items-center p-10">
@@ -30,7 +41,11 @@ function Dashboard() {
           alt="moon sleeping wearing a nightcap"
           className="h-20"
         />
-        <h1 className="flex items-center">Add an entry!</h1>
+        <button onClick={openEntryModal}>Add an entry!</button>
+        <EntryModal
+          isOpen={entryModalIsOpen}
+          onRequestClose={closeEntryModal}
+        />
         <img
           src={mimi}
           alt="sun looking happy wearing a sunhat"
