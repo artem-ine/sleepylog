@@ -2,18 +2,14 @@ import Modal from "react-modal";
 import PasswordForm from "./PasswordModal";
 
 const PasswordModal = ({ isOpen, onRequestClose }) => {
-  const handleFormSuccess = () => {
-    onRequestClose();
-  };
-
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Login/Signup Modal"
+      contentLabel="Password Modal"
       className="ReactModal__Body--open"
     >
-      <PasswordForm onFormSuccess={handleFormSuccess} />
+      <PasswordForm onPasswordChanged={onRequestClose} />
       <div className="modal-actions">
         <button
           onClick={onRequestClose}

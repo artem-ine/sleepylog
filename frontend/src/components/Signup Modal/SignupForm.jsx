@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
 import useErrorHandler from "../../utils/errorHandler";
+import PropTypes from "prop-types";
 
-function SignupForm() {
+function SignupForm({ onSignupSuccess }) {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -38,6 +39,10 @@ function SignupForm() {
         const token = response.headers.get("Authorization");
         console.log("sign up:" + token);
         console.log("signup user data" + data.user);
+        if (onSignupSuccess) {
+          onSignupSuccess();
+        }
+        navigate("/");
       } else {
         const errorMessage = data.message || "Registration failed.";
         showError(errorMessage);
@@ -137,3 +142,7 @@ function SignupForm() {
 }
 
 export default SignupForm;
+
+SignupForm.propTypes = {
+  onSignupSuccess: PropTypes.func,
+};

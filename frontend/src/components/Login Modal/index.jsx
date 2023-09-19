@@ -2,10 +2,6 @@ import Modal from "react-modal";
 import LoginForm from "./LoginForm";
 
 const LogInModal = ({ isOpen, onRequestClose }) => {
-  const handleLoginSuccess = () => {
-    onRequestClose();
-  };
-
   return (
     <Modal
       isOpen={isOpen}
@@ -13,7 +9,7 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
       contentLabel="Login/Signup Modal"
       className="ReactModal__Body--open"
     >
-      <LoginForm onLoginSuccess={handleLoginSuccess} />
+      <LoginForm onLoginSuccess={onRequestClose} />
       <div className="modal-actions">
         <button
           onClick={onRequestClose}
