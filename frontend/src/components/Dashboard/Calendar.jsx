@@ -1,46 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import { useAuth } from "../../utils/useAuth";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [loggedItems, setLoggedItems] = useState([
-    // Dummy logged items for demonstration
-    {
-      id: 1,
-      title: "Meeting",
-      date: moment().format("YYYY-MM-DD"), // Store the date in a consistent format
-      description: "Meeting with the team",
-    },
-    {
-      id: 2,
-      title: "Task 1",
-      date: moment().add(1, "day").format("YYYY-MM-DD"),
-      description: "Complete task 1",
-    },
-    {
-      id: 3,
-      title: "Task 2",
-      date: moment().add(1, "day").format("YYYY-MM-DD"),
-      description: "Complete task 2",
-    },
-  ]);
+  const [loggedItems, setLoggedItems] = useState([]);
+  const [clickedDate, setClickedDate] = useState(selectedDate);
+  const { auth } = useAuth();
 
-  // Handle calendar date change
+  useEffect(() => {
+    const fetchUserLogbookEntries = async () => {
+      try {
+        const response = await fetch("/api/entries", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setLoggedItems(data);
+          console.log("Logged Items:", data);
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      } catch (error) {
+        console.error("Error fetching logbook entries:", error);
+      }
+    };
+
+    fetchUserLogbookEntries();
+  }, [auth]);
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  // display items
+  console.log(selectedDate);
+
+  useEffect(() => {
+    setClickedDate(selectedDate);
+  }, [selectedDate]);
+
+  console.log(clickedDate);
+
   const tileContent = ({ date, view }) => {
     if (view === "month") {
-      // Filter logged items for the current date
-      const itemsForDate = loggedItems.filter(
-        (item) => item.date === moment(date).format("YYYY-MM-DD")
+      const startOfDayDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate()
       );
 
-      // If there are items for the date, return a dot or custom content
+      const itemsForDate = loggedItems.filter((item) =>
+        moment(item.start_time).isSame(startOfDayDate, "day")
+      );
+
       if (itemsForDate.length > 0) {
         return <div className="calendar-dot" />;
       }
@@ -49,10 +68,11 @@ function CalendarView() {
     return null;
   };
 
-  // Filter logged items for the selected date
-  const filteredItems = loggedItems.filter(
-    (item) => item.date === moment(selectedDate).format("YYYY-MM-DD")
+  const filteredItems = loggedItems.filter((item) =>
+    moment(item.start_time).isSame(selectedDate, "day")
   );
+
+  console.log(filteredItems);
 
   return (
     <div className="calendar-view-container">
@@ -61,15 +81,18 @@ function CalendarView() {
           onChange={handleDateChange}
           value={selectedDate}
           tileContent={tileContent}
+          onClickDay={(date) => setClickedDate(date)}
         />
       </div>
       <div className="logged-items-container">
-        <h2>Logs for {moment(selectedDate).format("LL")}</h2>
+        <h2>Logs for {moment(clickedDate).format("LL")}</h2>
         <ul>
           {filteredItems.map((item) => (
             <li key={item.id}>
-              <strong>{item.title}</strong>
-              <p>{item.description}</p>
+              <strong>{item.date}</strong>
+              <p>{item.duration}</p>
+              <p>{item.quality}</p>
+              <p>{item.notes}</p>
             </li>
           ))}
         </ul>

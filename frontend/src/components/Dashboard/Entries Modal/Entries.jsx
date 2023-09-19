@@ -36,23 +36,18 @@ function EntryForm() {
       });
 
       if (response.ok) {
-        // Parse the response JSON data if available
         const responseData = await response.json();
 
-        // Call the callback function to handle success (if provided)
         if (onEntrySuccess) {
           onEntrySuccess(responseData);
         }
 
-        // Redirect or perform other actions on success
-        navigate("/dashboard"); // Example: Redirect to the dashboard
+        navigate("/dashboard");
       } else {
-        // Handle errors for non-2xx status codes
         const errorData = await response.json();
-        showError(errorData.error); // Display error message to the user
+        showError(errorData.error);
       }
     } catch (error) {
-      // Handle network or other errors
       console.error("API request error:", error);
     }
   };

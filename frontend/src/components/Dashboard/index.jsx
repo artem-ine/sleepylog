@@ -39,7 +39,7 @@ function Dashboard() {
         <img
           src={snork}
           alt="moon sleeping wearing a nightcap"
-          className="h-20"
+          className="h-20 pr-10"
         />
         <button onClick={openEntryModal}>Add an entry!</button>
         <EntryModal
@@ -49,7 +49,7 @@ function Dashboard() {
         <img
           src={mimi}
           alt="sun looking happy wearing a sunhat"
-          className="h-20"
+          className="h-20 pl-10"
         />
       </div>
       <br />

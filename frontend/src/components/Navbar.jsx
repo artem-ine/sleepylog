@@ -12,8 +12,8 @@ function Navbar() {
     setNavbar(!navbar);
   };
 
-  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false); // Separate state for the Login modal
-  const [signupModalIsOpen, setSignupModalIsOpen] = useState(false); // Separate state for the Sign Up modal
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+  const [signupModalIsOpen, setSignupModalIsOpen] = useState(false);
 
   const openLoginModal = () => {
     setLoginModalIsOpen(true);
