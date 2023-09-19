@@ -90,8 +90,8 @@ function Profile() {
     <div>
       <div>
         {editing ? (
-          <div>
-            <h2>Edit Your Profile</h2>
+          <div className="border dark:border-primary border-secondary p-5 rounded-lg">
+            <h2 className="text-center dark:text-white text-black text-lg">Edit Your Profile</h2>
             <form onSubmit={handleUpdate}>
               <label>
                 Username:
@@ -124,17 +124,29 @@ function Profile() {
               </label>
               <br />
               <br />
-              <button type="submit">Update</button>
-              <button onClick={() => setEditing(false)}>Cancel</button>
+              <button 
+                className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                type="submit">Update
+              </button>
+              <button
+                className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+                onClick={() => setEditing(false)}>Cancel
+              </button>
             </form>
           </div>
         ) : (
-          <div>
-            <h2>Welcome to your profile, {auth.user.username}!</h2>
-            <p>Email: {auth.user.email}</p>
+          <div className="border dark:border-primary border-secondary p-5 rounded-lg">
+            <h2 className="text-center dark:text-white text-black text-lg">Account details</h2>
             <p>Username: {auth.user.username}</p>
-            <button onClick={handleEditClick}>Edit My Profile</button>
-            <button onClick={openPasswordModal}>Change password</button>
+            <p>Email: {auth.user.email}</p>
+            <button
+              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              onClick={handleEditClick}>Edit Profile
+            </button>
+            <button
+              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              onClick={openPasswordModal}>Change password
+            </button>
           </div>
         )}
         <PasswordModal
