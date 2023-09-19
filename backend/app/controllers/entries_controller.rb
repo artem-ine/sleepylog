@@ -7,13 +7,20 @@ class EntriesController < ActionController::API
   end
 
   def create
-    @logbook = Logbook.find(params[:logbook_id])
-    @entry = @logbook.entries.build(entry_params)
-    
-    if @entry.save
-      render json: @entry, status: :created
+    user = current_user
+
+    if user.logbook.nil?
+      logbook = Logbook.create(user: user)
     else
-      render json: @entry.errors, status: :unprocessable_entity
+      logbook = user.logbook
+    end
+
+    entry = logbook.entries.create(entry_params)
+
+    if entry.save
+      render json: entry, status: :created
+    else
+      render json: { errors: entry.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -44,7 +51,7 @@ class EntriesController < ActionController::API
   private
 
   def entry_params
-    params.require(:entry).permit(:logbook_id, :date, :duration, :quality, :notes) # Adjust this according to your entry attributes
+    params.require(:entry).permit(:logbook_id, :date, :duration, :quality, :notes) 
   end
 
 end
