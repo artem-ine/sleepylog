@@ -84,18 +84,21 @@ function CalendarView() {
           onClickDay={(date) => setClickedDate(date)}
         />
       </div>
-      <div className="logged-items-container">
-        <h2>Logs for {moment(clickedDate).format("LL")}</h2>
-        <ul>
-          {filteredItems.map((item) => (
-            <li key={item.id}>
-              <strong>{item.date}</strong>
-              <p>{item.duration}</p>
-              <p>{item.quality}</p>
-              <p>{item.notes}</p>
-            </li>
-          ))}
-        </ul>
+      
+      <div className="logged-items-container bg-primary rounded-xl px-3">
+        <h2 className="font-heading text-black text-sm mt-5 mb-2">{moment(clickedDate).format("LL")}</h2>
+        <div className="scrollable-notes">
+          <ul className="text-black text-sm">
+            {filteredItems.map((item) => (
+              <li key={item.id}>
+                <strong>{item.date}</strong>
+                <p>Hours slept: {item.duration}</p>
+                <p>Quality rating: {item.quality}</p>
+                <p>Notes: {item.notes}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
