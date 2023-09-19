@@ -1,28 +1,34 @@
 import React, { useState } from "react";
 import { useAuth } from "../../utils/useAuth";
 import { useEffect } from "react";
+import PasswordModal from "./Password Modal";
 
 function Profile() {
   const { auth } = useAuth();
   const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
   const [updatedProfile, setUpdatedProfile] = useState({
-    username: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-    current_password: "",
+    username: auth.user.username,
+    email: auth.user.email,
   });
+
+  const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
+
+  const openPasswordModal = () => {
+    setPasswordModalIsOpen(true);
+  };
+
+  const closePasswordModal = () => {
+    setPasswordModalIsOpen(false);
+  };
 
   console.log(auth.user.email);
   console.log(auth.user.id);
 
   const handleEditClick = () => {
-  // When the user clicks "Edit My Profile," set the editing state to true
     setEditing(true);
   };
 
-    // Use useEffect to fetch profile data when the component mounts
   useEffect(() => {
     const fetchProfileData = async () => {
       const jwtToken = auth.token;
@@ -39,7 +45,6 @@ function Profile() {
           const data = await response.json();
           setProfileData(data);
         } else {
-          // Handle error when fetching profile data
           console.error("Error fetching profile data", response.status);
         }
       } catch (error) {
@@ -58,7 +63,6 @@ function Profile() {
     const updatedData = {
       username: updatedProfile.username,
       email: updatedProfile.email,
-      password: updatedProfile.password,
     };
 
     console.log("Updated Data:", updatedData);
@@ -119,48 +123,6 @@ function Profile() {
                 />
               </label>
               <br />
-              <label>
-                Password:
-                <input
-                  className="text-black"
-                  type="password"
-                  onChange={(e) =>
-                    setUpdatedProfile({
-                      ...updatedProfile,
-                      password: e.target.value,
-                    })
-                  }
-                />
-              </label>
-              <label>
-                Password Confirmation:
-                <input
-                  className="text-black"
-                  type="password"
-                  value={updatedProfile.password_confirmation}
-                  onChange={(e) =>
-                  setUpdatedProfile({
-                    ...updatedProfile,
-                    password_confirmation: e.target.value,
-                  })
-                }
-                />
-              </label>
-              <br />
-              <label>
-                Current Password:
-                <input
-                  className="text-black"
-                  type="password"
-                  value={updatedProfile.current_password}
-                  onChange={(e) =>
-                  setUpdatedProfile({
-                    ...updatedProfile,
-                    current_password: e.target.value,
-                  })
-                }
-              />
-            </label>
               <br />
               <button type="submit">Update</button>
               <button onClick={() => setEditing(false)}>Cancel</button>
@@ -170,9 +132,15 @@ function Profile() {
           <div>
             <h2>Welcome to your profile, {auth.user.username}!</h2>
             <p>Email: {auth.user.email}</p>
+            <p>Username: {auth.user.username}</p>
             <button onClick={handleEditClick}>Edit My Profile</button>
+            <button onClick={openPasswordModal}>Change password</button>
           </div>
         )}
+        <PasswordModal
+          isOpen={passwordModalIsOpen}
+          onRequestClose={closePasswordModal}
+        />
       </div>
     </div>
   );

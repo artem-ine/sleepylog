@@ -33,37 +33,13 @@ class UsersController < ActionController::API
     end
   end
 
-  def update
-    if @user == get_user_from_token
-      if @user.valid_password?(user_params[:current_password])
-        if user_params[:password] != "" && user_params[:email] != ""
-          if @user.update(user_params.except(:current_password))
-            render json: @user
-          else
-            render json: @user.errors, status: :unprocessable_entity
-          end
-        elsif user_params[:password] == ""
-          if @user.update(user_params.except(:current_password, :password))
-            render json: @user
-          else
-            render json: @user.errors, status: :unprocessable_entity
-          end
-        elsif user_params[:email] == ""
-          if @user.update(user_params.except(:current_password, :email))
-            render json: @user
-          else
-            render json: @user.errors, status: :unprocessable_entity
-          end
-        else
-          render json: { error: "At least one element needs to be modified." }
-        end
+    def update
+      if current_user.update(user_params)
+        render json: current_user
       else
-        render json: { error: "Incorrect password." }, status: :unprocessable_entity
+        render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
       end
-    else
-      render json: { error: "You can only modify your own profile." }, status: :unprocessable_entity
     end
-  end
 
   def destroy_with_password
     if current_user.valid_password?(params[:data][:current_password])
