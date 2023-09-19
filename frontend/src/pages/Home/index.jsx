@@ -4,7 +4,6 @@ import Footer from "../../components/Footer";
 import Dashboard from "../../components/Dashboard";
 import { useAuth } from "../../utils/useAuth";
 import GuestView from "../../components/GuestView";
-import SignupModal from "../../components/Signup Modal";
 
 function Home() {
   const { auth } = useAuth();
