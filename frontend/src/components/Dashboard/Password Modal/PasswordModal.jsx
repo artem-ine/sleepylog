@@ -1,9 +1,12 @@
 import { useState } from "react";
 import useErrorHandler from "../../../utils/errorHandler";
 import { useAuth } from "../../../utils/useAuth";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-function ChangePasswordForm({ onClose }) {
+function ChangePasswordForm({ onPasswordChanged }) {
   const { auth } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -60,7 +63,10 @@ function ChangePasswordForm({ onClose }) {
 
         // Display a success message and close the modal
         alert(data.message); // You can replace this with your preferred way to display success messages
-        onClose();
+        if (onPasswordChanged) {
+          onPasswordChanged();
+        }
+        navigate("/");
       } else {
         const errorMessage = data.message || "Password change failed.";
         showError(errorMessage);
@@ -148,3 +154,7 @@ function ChangePasswordForm({ onClose }) {
 }
 
 export default ChangePasswordForm;
+
+ChangePasswordForm.propTypes = {
+  onPasswordChanged: PropTypes.func,
+};

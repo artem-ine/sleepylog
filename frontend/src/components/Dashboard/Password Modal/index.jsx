@@ -6,10 +6,10 @@ const PasswordModal = ({ isOpen, onRequestClose }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Login/Signup Modal"
+      contentLabel="Password Modal"
       className="ReactModal__Body--open"
     >
-      <PasswordForm onEntrySuccess={onRequestClose} />
+      <PasswordForm onPasswordChanged={onRequestClose} />
       <div className="modal-actions">
         <button
           onClick={onRequestClose}

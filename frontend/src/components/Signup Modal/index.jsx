@@ -6,10 +6,10 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Login/Signup Modal"
+      contentLabel="Signup Modal"
       className="ReactModal__Body--open"
     >
-      <SignupForm />
+      <SignupForm onSignupSuccess={onRequestClose} />
       <div className="modal-actions">
         <button
           onClick={onRequestClose}

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useAuth } from "../../utils/useAuth";
 import { useEffect } from "react";
 import PasswordModal from "./Password Modal";
+import ChangePasswordForm from "./Password Modal/PasswordModal";
 
 function Profile() {
   const { auth } = useAuth();
-  const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
   const [updatedProfile, setUpdatedProfile] = useState({
     username: auth.user.username,
@@ -140,7 +140,9 @@ function Profile() {
         <PasswordModal
           isOpen={passwordModalIsOpen}
           onRequestClose={closePasswordModal}
-        />
+        >
+          <ChangePasswordForm onPasswordChanged={closePasswordModal} />
+        </PasswordModal>
       </div>
     </div>
   );

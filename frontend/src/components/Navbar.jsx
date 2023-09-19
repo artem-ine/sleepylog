@@ -4,6 +4,7 @@ import { useAuth } from "../utils/useAuth";
 import LogInModal from "./Login Modal";
 import SignupModal from "./Signup Modal";
 import LoginForm from "./Login Modal/LoginForm";
+import SignupForm from "./Signup Modal/SignupForm";
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -106,14 +107,17 @@ function Navbar() {
       <LogInModal
         isOpen={loginModalIsOpen}
         onRequestClose={closeLoginModal}
-        onEntrySuccess={closeLoginModal}
+        openLoginModal={closeLoginModal}
       >
-        <LoginForm onEntrySuccess={closeLoginModal} />
+        <LoginForm onLoginSuccess={closeLoginModal} />
       </LogInModal>
       <SignupModal
         isOpen={signupModalIsOpen}
         onRequestClose={closeSignupModal}
-      />
+        openSignupModal={closeLoginModal}
+      >
+        <SignupForm onSignupSuccess={closeSignupModal} />
+      </SignupModal>
     </div>
   );
 }
