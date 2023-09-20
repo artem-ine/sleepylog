@@ -25,9 +25,9 @@ function Dashboard() {
   return (
     <div className="flex flex-col items-center p-10">
       <h1 className="font-heading">
-        Welcome to Your Dashboard, {auth.user.email}!
+        Welcome to Your Dashboard, {auth.user.username}!
       </h1>
-      <p>
+      <p className="mx-10 px-40">
         Welcome to your dashboard. Below you will find your logbook, information
         on your sleeping patterns, and access to your profile. Remember to track
         your sleep as often as you can! The more consistent you are with your

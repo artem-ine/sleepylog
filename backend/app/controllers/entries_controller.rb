@@ -56,3 +56,12 @@ class EntriesController < ActionController::API
   end
 
 end
+
+# # Calculate the average rating for all entries
+# average_rating = Entry.average(:rating)
+
+# # Calculate the total count of entries with each rating
+# rating_counts = Entry.group(:rating).count
+
+# # Example output for rating_counts:
+# # { "no_data" => 10, "horrible" => 5, "mediocre" => 20, "OK" => 30, "good" => 15, "perfect" => 25 }

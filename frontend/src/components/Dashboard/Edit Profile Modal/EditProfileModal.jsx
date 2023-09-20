@@ -4,13 +4,12 @@ import { useAuth } from "../../../utils/useAuth";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-function ChangePasswordForm({ onPasswordChanged }) {
+function EditProfileForm({ onProfileChanged }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
+    username: auth.user.username,
+    email: auth.user.email,
   });
 
   const { error, showError } = useErrorHandler();
@@ -27,39 +26,31 @@ function ChangePasswordForm({ onPasswordChanged }) {
     e.preventDefault();
 
     try {
-      if (
-        !formData.currentPassword ||
-        !formData.newPassword ||
-        !formData.confirmPassword
-      ) {
+      if (!formData.username || !formData.email) {
         showError("All fields are required");
         return;
       }
 
-      if (formData.newPassword !== formData.confirmPassword) {
-        showError("New password and confirmation do not match");
-        return;
-      }
-
-      const response = await fetch("/user/password", {
+      const response = await fetch(`/api/users/${auth.user.id}`, {
         method: "PATCH",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${auth.token}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          current_password: formData.currentPassword,
-          new_password: formData.newPassword,
-          password_confirmation: formData.confirmPassword,
+          username: formData.username,
+          email: formData.email,
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        const successMessage = data.message || "Password updated successfully.";
+        const successMessage =
+          data.message ||
+          "Profile updated successfully. Refresh the page to see it!";
         alert(successMessage);
-        if (onPasswordChanged) {
-          onPasswordChanged();
+        if (onProfileChanged) {
+          onProfileChanged();
         }
         navigate("/");
       } else {
@@ -77,60 +68,45 @@ function ChangePasswordForm({ onPasswordChanged }) {
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
         <form
-          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
+          className="bg-primary shadow-md rounded-2xl border-secondary border-4 px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">
             <h1 className="font-heading text-center text-black text-2xl mb-5">
-              Change Password
+              Edit Profile
             </h1>
+          </div>
+          <div className="mb-4">
             <label
-              htmlFor="currentPassword"
+              htmlFor="username"
               className="block text-black text-sm font-bold mb-2"
             >
-              Current Password:
+              New Username:
             </label>
             <input
-              type="password"
-              id="currentPassword"
-              name="currentPassword"
+              type="string"
+              id="newUsername"
+              name="username"
               className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Current Password"
-              value={formData.currentPassword}
+              placeholder="Username"
+              value={formData.username}
               onChange={handleChange}
             />
           </div>
           <div className="mb-4">
             <label
-              htmlFor="newPassword"
+              htmlFor="email"
               className="block text-black text-sm font-bold mb-2"
             >
-              New Password:
+              New Email:
             </label>
             <input
-              type="password"
-              id="newPassword"
-              name="newPassword"
+              type="string"
+              id="newEmail"
+              name="email"
               className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="New Password"
-              value={formData.newPassword}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="confirmPassword"
-              className="block text-black text-sm font-bold mb-2"
-            >
-              Confirm Password:
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
+              placeholder="New Email"
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
@@ -139,7 +115,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
               type="submit"
               className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             >
-              Change Password
+              Update Profile
             </button>
           </div>
           {error && <p className="text-xs italic">{error}</p>}
@@ -149,8 +125,8 @@ function ChangePasswordForm({ onPasswordChanged }) {
   );
 }
 
-export default ChangePasswordForm;
+export default EditProfileForm;
 
-ChangePasswordForm.propTypes = {
-  onPasswordChanged: PropTypes.func,
+EditProfileForm.propTypes = {
+  onProfileChanged: PropTypes.func,
 };
