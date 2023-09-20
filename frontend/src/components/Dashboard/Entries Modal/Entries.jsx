@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker.css";
+import EmojiPicker from "./EmojiPicker";
 
 function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
@@ -69,13 +70,9 @@ function EntryForm({ onEntrySuccess }) {
             >
               Rating:
             </label>
-            <input
-              type="number"
-              id="rating"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Rating (1-5)"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
+            <label htmlFor="rating">Rating:</label>
+            <EmojiPicker
+              onSelectRating={(selectedRating) => setRating(selectedRating)}
             />
           </div>
           <div className="mb-4">

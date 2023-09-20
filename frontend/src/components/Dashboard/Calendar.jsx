@@ -11,7 +11,7 @@ function CalendarView() {
   const { auth } = useAuth();
   const [editing, setEditing] = useState(false);
   const [updatedEntry, setUpdatedEntry] = useState({
-    rating: null,
+    rating: "",
     start_time: null,
     end_time: null,
     notes: null,
@@ -198,9 +198,8 @@ function CalendarView() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="rating">Quality rating:</label>
-                  <input
-                    type="text"
+                  <label htmlFor="rating">Rating:</label>
+                  <select
                     id="rating"
                     name="rating"
                     value={updatedEntry.rating}
@@ -210,7 +209,14 @@ function CalendarView() {
                         rating: e.target.value,
                       })
                     }
-                  />
+                  >
+                    <option value="no_data">I don't remember</option>
+                    <option value="horrible">Horrible</option>
+                    <option value="mediocre">Mediocre</option>
+                    <option value="OK">OK</option>
+                    <option value="good">Good</option>
+                    <option value="perfect">Perfect</option>
+                  </select>
                 </div>
                 <div>
                   <label htmlFor="notes">Notes:</label>
