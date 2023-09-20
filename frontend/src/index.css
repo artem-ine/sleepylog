@@ -94,4 +94,35 @@ main{
 
 .calendar-view-container {
   width: 350px;
+  display: block;
+}
+
+.calendar-container,
+.logged-items-container {
+  width: 100%; }
+
+@media screen and (min-width: 1440px) {
+  .calendar-view-container {
+        display: flex;
+        /* Use Flexbox to arrange calendar and logged-items-container on larger screens */
+        justify-content: space-between;
+        /* Push them apart horizontally */
+        align-items: flex-start;
+        /* Align items at the top vertically */
+        margin-top: 20px;
+        width: 800px;
+  }
+
+  .calendar-container {
+    flex: 1;
+    background-color: #AB92BF;
+    margin-right: 20px;
+  }
+
+  .logged-items-container {
+    flex: 2;
+    padding: 16px;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
 }
