@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
-import useErrorHandler from "../../utils/errorHandler";
 import PropTypes from "prop-types";
 
 function SignupForm({ onSignupSuccess }) {
@@ -13,7 +12,8 @@ function SignupForm({ onSignupSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPassword_Confirmation] = useState("");
-  const { error, showError } = useErrorHandler;
+  const [error, setError] = useState(null);
+  const data = {};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,11 +45,11 @@ function SignupForm({ onSignupSuccess }) {
         navigate("/");
       } else {
         const errorMessage = data.message || "Registration failed.";
-        showError(errorMessage);
+        setError(errorMessage);
       }
     } catch (error) {
       console.error(error);
-      showError("An error occurred during registration.");
+      setError("An error occurred during registration.");
     }
   };
 
@@ -135,6 +135,7 @@ function SignupForm({ onSignupSuccess }) {
               Submit
             </button>
           </div>
+          {error && <p className="text-red-500 text-sm italic mb-4">{error}</p>}
         </form>
       </div>
     </div>

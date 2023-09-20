@@ -21,7 +21,7 @@ class UsersController < ActionController::API
 
   def create
     @user = User.new(user_params)
-    @logbook = Logbook.new # You can customize the default logbook name
+    @logbook = Logbook.new 
 
     if @user.save
       @logbook.user = @user
