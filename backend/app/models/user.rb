@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :registerable, :recoverable,
          jwt_revocation_strategy: JwtDenylist
 
-         validates :email, presence: true, uniqueness: true, length: { maximum: 100 }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email address please" }
-  # validates :username, presence: true, uniqueness: true
+        validates :email, presence: true, uniqueness: true, length: { maximum: 100 }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email address please" }
+        validates :username, presence: true, uniqueness: true
 
   has_one :logbook
 end

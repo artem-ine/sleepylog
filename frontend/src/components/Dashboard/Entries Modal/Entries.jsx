@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../utils/useAuth";
 import useErrorHandler from "../../../utils/errorHandler";
 import PropTypes from "prop-types";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./datepicker.css";
+import EmojiPicker from "./EmojiPicker";
 
 function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
@@ -60,19 +64,8 @@ function EntryForm({ onEntrySuccess }) {
             <h1 className="font-heading text-center text-black text-2xl mb-5">
               Sleep Entry
             </h1>
-            <label
-              htmlFor="rating"
-              className="block text-black text-sm font-bold mb-2"
-            >
-              Rating:
-            </label>
-            <input
-              type="number"
-              id="rating"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Rating (1-5)"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
+            <EmojiPicker
+              onSelectRating={(selectedRating) => setRating(selectedRating)}
             />
           </div>
           <div className="mb-4">
@@ -98,13 +91,15 @@ function EntryForm({ onEntrySuccess }) {
             >
               Start Time:
             </label>
-            <input
-              type="datetime-local"
+            <DatePicker
               id="start_time"
               className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Start Time"
-              value={start_time}
-              onChange={(e) => setStartTime(e.target.value)}
+              selected={start_time}
+              onChange={(date) => setStartTime(date)}
+              showTimeSelect
+              timeFormat="HH:mm"
+              dateFormat="dd/MM/yyyy HH:mm"
+              placeholderText="Select Start Time"
             />
           </div>
           <div className="mb-4">
@@ -114,13 +109,15 @@ function EntryForm({ onEntrySuccess }) {
             >
               End Time:
             </label>
-            <input
-              type="datetime-local"
-              id="end_time"
+            <DatePicker
+              id="start_time"
               className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="End Time"
-              value={end_time}
-              onChange={(e) => setEndTime(e.target.value)}
+              selected={end_time}
+              onChange={(date) => setEndTime(date)}
+              showTimeSelect
+              timeFormat="HH:mm"
+              dateFormat="dd/MM/yyyy HH:mm"
+              placeholderText="Select Start Time"
             />
           </div>
           <div className="mb-4">

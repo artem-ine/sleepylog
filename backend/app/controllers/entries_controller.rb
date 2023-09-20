@@ -32,7 +32,7 @@ class EntriesController < ActionController::API
   end
 
   def update
-    @logbook = Logbook.find(params[:logbook_id])
+    @logbook = current_user.logbook
     @entry = @logbook.entries.find(params[:id])
     
     if @entry.update(entry_params)
@@ -43,7 +43,7 @@ class EntriesController < ActionController::API
   end
 
   def destroy
-    @logbook = Logbook.find(params[:logbook_id])
+    @logbook = current_user.logbook
     @entry = @logbook.entries.find(params[:id])
     @entry.destroy
     head :no_content
