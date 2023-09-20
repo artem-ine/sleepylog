@@ -64,13 +64,6 @@ function EntryForm({ onEntrySuccess }) {
             <h1 className="font-heading text-center text-black text-2xl mb-5">
               Sleep Entry
             </h1>
-            <label
-              htmlFor="rating"
-              className="block text-black text-sm font-bold mb-2"
-            >
-              Rating:
-            </label>
-            <label htmlFor="rating">Rating:</label>
             <EmojiPicker
               onSelectRating={(selectedRating) => setRating(selectedRating)}
             />
