@@ -31,7 +31,8 @@ class LogbooksController < ActionController::API
   end
 
   def destroy
-    @logbook = Logbook.find(params[:id])
+    @logbook = current_user.logbook
+    @logbook.entries.destroy if @logbook.entries.present?
     @logbook.destroy
     head :no_content
   end

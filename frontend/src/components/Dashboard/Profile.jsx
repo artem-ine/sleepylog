@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useAuth } from "../../utils/useAuth";
-import { useEffect } from "react";
 import PasswordModal from "./Password Modal";
 import ChangePasswordForm from "./Password Modal/PasswordModal";
 import EditProfileModal from "./Edit Profile Modal";
 import EditProfileForm from "./Edit Profile Modal/EditProfileModal";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
-  const { auth } = useAuth();
-
+  const { auth, handleLogout } = useAuth();
+  const navigate = useNavigate();
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
   const [editProfileModalIsOpen, setEditProfileModalIsOpen] = useState(false);
 
@@ -26,6 +26,30 @@ function Profile() {
 
   const closeEditProfileModal = () => {
     setEditProfileModalIsOpen(false);
+  };
+
+  const handleDeleteProfile = async () => {
+    try {
+      const response = await fetch(`/api/users/${auth.user.id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      });
+
+      if (response.ok) {
+        alert("Profile deleted successfully");
+        await handleLogout();
+        navigate("/");
+      } else {
+        const errorData = await response.json();
+        const errorMessage = errorData.message || "Profile deletion failed.";
+        alert(errorMessage);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred during profile deletion.");
+    }
   };
 
   console.log(auth.user.email);
@@ -50,6 +74,12 @@ function Profile() {
           onClick={openPasswordModal}
         >
           Change password
+        </button>
+        <button
+          className="bg-red-600 text-white text-sm py-2 px-4 rounded-xl hover:bg-red-700 font-bold border border-red-600 focus:outline-none focus:shadow-outline"
+          onClick={handleDeleteProfile}
+        >
+          Delete Profile
         </button>
       </div>
       <EditProfileModal

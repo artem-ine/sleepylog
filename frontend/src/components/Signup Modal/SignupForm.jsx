@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
 import PropTypes from "prop-types";
+import Cookies from "js-cookie";
 
 function SignupForm({ onSignupSuccess }) {
   const navigate = useNavigate();
