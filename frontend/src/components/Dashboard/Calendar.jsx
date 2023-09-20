@@ -163,28 +163,18 @@ function CalendarView() {
       </div>
 
       <div className="logged-items-container bg-primary rounded-xl px-3">
-        <h2 className="font-heading text-black text-sm mt-5 mb-2">
+        <h2 className="font-heading text-black text-sm mt-4 mb-2">
           {moment(clickedDate).format("LL")}
         </h2>
-        <div className="scrollable-notes">
+        <div className="overflow-y-scroll h-32">
           <ul className="text-black text-sm">
             {editing ? (
               <li key={updatedEntry.id}>
-                <strong>Edit Entry</strong>
-                <div className="entry-actions">
-                  <button className="save-button" onClick={handleEdit}>
-                    Save
-                  </button>
-                  <button
-                    className="cancel-button"
-                    onClick={() => setEditing(false)}
-                  >
-                    Cancel
-                  </button>
-                </div>
+                <h2 className="text-white mb-2 border border-black bg-secondary px-1">Editing entry</h2>
                 <div>
                   <label htmlFor="duration">Hours slept:</label>
                   <input
+                    className="rounded px-1 border bg-white ml-1"
                     type="text"
                     id="duration"
                     name="duration"
@@ -200,6 +190,7 @@ function CalendarView() {
                 <div>
                   <label htmlFor="rating">Rating:</label>
                   <select
+                    className="rounded px-1 border bg-white ml-1 mt-1"
                     id="rating"
                     name="rating"
                     value={updatedEntry.rating}
@@ -221,6 +212,7 @@ function CalendarView() {
                 <div>
                   <label htmlFor="notes">Notes:</label>
                   <textarea
+                    className="rounded px-1 border bg-white ml-1 mt-1"
                     id="notes"
                     name="notes"
                     value={updatedEntry.notes}
@@ -232,29 +224,43 @@ function CalendarView() {
                     }
                   />
                 </div>
+                <div className="entry-actions mt-5 mb-3 space-x-2">
+                  <button className="save-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline" onClick={handleEdit}>
+                    Save
+                  </button>
+                  <button
+                    className="cancel-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+                    onClick={() => setEditing(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
               </li>
+            ) : filteredItems.length === 0 ? (
+              <p className="text-white mb-2 border border-black bg-secondary px-1">No entries logged yet.</p>
             ) : (
               filteredItems.map((item) => (
                 <li key={item.id}>
                   <strong>{item.date}</strong>
-                  <p>Hours slept: {item.duration}</p>
-                  <p>Quality rating: {item.rating}</p>
-                  <p>Notes: {item.notes}</p>
-                  <div className="entry-actions">
+                  <p className="text-white mb-2 border border-black bg-secondary px-1">Hours slept: {item.duration}</p>
+                  <p className="text-white mb-2 border border-black bg-secondary px-1">Quality rating: {item.rating}</p>
+                  <p className="">Notes:
+                    <br />{item.notes}</p>
+                  <br />
+                  <div className="entry-actions mt-5 mb-3 space-x-2">
                     <button
-                      className="edit-button"
+                      className="edit-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
                       onClick={() => handleEditClick(item.id)}
                     >
                       Edit
                     </button>
                     <button
-                      className="delete-button"
+                      className="delete-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
                       onClick={() => handleDeleteClick(item.id)}
                     >
                       Delete
                     </button>
                   </div>
-                  <p>***</p>
                 </li>
               ))
             )}
