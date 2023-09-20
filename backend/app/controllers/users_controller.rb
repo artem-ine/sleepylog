@@ -41,13 +41,15 @@ class UsersController < ActionController::API
       end
     end
 
-  def destroy_with_password
-    if current_user.valid_password?(params[:data][:current_password])
-      current_user.destroy
+  def destroy
+    if current_user&.id == @user.id
+      @user.logbook.entries.destroy_all
+      @user.logbook.destroy
+      @user.destroy
       sign_out(current_user)
-      render json: { error: "Le compte a été supprimé !" }, status: :ok
+      render json: { message: "The account was deleted!" }, status: :ok
     else
-      render json: { error: "Le mot de passe est incorrect." }, status: :unprocessable_entity
+      render json: { error: "Action reserved for administrators and the account owner." }, status: :unprocessable_entity
     end
   end
 
