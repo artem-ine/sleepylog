@@ -111,6 +111,10 @@ function CalendarView() {
         console.log("Response from server:", data);
         setEditing(false);
         setEditItemId(null);
+        const updatedItems = loggedItems.map((item) =>
+          item.id === editItemId ? data : item
+        );
+        setLoggedItems(updatedItems);
       })
       .catch((error) => {
         console.error("Error updating entry:", error);
