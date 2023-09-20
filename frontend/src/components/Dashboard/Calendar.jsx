@@ -111,12 +111,42 @@ function CalendarView() {
         console.log("Response from server:", data);
         setEditing(false);
         setEditItemId(null);
-        // You can refresh the data or take any other necessary action here
       })
       .catch((error) => {
         console.error("Error updating entry:", error);
       });
   };
+
+  const handleDeleteClick = (itemId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this entry?"
+    );
+
+    if (confirmDelete) {
+      const jwtToken = auth.token;
+
+      fetch(`/api/entries/${itemId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            const updatedItems = loggedItems.filter(
+              (item) => item.id !== itemId
+            );
+            setLoggedItems(updatedItems);
+          } else {
+            console.error("Error deleting entry:", response.statusText);
+          }
+        })
+        .catch((error) => {
+          console.error("Error deleting entry:", error);
+        });
+    }
+  };
+
   return (
     <div className="calendar-view-container">
       <div className="calendar-container bg-primary">
@@ -135,7 +165,6 @@ function CalendarView() {
         <div className="scrollable-notes">
           <ul className="text-black text-sm">
             {editing ? (
-              // Render the edit form when editing is true
               <li key={updatedEntry.id}>
                 <strong>Edit Entry</strong>
                 <div className="entry-actions">
@@ -195,7 +224,6 @@ function CalendarView() {
                 </div>
               </li>
             ) : (
-              // Render the entries when editing is false
               filteredItems.map((item) => (
                 <li key={item.id}>
                   <strong>{item.date}</strong>
@@ -205,13 +233,13 @@ function CalendarView() {
                   <div className="entry-actions">
                     <button
                       className="edit-button"
-                      onClick={() => handleEditClick(item.id)} // Pass item.id
+                      onClick={() => handleEditClick(item.id)}
                     >
                       Edit
                     </button>
                     <button
                       className="delete-button"
-                      // onClick={() => handleDelete(item)}
+                      onClick={() => handleDeleteClick(item.id)}
                     >
                       Delete
                     </button>
