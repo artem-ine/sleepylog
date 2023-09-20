@@ -17,8 +17,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_logbook_for_user(user)
-    user.create_logbook # Create a logbook associated with the user
+    user.create_logbook 
   end
+  
 
     def register_success
       render json: { 

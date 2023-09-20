@@ -5,7 +5,6 @@ import { useAuth } from "../../utils/useAuth";
 import PropTypes from "prop-types";
 
 function SignupForm({ onSignupSuccess }) {
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -35,10 +34,7 @@ function SignupForm({ onSignupSuccess }) {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        const token = response.headers.get("Authorization");
-        console.log("sign up:" + token);
-        console.log("signup user data" + data.user);
+        Cookies.remove("token");
         if (onSignupSuccess) {
           onSignupSuccess();
         }

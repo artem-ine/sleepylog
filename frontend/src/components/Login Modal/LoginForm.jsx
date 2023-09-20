@@ -10,7 +10,7 @@ function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const data = {};
   const { error, showError } = useErrorHandler();
 
   const handleSubmit = async (e) => {
@@ -29,7 +29,6 @@ function LoginForm({ onLoginSuccess }) {
 
       if (response.ok) {
         const data = await response.json();
-
         const token = response.headers.get("Authorization");
         console.log("loggin in:" + token);
         console.log("check token + user data:", data.user + token);
