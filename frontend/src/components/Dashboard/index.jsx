@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CalendarView from "./Calendar";
-import Stats from "./Stats";
+import Stats from "./Stats/Stats";
 import Profile from "./Profile";
 import snork from "../../assets/images/snork.png";
 import mimi from "../../assets/images/mimi.png";
