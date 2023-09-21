@@ -7,7 +7,7 @@ const EditProfileModal = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Password Modal"
-      className="ReactModal__Body--open"
+      className=".custom-modal"
     >
       <EditProfileForm onProfileChanged={onRequestClose} />
       <div className="modal-actions">

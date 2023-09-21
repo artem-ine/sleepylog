@@ -7,7 +7,7 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Login/Signup Modal"
-      className="ReactModal__Body--open"
+      className=".custom-modal"
     >
       <LoginForm onLoginSuccess={onRequestClose} />
       <div className="modal-actions">
