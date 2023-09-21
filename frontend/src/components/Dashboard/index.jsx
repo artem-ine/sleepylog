@@ -27,7 +27,7 @@ function Dashboard() {
       <h1 className="font-heading">
         Welcome to Your Dashboard, {auth.user.username}!
       </h1>
-      <p className="mx-10 px-40">
+      <p className="mx-4 px-5">
         Welcome to your dashboard. Below you will find your logbook, information
         on your sleeping patterns, and access to your profile. Remember to track
         your sleep as often as you can! The more consistent you are with your
@@ -42,7 +42,7 @@ function Dashboard() {
           alt="moon sleeping wearing a nightcap"
           className="h-20 pr-10"
         />
-        <button onClick={openEntryModal}>Add an entry!</button>
+        <button className="font-heading" onClick={openEntryModal}>Add an entry!</button>
         <EntryModal
           isOpen={entryModalIsOpen}
           onRequestClose={closeEntryModal}
