@@ -1,15 +1,11 @@
 // RegistrationForm.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../utils/useAuth";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import useErrorHandler from "../../utils/errorHandler";
 
 function SignupForm({ onSignupSuccess }) {
-  const navigate = useNavigate();
-  const { auth, setAuth } = useAuth();
   const { error, showError } = useErrorHandler();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
