@@ -1,6 +1,7 @@
 import SleepDurationPastWeek from "./SleepDurationPastWeek";
-import { useAuth } from "../../../utils/useAuth";
 import SleepDurationCustomRange from "./SleepDurationCustomRange";
+import SleepDurationPastMonth from "./SleepDurationPastMonth";
+import { useAuth } from "../../../utils/useAuth";
 
 function Stats() {
   const { auth } = useAuth();
@@ -9,8 +10,9 @@ function Stats() {
   return (
     <div>
       <h1>Stats!</h1>
-      <SleepDurationPastWeek logbookId={auth.user.logbook} />
-      <SleepDurationCustomRange logbookId={auth.user.logbook} />
+      <SleepDurationPastWeek />
+      <SleepDurationPastMonth />
+      <SleepDurationCustomRange />
     </div>
   );
 }

@@ -59,7 +59,6 @@ class EntriesController < ActionController::API
       return
     end
 
-    # Parse start_date and end_date strings into Date objects
     start_date = Date.parse(start_date)
     end_date = Date.parse(end_date)
 
@@ -70,6 +69,7 @@ class EntriesController < ActionController::API
     
     render json: { total_duration: total_duration }
   end
+
 
   def sleep_duration_past_week
     if current_user.nil?
@@ -90,10 +90,23 @@ class EntriesController < ActionController::API
     render json: { total_duration: total_duration }
   end
 
+
   def sleep_duration_past_month
+    if current_user.nil?
+      render json: { error: "Current user not found." }, status: :not_found
+      return
+    end
+
     @logbook = current_user.logbook
+
+    if @logbook.nil?
+      render json: { error: "Logbook not found for the current user" }, status: :not_found
+      return
+    end
+
+    @entries = @logbook.entries
     one_month_ago = 1.month.ago
-    total_duration = @logbook.entries.where("start_time >= ?", one_month_ago).sum(:duration)
+    total_duration = @entries.where("start_time >= ? AND start_time <= ?", one_month_ago, Time.now).sum(:duration)
     render json: { total_duration: total_duration }
   end
 

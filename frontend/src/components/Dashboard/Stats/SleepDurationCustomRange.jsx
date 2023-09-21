@@ -65,7 +65,7 @@ function SleepDurationCustomRange() {
       {totalDuration !== null ? (
         <p>Total Duration: {totalDuration.toFixed(2)} hours</p>
       ) : (
-        <p>Loading...</p>
+        <p>Waiting for you to pick two dates...</p>
       )}
     </div>
   );
