@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { useAuth } from "../../utils/useAuth";
+import Quickie from "./Quickie";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -19,6 +20,9 @@ function CalendarView() {
   });
 
   const [editItemId, setEditItemId] = useState(null);
+
+  const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(new Date());
+
 
   useEffect(() => {
     const fetchUserLogbookEntries = async () => {
@@ -46,9 +50,10 @@ function CalendarView() {
     fetchUserLogbookEntries();
   }, [auth]);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+const handleDateChange = (date) => {
+  setSelectedDate(date);
+  setSelectedDateForQuickie(date);
+};
 
   useEffect(() => {
     setClickedDate(selectedDate);
@@ -237,7 +242,10 @@ function CalendarView() {
                 </div>
               </li>
             ) : filteredItems.length === 0 ? (
-              <p className="text-white mb-2 border border-black bg-secondary px-1">No entries logged yet.</p>
+              <div>
+              <p className="text-white mb-2 border border-black bg-secondary px-1">No entries yet - wanna do a quickie?</p>
+              < Quickie selectedDate={selectedDateForQuickie} />
+              </div>
             ) : (
               filteredItems.map((item) => (
                 <li key={item.id}>
