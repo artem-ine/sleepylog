@@ -22,15 +22,10 @@ main{
   min-height: 100vh;
 }
 
-.calendar-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #AFC1D6; 
-  border-radius: 50%;
-}
 
-.react-calendar{
+/* .react-calendar{
   background-color: #AB92BF;
+  border-radius: 10px;
 }
 
 .react-calendar__navigation {
@@ -74,7 +69,7 @@ main{
 .react-calendar__month-view__weekdays__weekday {
   background-color: #AB92BF;
   color: #150C1D;
-}
+} */
 
 .ReactModal__Body--open {
     overflow: hidden;
@@ -96,9 +91,9 @@ main{
   display: block;
 }
 
-.calendar-container,
+/* .calendar-container,
 .logged-items-container {
-  width: 100%; }
+  width: 100%; } */
 
 @media screen and (min-width: 1000px) {
   .calendar-view-container {
@@ -111,7 +106,6 @@ main{
 
   .calendar-container {
     flex: 1;
-    background-color: #AB92BF;
     margin-right: 20px;
   }
 

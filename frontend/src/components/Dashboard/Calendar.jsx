@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { useAuth } from "../../utils/useAuth";
 import Quickie from "./Quickie";
+import "./Calendar.css";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -21,8 +22,9 @@ function CalendarView() {
 
   const [editItemId, setEditItemId] = useState(null);
 
-  const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(new Date());
-
+  const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(
+    new Date()
+  );
 
   useEffect(() => {
     const fetchUserLogbookEntries = async () => {
@@ -50,10 +52,10 @@ function CalendarView() {
     fetchUserLogbookEntries();
   }, [auth]);
 
-const handleDateChange = (date) => {
-  setSelectedDate(date);
-  setSelectedDateForQuickie(date);
-};
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setSelectedDateForQuickie(date);
+  };
 
   useEffect(() => {
     setClickedDate(selectedDate);
@@ -158,7 +160,7 @@ const handleDateChange = (date) => {
 
   return (
     <div className="calendar-view-container">
-      <div className="calendar-container bg-primary">
+      <div className="calendar-container">
         <Calendar
           onChange={handleDateChange}
           value={selectedDate}
@@ -175,7 +177,9 @@ const handleDateChange = (date) => {
           <ul className="text-black text-sm">
             {editing ? (
               <li key={updatedEntry.id}>
-                <h2 className="text-white mb-2 border border-black bg-secondary px-1">Editing entry</h2>
+                <h2 className="text-white mb-2 border border-black bg-secondary px-1">
+                  Editing entry
+                </h2>
                 <div>
                   <label htmlFor="duration">Hours slept:</label>
                   <input
@@ -230,7 +234,10 @@ const handleDateChange = (date) => {
                   />
                 </div>
                 <div className="entry-actions mt-5 mb-3 space-x-2">
-                  <button className="save-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline" onClick={handleEdit}>
+                  <button
+                    className="save-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+                    onClick={handleEdit}
+                  >
                     Save
                   </button>
                   <button
@@ -243,17 +250,26 @@ const handleDateChange = (date) => {
               </li>
             ) : filteredItems.length === 0 ? (
               <div>
-              <p className="text-white mb-2 border border-black bg-secondary px-1">No entries yet - wanna do a quickie?</p>
-              < Quickie selectedDate={selectedDateForQuickie} />
+                <p className="text-white mb-2 border border-black bg-secondary px-1">
+                  No entries yet - wanna do a quickie?
+                </p>
+                <Quickie selectedDate={selectedDateForQuickie} />
               </div>
             ) : (
               filteredItems.map((item) => (
                 <li key={item.id}>
                   <strong>{item.date}</strong>
-                  <p className="text-white mb-2 border border-black bg-secondary px-1">Hours slept: {item.duration}</p>
-                  <p className="text-white mb-2 border border-black bg-secondary px-1">Quality rating: {item.rating}</p>
-                  <p className="">Notes:
-                    <br />{item.notes}</p>
+                  <p className="text-white mb-2 border border-black bg-secondary px-1">
+                    Hours slept: {item.duration}
+                  </p>
+                  <p className="text-white mb-2 border border-black bg-secondary px-1">
+                    Quality rating: {item.rating}
+                  </p>
+                  <p className="">
+                    Notes:
+                    <br />
+                    {item.notes}
+                  </p>
                   <br />
                   <div className="entry-actions mt-5 mb-3 space-x-2">
                     <button
