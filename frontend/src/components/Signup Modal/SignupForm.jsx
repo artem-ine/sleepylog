@@ -1,18 +1,16 @@
 // RegistrationForm.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../utils/useAuth";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
+import useErrorHandler from "../../utils/errorHandler";
 
 function SignupForm({ onSignupSuccess }) {
-  const navigate = useNavigate();
-
+  const { error, showError } = useErrorHandler();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPassword_Confirmation] = useState("");
-  const [error, setError] = useState(null);
   const data = {};
 
   const handleSubmit = async (e) => {
@@ -35,18 +33,44 @@ function SignupForm({ onSignupSuccess }) {
       });
 
       if (response.ok) {
-        Cookies.remove("token");
+        try {
+          const response = await fetch("/api/users/sign_in", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user: { email: email, password: password },
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const token = response.headers.get("Authorization");
+            console.log("loggin in:" + token);
+            console.log("check token + user data:", data.user + token);
+            Cookies.set("token", token);
+            const decToken = jwt_decode(token);
+            console.log("dec tok" + decToken.sub);
+          } else {
+            const errorMessage = data.message || "Login failed.";
+            showError(errorMessage);
+          }
+        } catch (error) {
+          console.error(error);
+          showError("An error occurred during login.");
+        }
         if (onSignupSuccess) {
           onSignupSuccess();
         }
-        navigate("/");
+        window.location.reload();
       } else {
         const errorMessage = data.message || "Registration failed.";
-        setError(errorMessage);
+        showError(errorMessage);
       }
     } catch (error) {
       console.error(error);
-      setError("An error occurred during registration.");
+      showError("An error occurred during registration.");
     }
   };
 
