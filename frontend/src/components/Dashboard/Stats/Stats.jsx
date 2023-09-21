@@ -3,6 +3,7 @@ import SleepDurationCustomRange from "./SleepDurationCustomRange";
 import SleepDurationPastMonth from "./SleepDurationPastMonth";
 import AverageRatingPastWeek from "./AverageRatingWeek";
 import AverageRatingPastMonth from "./AverageRatingMonthly";
+import AverageRatingCustomRange from "./AverageRatingCustom";
 import { useAuth } from "../../../utils/useAuth";
 
 function Stats() {
@@ -17,6 +18,7 @@ function Stats() {
       <SleepDurationCustomRange />
       <AverageRatingPastWeek />
       <AverageRatingPastMonth />
+      <AverageRatingCustomRange />
     </div>
   );
 }
