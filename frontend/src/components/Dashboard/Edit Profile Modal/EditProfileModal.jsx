@@ -3,6 +3,7 @@ import useErrorHandler from "../../../utils/errorHandler";
 import { useAuth } from "../../../utils/useAuth";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function EditProfileForm({ onProfileChanged }) {
   const { auth } = useAuth();
@@ -45,18 +46,16 @@ function EditProfileForm({ onProfileChanged }) {
 
       if (response.ok) {
         const data = await response.json();
-        const successMessage =
-          data.message ||
-          "Profile updated successfully. Refresh the page to see it!";
-        alert(successMessage);
         if (onProfileChanged) {
           onProfileChanged();
         }
-        navigate("/");
+        toast.success('Your profile was successfully updated!', {
+          onClose: () => {
+            window.location.reload();
+          },
+        });
       } else {
-        const errorData = await response.json();
-        const errorMessage = errorData.message || "Profile change failed.";
-        showError(errorMessage);
+        toast.error('Whoops,omething went wrong.');
       }
     } catch (error) {
       console.error(error);

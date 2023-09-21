@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import useErrorHandler from "../../utils/errorHandler";
+import { toast } from 'react-toastify';
 
 function SignupForm({ onSignupSuccess }) {
   const { error, showError } = useErrorHandler();
@@ -63,9 +64,13 @@ function SignupForm({ onSignupSuccess }) {
           onSignupSuccess();
         }
         window.location.reload();
+        toast.success('Yay! Sign up successful!');
       } else {
-        const errorMessage = data.message || "Registration failed.";
-        showError(errorMessage);
+        const errorData = await response.json();
+        if (errorData && errorData.errors) {
+          const errorMessages = errorData.errors.join(", ");
+          toast.error(`Whoops! ${errorMessages}`);
+        }
       }
     } catch (error) {
       console.error(error);

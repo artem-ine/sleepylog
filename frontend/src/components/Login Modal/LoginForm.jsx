@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import jwt_decode from "jwt-decode";
 import PropTypes from "prop-types";
+import { toast } from 'react-toastify';
 
 function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
@@ -38,13 +39,12 @@ function LoginForm({ onLoginSuccess }) {
           onLoginSuccess();
         }
         navigate("/");
+        toast.success('Login successful!');
       } else {
-        const errorMessage = data.message || "Login failed.";
-        showError(errorMessage);
+        toast.error(`Whoops! Something went wrong.`);
       }
     } catch (error) {
-      console.error(error);
-      showError("An error occurred during login.");
+      toast.error(`Whoops. Something went wrong.`);
     }
   };
   return (

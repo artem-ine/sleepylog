@@ -5,6 +5,7 @@ import moment from "moment";
 import { useAuth } from "../../utils/useAuth";
 import Quickie from "./Quickie";
 import "./Calendar.css";
+import { toast } from 'react-toastify';
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -122,6 +123,7 @@ function CalendarView() {
           item.id === editItemId ? data : item
         );
         setLoggedItems(updatedItems);
+        toast.success('Success! Changes saved!')
       })
       .catch((error) => {
         console.error("Error updating entry:", error);
@@ -148,8 +150,9 @@ function CalendarView() {
               (item) => item.id !== itemId
             );
             setLoggedItems(updatedItems);
+            toast.success('Success! Entry deleted!')
           } else {
-            console.error("Error deleting entry:", response.statusText);
+            toast.error('Whoops! Something went wrong.');
           }
         })
         .catch((error) => {

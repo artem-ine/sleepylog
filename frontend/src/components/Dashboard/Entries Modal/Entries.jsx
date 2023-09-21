@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker.css";
 import EmojiPicker from "./EmojiPicker";
+import { toast } from 'react-toastify';
 
 function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
@@ -43,10 +44,13 @@ function EntryForm({ onEntrySuccess }) {
         if (onEntrySuccess) {
           onEntrySuccess();
         }
-        navigate("/");
+        toast.success('Success! Entry saved!', {
+          onClose: () => {
+            window.location.reload();
+          },
+        });
       } else {
-        const errorData = await response.json();
-        showError(errorData.error);
+        toast.error('Whoops, something went wrong.');
       }
     } catch (error) {
       console.error("API request error:", error);
