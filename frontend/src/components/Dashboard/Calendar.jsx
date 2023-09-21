@@ -166,7 +166,7 @@ function CalendarView() {
         <h2 className="font-heading text-black text-sm mt-4 mb-2">
           {moment(clickedDate).format("LL")}
         </h2>
-        <div className="overflow-y-scroll h-32">
+        <div className="overflow-y-scroll h-52">
           <ul className="text-black text-sm">
             {editing ? (
               <li key={updatedEntry.id}>
