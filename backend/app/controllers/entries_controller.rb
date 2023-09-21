@@ -49,6 +49,28 @@ class EntriesController < ActionController::API
     head :no_content
   end
 
+  def sleep_duration_custom_range
+    user = current_user
+    start_date = params[:start_date]
+    end_date = params[:end_date]
+
+    if start_date.blank? || end_date.blank?
+      render json: { error: "Both start_date and end_date are required." }, status: :unprocessable_entity
+      return
+    end
+
+    # Parse start_date and end_date strings into Date objects
+    start_date = Date.parse(start_date)
+    end_date = Date.parse(end_date)
+
+    logbook = user.logbook
+    entries = logbook.entries.where(start_time: start_date.beginning_of_day..end_date.end_of_day)
+
+    total_duration = entries.sum(:duration)
+    
+    render json: { total_duration: total_duration }
+  end
+
   def sleep_duration_past_week
     if current_user.nil?
       render json: { error: "Current user not found." }, status: :not_found

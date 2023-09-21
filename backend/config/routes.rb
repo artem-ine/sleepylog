@@ -5,6 +5,8 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
   get '/member-data', to: 'members#show'
+    post '/calculate_sleep_duration' => 'entries#sleep_duration_custom_range'
+
   get 'sleep_duration_past_week', to: 'entries#sleep_duration_past_week'
   get 'sleep_duration_past_month', to: 'entries#sleep_duration_past_month'
   get 'average_rating_past_week', to: 'entries#average_rating_past_week'
