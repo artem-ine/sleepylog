@@ -1,25 +1,18 @@
-import { Link } from "react-router-dom";
-
 function Footer() {
   return (
     <footer
       id="footer"
       className="bottom-0 w-full bg-primary dark:bg-secondary text-dark dark:text-white"
     >
-      <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <div className="w-full mx-auto max-w-screen-xl p-4 flex justify-center">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          <a href="https://github.com/artem-ine/" className="flex items-center">
+          <p>
             kat & zeke // doodles by hummy
-          </a>
+          </p>
+          <p>
           All Rights Reserved. © 2023
+          </p>
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-          <li>
-            <Link to="/" className="mr-4 hover:underline md:mr-6 ">
-              Up
-            </Link>
-          </li>
-        </ul>
       </div>
     </footer>
   );
