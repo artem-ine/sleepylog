@@ -70,7 +70,6 @@ class EntriesController < ActionController::API
     render json: { total_duration: total_duration }
   end
 
-
   def sleep_duration_past_week
     if current_user.nil?
       render json: { error: "Current user not found." }, status: :not_found
@@ -112,13 +111,29 @@ class EntriesController < ActionController::API
 
 
   def average_rating_past_week
+    if current_user.nil?
+      render json: { error: "Current user not found." }, status: :not_found
+      return
+    end
+
     @logbook = current_user.logbook
+
+    if @logbook.nil?
+      render json: { error: "Logbook not found for the current user" }, status: :not_found
+      return
+    end
+
     one_week_ago = 1.week.ago
-    average_rating = @logbook.entries.where("start_time >= ?", one_week_ago).average(:rating)
-    render json: { average_rating: average_rating }
+    average_rating = @logbook.entries.where("start_time >= ? AND start_time <= ?", one_week_ago, Time.now).average(:rating)
+
+    if average_rating.nil?
+      render json: { average_rating: "No data available for the past" }
+    else
+      render json: { average_rating: average_rating }
+    end
   end
 
-
+  
   def average_rating_past_month
     @logbook = current_user.logbook
     one_month_ago = 1.month.ago
