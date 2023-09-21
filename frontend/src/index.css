@@ -80,6 +80,11 @@ main{
     overflow: hidden;
 }
 
+.custom-modal {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
 .modal-actions {
   display: flex;
   justify-content: center;

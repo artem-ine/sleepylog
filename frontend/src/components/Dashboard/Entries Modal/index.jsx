@@ -7,7 +7,7 @@ const EntryModal = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Entries Modal"
-      className="ReactModal__Body--open"
+      className="custom-modal"
     >
       <EntryForm onEntrySuccess={onRequestClose} />
       <div className="modal-actions">
