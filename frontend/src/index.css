@@ -88,13 +88,7 @@ main{
 .modal-actions {
   display: flex;
   justify-content: center;
-  margin-top: 16px; /* Adjust the margin as needed for spacing */
-}
-
-.scrollable-notes {
-  max-height: 100px;
-  /* Adjust the height as needed */
-  overflow-y: auto;
+  margin-top: 16px;
 }
 
 .calendar-view-container {
@@ -106,16 +100,13 @@ main{
 .logged-items-container {
   width: 100%; }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1000px) {
   .calendar-view-container {
         display: flex;
-        /* Use Flexbox to arrange calendar and logged-items-container on larger screens */
         justify-content: space-between;
-        /* Push them apart horizontally */
         align-items: flex-start;
-        /* Align items at the top vertically */
         margin-top: 20px;
-        width: 800px;
+        width: 780px;
   }
 
   .calendar-container {
@@ -126,8 +117,7 @@ main{
 
   .logged-items-container {
     flex: 2;
-    padding: 16px;
-
+    height: 288px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
 }
