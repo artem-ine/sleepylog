@@ -1,4 +1,3 @@
-// RegistrationForm.js
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
