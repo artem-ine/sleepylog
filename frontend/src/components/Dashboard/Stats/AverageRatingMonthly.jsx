@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../../utils/useAuth";
 
-function AverageRatingPastWeek() {
+function AverageRatingPastMonth() {
   const [averageRating, setAverageRating] = useState(null);
   const { auth } = useAuth();
 
-  const fetchWeeklyRating = async () => {
+  const fetchMonthlyRating = async () => {
     try {
-      const response = await fetch("/api/average_rating_past_week", {
+      const response = await fetch("/api/average_rating_past_month", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -25,12 +25,12 @@ function AverageRatingPastWeek() {
   };
 
   useEffect(() => {
-    fetchWeeklyRating();
+    fetchMonthlyRating();
   }, [auth.token]);
 
   return (
     <div>
-      <h2>Average Rating (Past Week)</h2>
+      <h2>Average Rating (Past Month)</h2>
       {averageRating !== null ? (
         <p>Average rating out of 5: {averageRating}</p>
       ) : (
@@ -40,4 +40,4 @@ function AverageRatingPastWeek() {
   );
 }
 
-export default AverageRatingPastWeek;
+export default AverageRatingPastMonth;

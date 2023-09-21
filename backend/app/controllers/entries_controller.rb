@@ -129,16 +129,34 @@ class EntriesController < ActionController::API
     if average_rating.nil?
       render json: { average_rating: "No data available for the past" }
     else
+      average_rating = average_rating.round(2)
       render json: { average_rating: average_rating }
     end
   end
 
   
   def average_rating_past_month
+    if current_user.nil?
+      render json: { error: "Current user not found." }, status: :not_found
+      return
+    end
+
     @logbook = current_user.logbook
+
+    if @logbook.nil?
+      render json: { error: "Logbook not found for the current user" }, status: :not_found
+      return
+    end
+
     one_month_ago = 1.month.ago
-    average_rating = @logbook.entries.where("start_time >= ?", one_month_ago).average(:rating)
-    render json: { average_rating: average_rating }
+    average_rating = @logbook.entries.where("start_time >= ? AND start_time <= ?", one_month_ago, Time.now).average(:rating)
+
+    if average_rating.nil?
+      render json: { average_rating: "No data available for the past" }
+    else
+      average_rating = average_rating.round(2)
+      render json: { average_rating: average_rating }
+    end
   end
 
 
