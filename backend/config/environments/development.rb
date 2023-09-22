@@ -34,7 +34,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -64,5 +64,17 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #devise
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 5173 }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :user_name => 'apikey',
+  :password => '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',
+  :domain => 'monsite.fr',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
 end

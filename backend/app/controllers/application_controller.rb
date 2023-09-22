@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+    respond_to :json
+    
     def jwt_key
         Rails.application.credentials.jwt_key
     end

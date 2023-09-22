@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users,
              controllers: {
                sessions: 'users/sessions',
-               registrations: 'users/registrations'
+               registrations: 'users/registrations',
              }
   get '/member-data', to: 'members#show'
   post 'calculate_sleep_duration' => 'entries#sleep_duration_custom_range'
