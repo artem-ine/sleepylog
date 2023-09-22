@@ -5,7 +5,9 @@ import moment from "moment";
 import { useAuth } from "../../utils/useAuth";
 import Quickie from "./Quickie";
 import "./Calendar.css";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -123,7 +125,7 @@ function CalendarView() {
           item.id === editItemId ? data : item
         );
         setLoggedItems(updatedItems);
-        toast.success('Success! Changes saved!')
+        toast.success("Success! Changes saved!");
       })
       .catch((error) => {
         console.error("Error updating entry:", error);
@@ -150,9 +152,9 @@ function CalendarView() {
               (item) => item.id !== itemId
             );
             setLoggedItems(updatedItems);
-            toast.success('Success! Entry deleted!')
+            toast.success("Success! Entry deleted!");
           } else {
-            toast.error('Whoops! Something went wrong.');
+            toast.error("Whoops! Something went wrong.");
           }
         })
         .catch((error) => {
@@ -197,6 +199,50 @@ function CalendarView() {
                         duration: e.target.value,
                       })
                     }
+                  />
+                </div>
+                <div>
+                  <label htmlFor="start_time">Start Time:</label>
+                  <DatePicker
+                    id="start_time"
+                    className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+                    selected={
+                      updatedEntry.start_time
+                        ? new Date(updatedEntry.start_time)
+                        : null
+                    }
+                    onChange={(date) =>
+                      setUpdatedEntry({
+                        ...updatedEntry,
+                        start_time: date,
+                      })
+                    }
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    dateFormat="dd/MM/yyyy HH:mm"
+                    placeholderText="Select Start Time"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="end_time">End Time:</label>
+                  <DatePicker
+                    id="end_time"
+                    className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+                    selected={
+                      updatedEntry.end_time
+                        ? new Date(updatedEntry.end_time)
+                        : null
+                    }
+                    onChange={(date) =>
+                      setUpdatedEntry({
+                        ...updatedEntry,
+                        end_time: date,
+                      })
+                    }
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    dateFormat="dd/MM/yyyy HH:mm"
+                    placeholderText="Select End Time"
                   />
                 </div>
                 <div>
