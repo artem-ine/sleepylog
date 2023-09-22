@@ -42,6 +42,12 @@ main{
   display: block;
 }
 
+.chart-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+}
+
 @media screen and (min-width: 1000px) {
   .calendar-view-container {
         display: flex;
