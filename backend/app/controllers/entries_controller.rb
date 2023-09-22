@@ -124,15 +124,19 @@ class EntriesController < ActionController::API
     end
 
     one_week_ago = 1.week.ago
-    average_rating = @logbook.entries.where("start_time >= ? AND start_time <= ?", one_week_ago, Time.now).average(:rating)
+    filtered_entries = @logbook.entries
+      .where("start_time >= ? AND start_time <= ? AND rating != ?", one_week_ago, Time.now, 0)
 
-    if average_rating.nil?
-      render json: { average_rating: "No data available." }
-    else
-      average_rating = average_rating.round(2)
-      render json: { average_rating: average_rating }
+    ratings_data = filtered_entries
+      .group(:rating)
+      .count
+
+    average_rating = filtered_entries
+      .average(:rating)
+
+    average_rating = average_rating.round(2)
+    render json: { ratings_count: ratings_data, average_rating: average_rating }
     end
-  end
 
   
   def average_rating_past_month
@@ -149,14 +153,18 @@ class EntriesController < ActionController::API
     end
 
     one_month_ago = 1.month.ago
-    average_rating = @logbook.entries.where("start_time >= ? AND start_time <= ?", one_month_ago, Time.now).average(:rating)
+    filtered_entries = @logbook.entries
+      .where("start_time >= ? AND start_time <= ? AND rating != ?", one_month_ago, Time.now, 0)
 
-    if average_rating.nil?
-      render json: { average_rating: "No data available." }
-    else
-      average_rating = average_rating.round(2)
-      render json: { average_rating: average_rating }
-    end
+    ratings_data = filtered_entries
+      .group(:rating)
+      .count
+
+    average_rating = filtered_entries
+      .average(:rating)
+
+    average_rating = average_rating.round(2)
+    render json: { ratings_count: ratings_data, average_rating: average_rating }
   end
 
   def average_rating_custom_range

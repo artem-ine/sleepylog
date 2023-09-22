@@ -11,10 +11,12 @@ function Stats() {
 
   return (
     <div>
-      <SleepDurationPastWeek />
       <SleepDurationPastMonth />
-      <AverageRatingPastWeek />
       <AverageRatingPastMonth />
+      <div className="flex flex-row gap-5">
+        <AverageRatingPastWeek />
+        <SleepDurationPastWeek />
+      </div>
       <h1 className="text-sm font-bold">
         Looking for a specific period of time?
       </h1>

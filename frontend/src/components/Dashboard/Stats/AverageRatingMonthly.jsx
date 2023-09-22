@@ -1,41 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { useAuth } from "../../../utils/useAuth";
+import React, { useEffect, useState } from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2"; // Import Doughnut
 
 function AverageRatingPastMonth() {
+  const [ratingsData, setRatingsData] = useState({});
   const [averageRating, setAverageRating] = useState(null);
-  const { auth } = useAuth();
-
-  const fetchMonthlyRating = async () => {
-    try {
-      const response = await fetch("/api/average_rating_past_month", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setAverageRating(data.average_rating);
-      } else {
-        console.error("Error fetching average rating:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error fetching average rating:", error);
-    }
-  };
+  const [dataChart, setDataChart] = useState({}); // Declare dataChart as state
 
   useEffect(() => {
-    fetchMonthlyRating();
-  }, [auth.token]);
+    fetch("/api/average_rating_past_month")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setRatingsData(data.ratings_count);
+        setAverageRating(data.average_rating);
+
+        ChartJS.register(ArcElement, Tooltip, Legend);
+        const dataChart = {
+          labels: Object.keys(data.ratings_count),
+          datasets: [
+            {
+              data: Object.values(data.ratings_count),
+              backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"], // Customize colors as needed
+            },
+          ],
+          options: {
+            responsive: true,
+          },
+        };
+        setDataChart(dataChart);
+      })
+      .catch((error) => {
+        console.error("Error fetching ratings data:", error);
+      });
+  }, []);
 
   return (
     <div>
-      <h2>Average Rating (Past Month)</h2>
-      {averageRating !== null ? (
-        <p>Average rating out of 5: {averageRating}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <h2>Ratings for the Past Month</h2>
+      <div className="chart-wrapper">
+        {Object.keys(dataChart).length > 0 ? (
+          <Doughnut data={dataChart} />
+        ) : (
+          <p>Loading...</p>
+        )}
+        {averageRating !== null && <p>Average Rating: {averageRating}</p>}
+      </div>
     </div>
   );
 }
