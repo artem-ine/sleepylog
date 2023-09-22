@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home";
-// import SignUp from "./pages/Sign Up";
-// import LogIn from "./pages/Log In";
-import Dashboard from "./components/Dashboard";
+import PasswordReset from "./pages/Home/PasswordReset";
 import ErrorPage from "./pages/ErrorPage/index.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -17,6 +15,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/users/password/edit",
+    element: <PasswordReset />,
     errorElement: <ErrorPage />,
   },
 ]);
