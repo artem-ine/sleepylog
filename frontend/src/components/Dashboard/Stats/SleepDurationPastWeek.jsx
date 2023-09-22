@@ -5,6 +5,7 @@ function SleepDurationPastWeek() {
   const [sleepData, setSleepData] = useState({});
   const labels = Object.keys(sleepData);
   const sleepDurations = Object.values(sleepData);
+  const [totalDuration, setTotalDuration] = useState(null);
 
   useEffect(() => {
     fetch("/api/sleep_duration_past_week")
@@ -16,6 +17,7 @@ function SleepDurationPastWeek() {
       })
       .then((data) => {
         setSleepData(data.sleep_data);
+        setTotalDuration(data.total_duration);
       })
       .catch((error) => {
         console.error("Error fetching sleep duration data:", error);
@@ -65,6 +67,9 @@ function SleepDurationPastWeek() {
           <p>Loading...</p>
         )}
       </div>
+      {totalDuration !== null && (
+        <p>You've slept a total of {totalDuration} hours this week.</p>
+      )}
     </div>
   );
 }
