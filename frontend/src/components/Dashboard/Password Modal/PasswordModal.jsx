@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useErrorHandler from "../../../utils/errorHandler";
 import { useAuth } from "../../../utils/useAuth";
 import PropTypes from "prop-types";
@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 function ChangePasswordForm({ onPasswordChanged }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const [resetPasswordToken, setResetPasswordToken] = useState("");
   const [formData, setFormData] = useState({
-    currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
@@ -23,15 +23,29 @@ function ChangePasswordForm({ onPasswordChanged }) {
     });
   };
 
+  useEffect(() => {
+    // Get the current URL
+    const currentUrl = window.location.href;
+
+    // Create a URLSearchParams object to parse the query parameters
+    const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
+
+    // Get the value of the 'reset_password_token' parameter from the URL
+    const tokenFromUrl = urlSearchParams.get("reset_password_token");
+
+    if (tokenFromUrl) {
+      console.log("Reset Password Token:", tokenFromUrl);
+      setResetPasswordToken(tokenFromUrl);
+    } else {
+      console.error("Reset Password Token not found in URL.");
+    }
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      if (
-        !formData.currentPassword ||
-        !formData.newPassword ||
-        !formData.confirmPassword
-      ) {
+      if (!formData.newPassword || !formData.confirmPassword) {
         showError("All fields are required");
         return;
       }
@@ -41,35 +55,46 @@ function ChangePasswordForm({ onPasswordChanged }) {
         return;
       }
 
-      const response = await fetch("/user/password", {
-        method: "PATCH",
+      const response = await fetch("/api/users/password", {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
-          current_password: formData.currentPassword,
-          new_password: formData.newPassword,
-          password_confirmation: formData.confirmPassword,
+          user: {
+            password: formData.newPassword,
+            password_confirmation: formData.confirmPassword,
+            reset_password_token: resetPasswordToken,
+          },
         }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        const successMessage = data.message || "Password updated successfully.";
-        alert(successMessage);
+      if (response.status === 200) {
+        alert("Password updated successfully.");
         if (onPasswordChanged) {
           onPasswordChanged();
         }
         navigate("/");
+        return;
       } else {
-        const errorData = await response.json();
-        const errorMessage = errorData.message || "Profile change failed.";
-        showError(errorMessage);
+        const data = await response.json();
+        if (response.ok) {
+          const successMessage =
+            data.message || "Password updated successfully.";
+          alert(successMessage);
+          if (onPasswordChanged) {
+            onPasswordChanged();
+          }
+          navigate("/");
+        } else {
+          const errorMessage = data.message || "Password reset failed.";
+          showError(errorMessage);
+        }
       }
     } catch (error) {
       console.error(error);
-      showError("An error occurred during password change.");
+      showError("An error occurred during password reset.");
     }
   };
 
@@ -84,21 +109,6 @@ function ChangePasswordForm({ onPasswordChanged }) {
             <h1 className="font-heading text-center text-black text-2xl mb-5">
               Change Password
             </h1>
-            <label
-              htmlFor="currentPassword"
-              className="block text-black text-sm font-bold mb-2"
-            >
-              Current Password:
-            </label>
-            <input
-              type="password"
-              id="currentPassword"
-              name="currentPassword"
-              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
-              placeholder="Current Password"
-              value={formData.currentPassword}
-              onChange={handleChange}
-            />
           </div>
           <div className="mb-4">
             <label
