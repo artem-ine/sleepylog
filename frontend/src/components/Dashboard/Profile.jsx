@@ -57,30 +57,33 @@ function Profile() {
 
   return (
     <div>
-      <div className="border dark:border-primary border-secondary p-5 rounded-lg">
+      <div className="border dark:border-primary border-secondary p-3 rounded-lg">
         <h2 className="text-center dark:text-white text-black text-lg">
           Account details
         </h2>
         <p>Username: {auth.user.username}</p>
         <p>Email: {auth.user.email}</p>
-        <button
-          className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
-          onClick={openEditProfileModal}
-        >
-          Edit Profile
-        </button>
-        <button
-          className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
-          onClick={openPasswordModal}
-        >
-          Change password
-        </button>
-        <button
-          className="bg-red-600 text-white text-sm py-2 px-4 rounded-xl hover:bg-red-700 font-bold border border-red-600 focus:outline-none focus:shadow-outline"
-          onClick={handleDeleteProfile}
-        >
-          Delete Profile
-        </button>
+        <br />
+        <div className="flex flex-row gap-4">
+          <button
+            className="bg-primary dark:bg-secondary text-black dark:text-white hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            onClick={openEditProfileModal}
+          >
+            Edit Profile
+          </button>
+          <button
+            className="bg-primary dark:bg-secondary text-black dark:text-white hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            onClick={openPasswordModal}
+          >
+            Change password
+          </button>
+          <button
+            className="bg-primary dark:bg-secondary text-black dark:text-white hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            onClick={handleDeleteProfile}
+          >
+            Delete Profile
+          </button>
+        </div>
       </div>
       <EditProfileModal
         isOpen={editProfileModalIsOpen}

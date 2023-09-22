@@ -24,9 +24,11 @@ function Dashboard() {
 
   return (
     <div className="flex flex-col items-center p-10">
-      <h1 className="font-heading">
-        Welcome to Your Dashboard, {auth.user.username}!
-      </h1>
+      <div className="flex flex-row align-middle">
+        <h1 className="font-heading flex self-center">
+          Welcome to your dashboard, {auth.user.username}!
+        </h1>
+      </div>
       <p className="mx-4 px-5">
         Welcome to your dashboard. Below you will find your logbook, information
         on your sleeping patterns, and access to your profile. Remember to track
@@ -42,7 +44,16 @@ function Dashboard() {
           alt="moon sleeping wearing a nightcap"
           className="h-20 pr-10"
         />
-        <button className="font-heading" onClick={openEntryModal}>Add an entry!</button>
+
+        <button className="font-logo" onClick={openEntryModal}>
+          Add an entry!
+        </button>
+        <img
+          src={mimi}
+          alt="sun looking happy wearing a sunhat"
+          className="h-20 pl-10"
+        />
+
         <EntryModal
           isOpen={entryModalIsOpen}
           onRequestClose={closeEntryModal}
@@ -50,15 +61,10 @@ function Dashboard() {
         >
           <EntryForm onEntrySuccess={closeEntryModal} />
         </EntryModal>
-        <img
-          src={mimi}
-          alt="sun looking happy wearing a sunhat"
-          className="h-20 pl-10"
-        />
       </div>
       <br />
 
-      <div className="tab-nav">
+      <div className="tab-nav mb-3 font-logo">
         <button
           onClick={() => setSelectedTab("calendar")}
           className={

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
 import useErrorHandler from "../../utils/errorHandler";
-import EmojiPicker from "../Dashboard/Entries Modal/EmojiPicker"
-import { toast } from 'react-toastify';
+import EmojiPicker from "../Dashboard/Entries Modal/EmojiPicker";
+import { toast } from "react-toastify";
 
 function Quickie({ onEntrySuccess, selectedDate }) {
   const navigate = useNavigate();
@@ -40,13 +40,13 @@ function Quickie({ onEntrySuccess, selectedDate }) {
         if (onEntrySuccess) {
           onEntrySuccess();
         }
-        toast.success('Success! Entry saved!', {
+        toast.success("Success! Entry saved!", {
           onClose: () => {
             window.location.reload();
           },
         });
       } else {
-        toast.error('Whoops! Something went wrong.')
+        toast.error("Whoops! Something went wrong.");
       }
     } catch (error) {
       console.error("API request error:", error);
@@ -56,10 +56,9 @@ function Quickie({ onEntrySuccess, selectedDate }) {
   return (
     <div>
       <form
-          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8"
-          onSubmit={handleSubmit}
-        >
-        <p className="mb-2">How would you rate your sleep?</p>
+        className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8"
+        onSubmit={handleSubmit}
+      >
         <EmojiPicker
           onSelectRating={(selectedRating) => setRating(selectedRating)}
         />
@@ -72,6 +71,6 @@ function Quickie({ onEntrySuccess, selectedDate }) {
       </form>
     </div>
   );
-};
+}
 
 export default Quickie;

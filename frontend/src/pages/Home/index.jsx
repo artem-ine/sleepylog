@@ -22,9 +22,6 @@ function Home() {
             <Dashboard />
           </div>
         )}
-        <div id="outlet">
-          <Outlet />
-        </div>
       </main>
       <Footer />
     </>
