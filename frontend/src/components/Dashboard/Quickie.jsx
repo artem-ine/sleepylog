@@ -56,7 +56,7 @@ function Quickie({ onEntrySuccess, selectedDate }) {
   return (
     <div>
       <form
-        className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8"
+        className="px-4 pt-8"
         onSubmit={handleSubmit}
       >
         <EmojiPicker
@@ -64,7 +64,7 @@ function Quickie({ onEntrySuccess, selectedDate }) {
         />
         <button
           type="submit"
-          className="h-8 mt-2 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+          className="mt-5 h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
         >
           Done
         </button>

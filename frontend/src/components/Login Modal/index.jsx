@@ -13,7 +13,7 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
       <div className="modal-actions">
         <button
           onClick={onRequestClose}
-          className="bg-secondary dark:bg-primary text-white dark:text-black border border-black font-bold text-sm py-2 px-4 rounded-xl"
+          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
         >
           Close
         </button>

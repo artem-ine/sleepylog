@@ -67,7 +67,7 @@ function LoginForm({ onLoginSuccess }) {
             <input
               type="text"
               id="email"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -83,7 +83,7 @@ function LoginForm({ onLoginSuccess }) {
             <input
               type="password"
               id="password"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -92,7 +92,7 @@ function LoginForm({ onLoginSuccess }) {
           <div className="mb-6">
             <button
               type="submit"
-              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               Submit
             </button>

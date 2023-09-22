@@ -5,7 +5,7 @@
 }
 
 .react-datepicker__header {
-  background-color: #007bff;
+  background-color: #AFC1D6;
   color: #fff;
 }
 
@@ -15,6 +15,16 @@
 }
 
 .react-datepicker__day--selected {
-  background-color: #007bff;
+  background-color: #655A7C;
   color: #fff;
+  border-radius: 50%;
+}
+
+.react-datepicker__day:hover {
+  background-color: #AB92BF;
+  border-radius: 50%;
+}
+
+.react-datepicker__time:hover {
+  background-color: #E0E0E0;
 }

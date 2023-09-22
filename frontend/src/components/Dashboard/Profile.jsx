@@ -57,7 +57,7 @@ function Profile() {
 
   return (
     <div>
-      <div className="border dark:border-primary border-secondary p-3 rounded-lg">
+      <div className="border dark:border-primary border-secondary p-3 rounded-xl py-5">
         <h2 className="text-center dark:text-white text-black text-lg">
           Account details
         </h2>
@@ -66,19 +66,19 @@ function Profile() {
         <br />
         <div className="flex flex-row gap-4">
           <button
-            className="bg-primary dark:bg-secondary text-black dark:text-white hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={openEditProfileModal}
           >
             Edit Profile
           </button>
           <button
-            className="bg-primary dark:bg-secondary text-black dark:text-white hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={openPasswordModal}
           >
             Change password
           </button>
           <button
-            className="bg-primary dark:bg-secondary text-black dark:text-white hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={handleDeleteProfile}
           >
             Delete Profile

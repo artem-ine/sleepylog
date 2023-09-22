@@ -96,7 +96,7 @@ function SignupForm({ onSignupSuccess }) {
               Username
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               id="username"
               type="text"
               placeholder="Username"
@@ -112,7 +112,7 @@ function SignupForm({ onSignupSuccess }) {
               Email
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               id="email"
               type="email"
               placeholder="Email"
@@ -128,7 +128,7 @@ function SignupForm({ onSignupSuccess }) {
               Password
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               id="password"
               type="password"
               placeholder="Password"
@@ -144,7 +144,7 @@ function SignupForm({ onSignupSuccess }) {
               Password Confirmation
             </label>
             <input
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               id="password_Confirmation"
               type="password"
               placeholder="Password Confirmation"
@@ -154,7 +154,7 @@ function SignupForm({ onSignupSuccess }) {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
               type="submit"
             >
               Submit
