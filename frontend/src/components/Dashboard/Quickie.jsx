@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
 import useErrorHandler from "../../utils/errorHandler";
 import EmojiPicker from "../Dashboard/Entries Modal/EmojiPicker"
+import { toast } from 'react-toastify';
 
 function Quickie({ onEntrySuccess, selectedDate }) {
   const navigate = useNavigate();
@@ -39,10 +40,13 @@ function Quickie({ onEntrySuccess, selectedDate }) {
         if (onEntrySuccess) {
           onEntrySuccess();
         }
-        window.location.reload();
+        toast.success('Success! Entry saved!', {
+          onClose: () => {
+            window.location.reload();
+          },
+        });
       } else {
-        const errorData = await response.json();
-        showError(errorData.error);
+        toast.error('Whoops! Something went wrong.')
       }
     } catch (error) {
       console.error("API request error:", error);
