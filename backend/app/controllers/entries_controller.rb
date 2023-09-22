@@ -83,12 +83,21 @@ class EntriesController < ActionController::API
       return
     end
 
-    @entries = @logbook.entries
     one_week_ago = 1.week.ago
-    total_duration = @entries.where("start_time >= ? AND start_time <= ?", one_week_ago, Time.now).sum(:duration)
-    render json: { total_duration: total_duration }
-  end
+    end_time = Time.now
+    dates = (one_week_ago.to_date..end_time.to_date).to_a
 
+
+    sleep_data = Hash.new(0) # Initialize a hash with default values of 0
+
+    dates.each do |date|
+      entries_on_date = @logbook.entries.where(start_time: date.beginning_of_day..date.end_of_day)
+      total_duration = entries_on_date.sum(:duration)
+      sleep_data[date.strftime("%A")] += total_duration # Use day name as label and accumulate duration
+    end
+
+    render json: { sleep_data: sleep_data }
+  end
 
   def sleep_duration_past_month
     if current_user.nil?
@@ -103,10 +112,41 @@ class EntriesController < ActionController::API
       return
     end
 
-    @entries = @logbook.entries
     one_month_ago = 1.month.ago
-    total_duration = @entries.where("start_time >= ? AND start_time <= ?", one_month_ago, Time.now).sum(:duration)
-    render json: { total_duration: total_duration }
+    end_time = Time.now
+    dates = (one_month_ago.to_date..end_time.to_date).to_a
+
+    sleep_data = Hash.new(0) # Initialize a hash with default values of 0
+
+    current_week_start = nil
+    current_week_end = nil
+
+    dates.each do |date|
+      if current_week_start.nil?
+        current_week_start = date
+      end
+
+      current_week_end = date
+
+      # Check if a week has ended
+      if current_week_end.end_of_week(:sunday) == date
+        entries_in_week = @logbook.entries.where(start_time: current_week_start.beginning_of_day..current_week_end.end_of_day)
+        total_duration = entries_in_week.sum(:duration)
+        week_label = "#{current_week_start.strftime('%B %d')} - #{current_week_end.strftime('%B %d')}"
+        sleep_data[week_label] = total_duration
+        current_week_start = nil
+      end
+    end
+
+    # Check if there's an ongoing week at the end of the month
+    if current_week_start && current_week_end
+      entries_in_week = @logbook.entries.where(start_time: current_week_start.beginning_of_day..current_week_end.end_of_day)
+      total_duration = entries_in_week.sum(:duration)
+      week_label = "#{current_week_start.strftime('%B %d')} - #{current_week_end.strftime('%B %d')}"
+      sleep_data[week_label] = total_duration
+    end
+
+    render json: { sleep_data: sleep_data }
   end
 
 
