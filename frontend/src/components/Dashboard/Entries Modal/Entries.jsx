@@ -82,7 +82,7 @@ function EntryForm({ onEntrySuccess }) {
             <input
               type="number"
               id="duration"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Duration"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
@@ -97,7 +97,7 @@ function EntryForm({ onEntrySuccess }) {
             </label>
             <DatePicker
               id="start_time"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               selected={start_time}
               onChange={(date) => setStartTime(date)}
               showTimeSelect
@@ -115,7 +115,7 @@ function EntryForm({ onEntrySuccess }) {
             </label>
             <DatePicker
               id="start_time"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               selected={end_time}
               onChange={(date) => setEndTime(date)}
               showTimeSelect
@@ -133,7 +133,7 @@ function EntryForm({ onEntrySuccess }) {
             </label>
             <textarea
               id="notes"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Notes"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
@@ -142,7 +142,7 @@ function EntryForm({ onEntrySuccess }) {
           <div className="mb-6">
             <button
               type="submit"
-              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               Log your sleep
             </button>

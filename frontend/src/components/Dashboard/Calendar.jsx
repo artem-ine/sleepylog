@@ -172,21 +172,21 @@ function CalendarView() {
         />
       </div>
 
-      <div className="logged-items-container bg-primary rounded-xl px-3">
-        <h2 className="font-heading text-black text-sm mt-4 mb-2">
+      <div className="logged-items-container border border-secondary dark:border-primary border-2 rounded-xl px-3">
+        <h2 className="font-heading dark:text-white text-black text-sm mt-4 mb-2">
           {moment(clickedDate).format("LL")}
         </h2>
         <div className="overflow-y-scroll h-52">
-          <ul className="text-black text-sm">
+          <ul className="dark:text-white text-black text-sm">
             {editing ? (
               <li key={updatedEntry.id}>
-                <h2 className="text-white mb-2 border border-black bg-secondary px-1">
+                <h2 className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                   Editing entry
                 </h2>
                 <div>
                   <label htmlFor="duration">Hours slept:</label>
                   <input
-                    className="rounded px-1 border bg-white ml-1"
+                    className="text-black rounded px-1 border bg-white ml-1"
                     type="text"
                     id="duration"
                     name="duration"
@@ -202,7 +202,7 @@ function CalendarView() {
                 <div>
                   <label htmlFor="rating">Rating:</label>
                   <select
-                    className="rounded px-1 border bg-white ml-1 mt-1"
+                    className="text-black rounded px-1 border bg-white ml-1 mt-1"
                     id="rating"
                     name="rating"
                     value={updatedEntry.rating}
@@ -224,7 +224,7 @@ function CalendarView() {
                 <div>
                   <label htmlFor="notes">Notes:</label>
                   <textarea
-                    className="rounded px-1 border bg-white ml-1 mt-1"
+                    className="text-black rounded px-1 border bg-white ml-1 mt-1"
                     id="notes"
                     name="notes"
                     value={updatedEntry.notes}
@@ -238,13 +238,13 @@ function CalendarView() {
                 </div>
                 <div className="entry-actions mt-5 mb-3 space-x-2">
                   <button
-                    className="save-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+                    className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                     onClick={handleEdit}
                   >
                     Save
                   </button>
                   <button
-                    className="cancel-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+                    className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                     onClick={() => setEditing(false)}
                   >
                     Cancel
@@ -253,7 +253,7 @@ function CalendarView() {
               </li>
             ) : filteredItems.length === 0 ? (
               <div>
-                <p className="text-white mb-2 border border-black bg-secondary px-1">
+                <p className="text-white mb-2 border border-primary rounded-lg bg-secondary px-2 py-1">
                   No entries yet - wanna do a quickie?
                 </p>
                 <Quickie selectedDate={selectedDateForQuickie} />
@@ -262,13 +262,13 @@ function CalendarView() {
               filteredItems.map((item) => (
                 <li key={item.id}>
                   <strong>{item.date}</strong>
-                  <p className="text-white mb-2 border border-black bg-secondary px-1">
+                  <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                     Hours slept: {item.duration}
                   </p>
-                  <p className="text-white mb-2 border border-black bg-secondary px-1">
+                  <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                     Quality rating: {item.rating}
                   </p>
-                  <p className="">
+                  <p className="dark:text-white text-black mt-4">
                     Notes:
                     <br />
                     {item.notes}
@@ -276,13 +276,13 @@ function CalendarView() {
                   <br />
                   <div className="entry-actions mt-5 mb-3 space-x-2">
                     <button
-                      className="edit-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+                      className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                       onClick={() => handleEditClick(item.id)}
                     >
                       Edit
                     </button>
                     <button
-                      className="delete-button h-8 px-4 bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm rounded-xl focus:outline-none focus:shadow-outline"
+                      className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                       onClick={() => handleDeleteClick(item.id)}
                     >
                       Delete

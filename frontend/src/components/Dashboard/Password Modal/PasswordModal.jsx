@@ -94,7 +94,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
               type="password"
               id="currentPassword"
               name="currentPassword"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Current Password"
               value={formData.currentPassword}
               onChange={handleChange}
@@ -111,7 +111,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
               type="password"
               id="newPassword"
               name="newPassword"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="New Password"
               value={formData.newPassword}
               onChange={handleChange}
@@ -128,7 +128,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Confirm Password"
               value={formData.confirmPassword}
               onChange={handleChange}
@@ -137,7 +137,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
           <div className="mb-6">
             <button
               type="submit"
-              className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               Change Password
             </button>
