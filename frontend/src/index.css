@@ -91,6 +91,12 @@ main{
   display: block;
 }
 
+.chart-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+}
+
 /* .calendar-container,
 .logged-items-container {
   width: 100%; } */
