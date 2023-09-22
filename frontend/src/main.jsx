@@ -8,8 +8,8 @@ import ErrorPage from "./pages/ErrorPage/index.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Modal from "react-modal";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 Modal.setAppElement("#root");
 
@@ -18,16 +18,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
     errorElement: <ErrorPage />,
-    // children: [
-    //   {
-    //     path: "/signup",
-    //     element: <SignUp />,
-    //   },
-    //   {
-    //     path: "/login",
-    //     element: <LogIn />,
-    //   },
-    // ],
   },
 ]);
 

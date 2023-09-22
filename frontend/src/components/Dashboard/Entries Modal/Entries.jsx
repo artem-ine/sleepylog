@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker.css";
 import EmojiPicker from "./EmojiPicker";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
@@ -44,13 +44,13 @@ function EntryForm({ onEntrySuccess }) {
         if (onEntrySuccess) {
           onEntrySuccess();
         }
-        toast.success('Success! Entry saved!', {
+        toast.success("Success! Entry saved!", {
           onClose: () => {
             window.location.reload();
           },
         });
       } else {
-        toast.error('Whoops, something went wrong.');
+        toast.error("Whoops, something went wrong.");
       }
     } catch (error) {
       console.error("API request error:", error);
@@ -77,7 +77,7 @@ function EntryForm({ onEntrySuccess }) {
               htmlFor="duration"
               className="block text-black text-sm font-bold mb-2"
             >
-              Duration (in hours):
+              How many hours do you think you slept?
             </label>
             <input
               type="number"
@@ -93,7 +93,7 @@ function EntryForm({ onEntrySuccess }) {
               htmlFor="start_time"
               className="block text-black text-sm font-bold mb-2"
             >
-              Start Time:
+              When did you go to bed?
             </label>
             <DatePicker
               id="start_time"
@@ -111,7 +111,7 @@ function EntryForm({ onEntrySuccess }) {
               htmlFor="end_time"
               className="block text-black text-sm font-bold mb-2"
             >
-              End Time:
+              When did you get up?
             </label>
             <DatePicker
               id="start_time"
@@ -129,7 +129,7 @@ function EntryForm({ onEntrySuccess }) {
               htmlFor="notes"
               className="block text-black text-sm font-bold mb-2"
             >
-              Notes:
+              Anything to share? Dreams? Nightmares?
             </label>
             <textarea
               id="notes"
@@ -144,7 +144,7 @@ function EntryForm({ onEntrySuccess }) {
               type="submit"
               className="bg-secondary border border-black hover:bg-blue-700 font-bold text-white text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             >
-              Submit Entry
+              Log your sleep
             </button>
           </div>
           {error && <p className="text-xs italic">{error}</p>}

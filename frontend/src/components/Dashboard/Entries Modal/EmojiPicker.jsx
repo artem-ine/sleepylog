@@ -29,9 +29,13 @@ function EmojiPicker({ onSelectRating }) {
 
   return (
     <div>
-      <h2>Select a Rating:</h2>
-      <div className="emoji-buttons">{emojiButtons}</div>
-      {selectedRating && <p>You selected: {selectedRating} emoji</p>}
+      <h2 className="text-sm font-bold">How well did you sleep?</h2>
+      <div className="emoji-buttons flex flex-row gap-8 pb-1">
+        {emojiButtons}
+      </div>
+      {selectedRating && (
+        <p className="text-sm">You've had a {selectedRating} sleep!</p>
+      )}
     </div>
   );
 }

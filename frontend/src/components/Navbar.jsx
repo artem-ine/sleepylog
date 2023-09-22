@@ -92,13 +92,13 @@ function Navbar() {
                 {!auth.isAuthenticated ? (
                   <>
                     <button
-                      className="bg-secondary dark:bg-primary text-white dark:text-black border border-black font-bold text-sm py-2 px-4 rounded-xl"
+                      className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                       onClick={openSignupModal}
                     >
                       Sign Up
                     </button>
                     <button
-                      className="bg-secondary dark:bg-primary text-white dark:text-black border border-black font-bold text-sm py-2 px-4 rounded-xl"
+                      className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                       onClick={openLoginModal}
                     >
                       Login
@@ -107,7 +107,7 @@ function Navbar() {
                 ) : (
                   <button
                     onClick={handleLogout}
-                    className="bg-secondary dark:bg-primary text-white dark:text-black border border-black font-bold text-sm py-2 px-4 rounded-xl"
+                    className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                   >
                     Logout
                   </button>
