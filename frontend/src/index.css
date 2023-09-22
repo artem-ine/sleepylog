@@ -22,55 +22,6 @@ main{
   min-height: 100vh;
 }
 
-
-/* .react-calendar{
-  background-color: #AB92BF;
-  border-radius: 10px;
-}
-
-.react-calendar__navigation {
-  background-color: #AB92BF;
-  color: #150C1D;
-}
-
-.react-calendar__tile {
-  background-color: #655A7C;
-  color: #150C1D;
-}
-
-.react-calendar__tile:hover {
-  background-color: #AB92BF;
-  color: #150C1D;
-}
-
-
-.react-calendar__tile--now {
-  background-color: #AB92BF;
-  color: #150C1D;
-}
-
-.react-calendar__tile:hover {
-  background-color: #AB92BF;
-  color: #150C1D;
-}
-
-
-.react-calendar__tile--active {
-  background-color: #655A7C;
-  color: #150C1D;
-}
-
-.react-calendar__tile:hover {
-  background-color: #AB92BF;
-  color: #150C1D;
-}
-
-
-.react-calendar__month-view__weekdays__weekday {
-  background-color: #AB92BF;
-  color: #150C1D;
-} */
-
 .ReactModal__Body--open {
     overflow: hidden;
 }
@@ -90,10 +41,6 @@ main{
   width: 350px;
   display: block;
 }
-
-/* .calendar-container,
-.logged-items-container {
-  width: 100%; } */
 
 @media screen and (min-width: 1000px) {
   .calendar-view-container {

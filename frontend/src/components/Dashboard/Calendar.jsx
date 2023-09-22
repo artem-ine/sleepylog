@@ -172,7 +172,7 @@ function CalendarView() {
         />
       </div>
 
-      <div className="logged-items-container border border-secondary dark:border-primary border-2 rounded-xl px-3">
+      <div className="logged-items-container border border-secondary dark:border-primary border-2 rounded-2xl px-3">
         <h2 className="font-heading dark:text-white text-black text-sm mt-4 mb-2">
           {moment(clickedDate).format("LL")}
         </h2>
