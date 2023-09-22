@@ -55,6 +55,34 @@ function Profile() {
   console.log(auth.user.email);
   console.log(auth.user.id);
 
+  const handleResetPassword = async () => {
+    try {
+      // Send a request to your Rails API's password reset route
+      const response = await fetch("/api/users/password/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
+        },
+        body: JSON.stringify({
+          user: { email: auth.user.email },
+        }),
+      });
+
+      if (response.ok) {
+        alert("Password reset link sent successfully");
+      } else {
+        const errorData = await response.json();
+        const errorMessage =
+          errorData.message || "Failed to send password reset link.";
+        alert(errorMessage);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while sending the password reset link.");
+    }
+  };
+
   return (
     <div>
       <div className="border dark:border-primary border-secondary p-3 rounded-xl py-5">
@@ -76,6 +104,12 @@ function Profile() {
             onClick={openPasswordModal}
           >
             Change password
+          </button>
+          <button
+            className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
+            onClick={handleResetPassword}
+          >
+            Reset Password
           </button>
           <button
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
