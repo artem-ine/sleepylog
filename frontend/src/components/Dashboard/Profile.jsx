@@ -57,7 +57,6 @@ function Profile() {
 
   const handleResetPassword = async () => {
     try {
-      // Send a request to your Rails API's password reset route
       const response = await fetch("/api/users/password/", {
         method: "POST",
         headers: {
@@ -98,12 +97,6 @@ function Profile() {
             onClick={openEditProfileModal}
           >
             Edit Profile
-          </button>
-          <button
-            className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
-            onClick={openPasswordModal}
-          >
-            Change password
           </button>
           <button
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"

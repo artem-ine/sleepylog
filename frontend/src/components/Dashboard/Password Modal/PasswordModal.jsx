@@ -59,7 +59,6 @@ function ChangePasswordForm({ onPasswordChanged }) {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`,
         },
         body: JSON.stringify({
           user: {
