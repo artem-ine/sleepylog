@@ -144,12 +144,10 @@ class EntriesController < ActionController::API
       end
     end
 
-    # Check if there's an ongoing week at the end of the month
     if current_week_start && current_week_end
       entries_in_week = @logbook.entries.where(start_time: current_week_start.beginning_of_day..current_week_end.end_of_day)
       total_duration_in_week = entries_in_week.sum(:duration)
 
-      # Accumulate sleep hours for the last week
       total_duration += total_duration_in_week
 
       week_label = "#{current_week_start.strftime('%B %d')} - #{current_week_end.strftime('%B %d')}"
@@ -184,7 +182,10 @@ class EntriesController < ActionController::API
     average_rating = filtered_entries
       .average(:rating)
 
-    average_rating = average_rating.round(2)
+    unless average_rating.nil?
+      average_rating = average_rating.round(2)
+    end
+
     render json: { ratings_count: ratings_data, average_rating: average_rating }
     end
 
@@ -213,9 +214,13 @@ class EntriesController < ActionController::API
     average_rating = filtered_entries
       .average(:rating)
 
-    average_rating = average_rating.round(2)
+    unless average_rating.nil?
+      average_rating = average_rating.round(2)
+    end
+
     render json: { ratings_count: ratings_data, average_rating: average_rating }
   end
+
 
   def average_rating_custom_range
     user = current_user
