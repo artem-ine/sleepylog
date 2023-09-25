@@ -36,47 +36,52 @@ function PasswordResetRequestForm({ onRequestClose }) {
   };
 
   return (
-    <div>
-      <h2>Forgotten your password?</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-black text-sm font-bold mb-2"
-          >
-            Email:
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
-            placeholder="Your Email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+    <div className="flex justify-center items-center mt-20">
+      <div className="w-full max-w-xs">
+        <form
+          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
         >
-          Send Reset Link
-        </button>
-      </form>
-      <button
-        onClick={onRequestClose}
-        className="mt-4 bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-      >
-        Close
-      </button>
+          <h2 className="font-heading">Forgot your password?</h2>
+          <p>
+            Pop your email in, and if it matches an existing account, we'll send
+            you a link.
+          </p>
+          <br />
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-black text-sm font-bold mb-2"
+            >
+              Email:
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
+              placeholder="Your Email"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+          >
+            Send Reset Link
+          </button>
+          <button
+            onClick={onRequestClose}
+            className="mt-4 bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+          >
+            Return to login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
-
-PasswordResetRequestForm.propTypes = {
-  onRequestClose: PropTypes.func.isRequired,
-  onPasswordResetRequest: PropTypes.func.isRequired,
-};
 
 export default PasswordResetRequestForm;

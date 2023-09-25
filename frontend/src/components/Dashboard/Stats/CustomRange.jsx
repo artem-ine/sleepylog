@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import "./react-datepicker.css";
 import { useAuth } from "../../../utils/useAuth";
 
 function CustomRangeComponent() {
@@ -66,7 +66,6 @@ function CustomRangeComponent() {
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      // Set dataFetched to true when the fetch is complete
       setDataFetched(true);
     }
   };

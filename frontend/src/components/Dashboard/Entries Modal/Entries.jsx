@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker.css";
 import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
+import lil_icons from "../../../assets/images/lil_icons.png";
 
 function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
