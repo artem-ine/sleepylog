@@ -1,9 +1,30 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
+import faker from "faker";
 
 function DummyChart() {
-  ChartJS.register(ArcElement, Tooltip, Legend);
+  ChartJS.register(
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
   const dataChart = {
     labels: ["January", "February", "March", "April", "May"],
     datasets: [
@@ -26,27 +47,28 @@ function DummyChart() {
     },
   };
 
-  ChartJS.register(ArcElement, Tooltip, Legend);
-  const secondDataChart = {
-    labels: ["January", "February", "March", "April", "May"],
+  const labels = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+  ];
+
+  const dataLine = {
+    labels: labels,
     datasets: [
       {
         label: "Hours of Sleep",
-        backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 1,
-        hoverBackgroundColor: "rgba(75,192,192,0.4)",
-        hoverBorderColor: "rgba(75,192,192,1)",
-        data: [6, 7, 6.5, 7.5, 6.8],
-      },
-      {
-        backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"],
+        data: labels.map(() =>
+          faker.datatype.float({ min: 5, max: 12, precision: 1 })
+        ),
+        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
       },
     ],
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-    },
   };
 
   return (
@@ -55,7 +77,7 @@ function DummyChart() {
         <Doughnut data={dataChart} />
       </div>
       <div className="mb-4 lg:mb-0 dummy-chart-wrapper">
-        <Doughnut data={secondDataChart} />
+        <Line data={dataLine} />
       </div>
     </div>
   );
