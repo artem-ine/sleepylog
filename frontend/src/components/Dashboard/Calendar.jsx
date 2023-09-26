@@ -299,7 +299,7 @@ function CalendarView() {
                 </li>
               ) : filteredItems.length === 0 ? (
                 <div>
-                  <p className="text-white mb-2 border border-primary rounded-lg bg-secondary px-2 py-1">
+                  <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                     No entries yet - wanna do a quickie?
                   </p>
                   <Quickie selectedDate={selectedDateForQuickie} />

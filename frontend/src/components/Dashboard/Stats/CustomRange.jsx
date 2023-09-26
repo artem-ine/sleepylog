@@ -80,7 +80,7 @@ function CustomRangeComponent() {
       <div className="flex justify-around">
         From
         <DatePicker
-          className="bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
+          className="dark:bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           selectsStart
@@ -89,7 +89,7 @@ function CustomRangeComponent() {
         />
         To
         <DatePicker
-          className="bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
+          className="dark:bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           selectsEnd

@@ -42,7 +42,7 @@ function AverageRatingPastWeek() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-2 mb-10">
       <h2>Ratings for the Past Week</h2>
       <div className="chart-wrapper">
         {Object.keys(dataChart).length > 0 ? (
