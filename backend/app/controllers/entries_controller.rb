@@ -241,7 +241,7 @@ class EntriesController < ActionController::API
     average_rating = entries.average(:rating)
 
     if average_rating.nil?
-      render json: { average_rating: "No data available." }
+      render json: { average_rating: "You didn't provide any rating for those dates!" }
     else
       average_rating = average_rating.round(2)
       render json: { average_rating: average_rating }

@@ -25,7 +25,16 @@ function AverageRatingPastMonth() {
           datasets: [
             {
               data: Object.values(data.ratings_count),
-              backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"], // Customize colors as needed
+              label: "Average Rating",
+              backgroundColor: [
+                "#790119",
+                "#CC6600",
+                "#E3A92C",
+                "#B3B319",
+                "#4F8F00",
+              ],
+              borderColor: "#AFC1D6",
+              borderWidth: 1,
             },
           ],
           options: {
