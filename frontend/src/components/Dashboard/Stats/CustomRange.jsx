@@ -76,16 +76,20 @@ function CustomRangeComponent() {
 
   return (
     <div>
-      <h2>Custom Data Range</h2>
-      <div>
+      <h2 className="font-logo text-sm px-2 py-2">Date filter:</h2>
+      <div className="flex justify-around">
+        From
         <DatePicker
+          className="dark:bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           selectsStart
           startDate={startDate}
           endDate={endDate}
         />
+        To
         <DatePicker
+          className="dark:bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           selectsEnd
@@ -97,20 +101,19 @@ function CustomRangeComponent() {
       {dataFetched ? (
         <>
           {averageRating !== null && (
-            <p>
-              Your average rating for that period of time is of {averageRating}{" "}
+            <p className="dark:text-white text-black mt-2 rounded-lg px-2 py-1">
+              Average quality of sleep rated: {averageRating}{" "}
               out of 5.
             </p>
           )}
           {sleepDuration !== null && (
-            <p>
-              You've slept {sleepDuration.toFixed(2)} hours between the two
-              dates you've picked.
+            <p className="dark:text-white text-black rounded-lg px-2 py-1">
+              Total amount of sleep logged: {sleepDuration.toFixed(2)} hours.
             </p>
           )}
         </>
       ) : (
-        <p>Waiting for you to pick two dates...</p>
+        <p className="dark:text-white text-black mt-2 rounded-lg px-2 py-1">Waiting for you to pick two dates...</p>
       )}
     </div>
   );
