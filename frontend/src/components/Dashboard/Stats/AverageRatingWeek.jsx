@@ -6,7 +6,7 @@ import "chart.js/auto";
 function AverageRatingPastWeek() {
   const [ratingsData, setRatingsData] = useState({});
   const [averageRating, setAverageRating] = useState(null);
-  const [dataChart, setDataChart] = useState({}); // Declare dataChart as state
+  const [dataChart, setDataChart] = useState({});
 
   useEffect(() => {
     fetch("/api/average_rating_past_week")

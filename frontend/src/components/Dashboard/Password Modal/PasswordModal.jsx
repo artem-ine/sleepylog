@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 function ChangePasswordForm({ onPasswordChanged }) {
-  const { auth } = useAuth();
   const navigate = useNavigate();
   const [resetPasswordToken, setResetPasswordToken] = useState("");
   const [formData, setFormData] = useState({
@@ -24,13 +23,10 @@ function ChangePasswordForm({ onPasswordChanged }) {
   };
 
   useEffect(() => {
-    // Get the current URL
     const currentUrl = window.location.href;
 
-    // Create a URLSearchParams object to parse the query parameters
     const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
 
-    // Get the value of the 'reset_password_token' parameter from the URL
     const tokenFromUrl = urlSearchParams.get("reset_password_token");
 
     if (tokenFromUrl) {
