@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./datepicker.css";
 import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
-import lil_icons from "../../../assets/images/lil_icons.png";
 
 function EntryForm({ onEntrySuccess }) {
   const navigate = useNavigate();
@@ -82,6 +81,7 @@ function EntryForm({ onEntrySuccess }) {
             </label>
             <input
               type="number"
+              min="0"
               id="duration"
               className="bg-white appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight"
               placeholder="Duration"
@@ -140,7 +140,7 @@ function EntryForm({ onEntrySuccess }) {
               onChange={(e) => setNotes(e.target.value)}
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-6 flex gap-3 justify-center items-center">
             <button
               type="submit"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
