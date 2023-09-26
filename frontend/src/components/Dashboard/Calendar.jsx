@@ -190,7 +190,7 @@ function CalendarView() {
             <ul className="dark:text-white text-black text-sm px-2">
               {editing ? (
                 <li key={updatedEntry.id}>
-                  <h2 className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
+                  <h2 className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                     Editing entry
                   </h2>
                   <div>
@@ -293,7 +293,7 @@ function CalendarView() {
                       />
                     </div>
                   </div>
-                  <div className="entry-actions mt-4 mb-2 space-x-2 flex justify-center">
+                  <div className="entry-actions mt-8 mb-2 space-x-2 flex justify-center">
                     <button
                       className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                       onClick={handleEdit}
@@ -317,9 +317,9 @@ function CalendarView() {
                 </div>
               ) : (
                 filteredItems.map((item) => (
-                  <li key={item.id} className="flex flex-col mb-4">
-                    <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                      Log Entry
+                  <li key={item.id} className="flex flex-col mb-5">
+                    <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
+                      Sleep Entry
                     </p>
                     <p className="dark:text-white text-black">
                       Start time: {moment(item.start_time).format("DD/MM/YYYY")}
