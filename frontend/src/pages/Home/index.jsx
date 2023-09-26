@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Dashboard from "../../components/Dashboard";
 import { useAuth } from "../../utils/useAuth";
-import GuestView from "../../components/GuestView";
+import GuestView from "../../components/Guest View/GuestView";
 
 function Home() {
   const { auth } = useAuth();

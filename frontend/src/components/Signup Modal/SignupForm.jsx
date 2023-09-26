@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import useErrorHandler from "../../utils/errorHandler";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function SignupForm({ onSignupSuccess }) {
   const { error, showError } = useErrorHandler();
@@ -64,7 +64,7 @@ function SignupForm({ onSignupSuccess }) {
           onSignupSuccess();
         }
         window.location.reload();
-        toast.success('Yay! Sign up successful!');
+        toast.success("Yay! Sign up successful!");
       } else {
         const errorData = await response.json();
         if (errorData && errorData.errors) {
@@ -152,10 +152,10 @@ function SignupForm({ onSignupSuccess }) {
               onChange={(e) => setPassword_Confirmation(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="mb-2 flex justify-center">
             <button
-              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
               type="submit"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm p-2 px-4 rounded-xl"
             >
               Submit
             </button>

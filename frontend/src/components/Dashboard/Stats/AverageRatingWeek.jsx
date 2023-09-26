@@ -6,7 +6,7 @@ import "chart.js/auto";
 function AverageRatingPastWeek() {
   const [ratingsData, setRatingsData] = useState({});
   const [averageRating, setAverageRating] = useState(null);
-  const [dataChart, setDataChart] = useState({}); // Declare dataChart as state
+  const [dataChart, setDataChart] = useState({});
 
   useEffect(() => {
     fetch("/api/average_rating_past_week")
@@ -26,7 +26,7 @@ function AverageRatingPastWeek() {
           datasets: [
             {
               data: Object.values(data.ratings_count),
-              backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"], // Customize colors as needed
+              backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"],
             },
           ],
           options: {

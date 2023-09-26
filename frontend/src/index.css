@@ -48,6 +48,12 @@ main{
   width: 300px;
 }
 
+.dummy-chart-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 400px;
+}
+
 @media screen and (min-width: 1000px) {
   .calendar-view-container {
         display: flex;
