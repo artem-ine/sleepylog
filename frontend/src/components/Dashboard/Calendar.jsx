@@ -7,7 +7,7 @@ import "./Calendar.css";
 import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import moon_icon from "../../assets/images/moon_icon.png";
+import lil_icons from "../../assets/images/lil_icons.png";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -174,17 +174,18 @@ function CalendarView() {
             onClickDay={(date) => setClickedDate(date)}
           />
         </div>
-
+        <div className="flex justify-center">
+          <img
+            src={lil_icons}
+            alt="doodled sun and moon with a cloud"
+            className="h-15"
+          />
+        </div>
         <div className="logged-items-container border-secondary dark:border-primary border-2 rounded-2xl p-2">
           <div className="flex justify-evenly items-center pb-1">
             <h2 className="font-heading dark:text-white text-black text-sm mt-2">
               {moment(clickedDate).format("LL")}
             </h2>
-            <img
-              src={moon_icon}
-              alt="moon sleeping wearing a nightcap"
-              className="h-9"
-            />
           </div>
           <div className="overflow-y-auto h-56 pt-2 px-1">
             <ul className="dark:text-white text-black text-sm px-2">

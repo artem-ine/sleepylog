@@ -93,27 +93,22 @@ function DummyChart() {
           backgroundColor: "#AFC1D6",
         },
       ],
-      options: {
-        animations: {
-          tension: {
-            duration: 1000,
-            easing: "linear",
-            from: 1,
-            to: 0,
-            loop: true,
-          },
-        },
-      },
     };
   }
 
   return (
-    <div className="flex flex-col items-center lg:flex-row lg:space-x-6">
-      <div className="mb-4 lg:mb-0 dummy-chart-wrapper">
-        <Doughnut data={doughnutData} />
-      </div>
-      <div className="mb-4 lg:mb-0 dummy-chart-wrapper">
-        <Line data={lineData} />
+    <div className="border-2 dark:border-primary border-secondary px-3 rounded-xl py-5 flex items-center">
+      <div className="flex flex-col items-center lg:flex-row lg:space-x-6">
+        <div className="lg:mb-0 dummy-chart-wrapper flex pb-4">
+          <Doughnut data={doughnutData} className="p-4" />
+          <div className="flex justify-center">
+            A recap of your quality of sleep this week.
+          </div>
+        </div>
+        <div className="m-4 lg:mb-0 dummy-chart-wrapper">
+          <Line data={lineData} className="pb-4" />
+          <p>This is how many hours you've slept every day of the past week!</p>
+        </div>
       </div>
     </div>
   );
