@@ -7,6 +7,7 @@ import "./Calendar.css";
 import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moon_icon from "../../assets/images/moon_icon.png";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -165,7 +166,7 @@ function CalendarView() {
   return (
     <>
       <div className="calendar-view-container">
-        <div className="calendar-container pb-3">
+        <div className="calendar-container pb-2">
           <Calendar
             onChange={handleDateChange}
             value={selectedDate}
@@ -174,123 +175,133 @@ function CalendarView() {
           />
         </div>
 
-        <div className="logged-items-container border-secondary dark:border-primary border-2 rounded-2xl px-3">
-          <h2 className="font-heading dark:text-white text-black text-sm mt-4 mb-2">
-            {moment(clickedDate).format("LL")}
-          </h2>
-          <div className="overflow-y-auto h-52">
-            <ul className="dark:text-white text-black text-sm">
+        <div className="logged-items-container border-secondary dark:border-primary border-2 rounded-2xl p-2">
+          <div className="flex justify-evenly items-center pb-1">
+            <h2 className="font-heading dark:text-white text-black text-sm mt-2">
+              {moment(clickedDate).format("LL")}
+            </h2>
+            <img
+              src={moon_icon}
+              alt="moon sleeping wearing a nightcap"
+              className="h-9"
+            />
+          </div>
+          <div className="overflow-y-auto h-56 pt-2 px-1">
+            <ul className="dark:text-white text-black text-sm px-2">
               {editing ? (
                 <li key={updatedEntry.id}>
                   <h2 className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                     Editing entry
                   </h2>
                   <div>
-                    <label htmlFor="duration">Hours slept:</label>
-                    <input
-                      className="text-black rounded px-1 border bg-white ml-1"
-                      type="text"
-                      id="duration"
-                      name="duration"
-                      value={updatedEntry.duration}
-                      onChange={(e) =>
-                        setUpdatedEntry({
-                          ...updatedEntry,
-                          duration: e.target.value,
-                        })
-                      }
-                    />
+                    <div className="flex justify-between">
+                      <label htmlFor="duration">Hours slept:</label>
+                      <input
+                        className="text-black rounded px-1 border bg-white ml-1"
+                        type="number"
+                        min="0"
+                        id="duration"
+                        name="duration"
+                        value={updatedEntry.duration}
+                        onChange={(e) =>
+                          setUpdatedEntry({
+                            ...updatedEntry,
+                            duration: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                    <div className="flex justify-between">
+                      <label htmlFor="start_time">Start Time:</label>
+                      <DatePicker
+                        id="start_time"
+                        className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+                        selected={
+                          updatedEntry.start_time
+                            ? new Date(updatedEntry.start_time)
+                            : null
+                        }
+                        onChange={(date) =>
+                          setUpdatedEntry({
+                            ...updatedEntry,
+                            start_time: date,
+                          })
+                        }
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        dateFormat="dd/MM/yyyy HH:mm"
+                        placeholderText="Select Start Time"
+                      />
+                    </div>
+                    <div className="flex justify-between">
+                      <label htmlFor="end_time">End Time:</label>
+                      <DatePicker
+                        id="end_time"
+                        className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+                        selected={
+                          updatedEntry.end_time
+                            ? new Date(updatedEntry.end_time)
+                            : null
+                        }
+                        onChange={(date) =>
+                          setUpdatedEntry({
+                            ...updatedEntry,
+                            end_time: date,
+                          })
+                        }
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        dateFormat="dd/MM/yyyy HH:mm"
+                        placeholderText="Select End Time"
+                      />
+                    </div>
+                    <div className="flex justify-between">
+                      <label htmlFor="rating">Rating:</label>
+                      <select
+                        className="text-black rounded px-1 border bg-white ml-1 mt-1"
+                        id="rating"
+                        name="rating"
+                        value={updatedEntry.rating}
+                        onChange={(e) =>
+                          setUpdatedEntry({
+                            ...updatedEntry,
+                            rating: e.target.value,
+                          })
+                        }
+                      >
+                        <option value="no_data">I don't remember</option>
+                        <option value="horrible">Horrible</option>
+                        <option value="mediocre">Mediocre</option>
+                        <option value="OK">OK</option>
+                        <option value="good">Good</option>
+                        <option value="perfect">Perfect</option>
+                      </select>
+                    </div>
+                    <div className="flex justify-between">
+                      <label htmlFor="notes">Notes:</label>
+                      <textarea
+                        className="text-black rounded px-1 border bg-white ml-1 mt-1"
+                        id="notes"
+                        name="notes"
+                        value={updatedEntry.notes}
+                        onChange={(e) =>
+                          setUpdatedEntry({
+                            ...updatedEntry,
+                            notes: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label htmlFor="start_time">Start Time:</label>
-                    <DatePicker
-                      id="start_time"
-                      className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-                      selected={
-                        updatedEntry.start_time
-                          ? new Date(updatedEntry.start_time)
-                          : null
-                      }
-                      onChange={(date) =>
-                        setUpdatedEntry({
-                          ...updatedEntry,
-                          start_time: date,
-                        })
-                      }
-                      showTimeSelect
-                      timeFormat="HH:mm"
-                      dateFormat="dd/MM/yyyy HH:mm"
-                      placeholderText="Select Start Time"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="end_time">End Time:</label>
-                    <DatePicker
-                      id="end_time"
-                      className="bg-white shadow appearance-none border rounded-xl w-full py-2 px-3 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-                      selected={
-                        updatedEntry.end_time
-                          ? new Date(updatedEntry.end_time)
-                          : null
-                      }
-                      onChange={(date) =>
-                        setUpdatedEntry({
-                          ...updatedEntry,
-                          end_time: date,
-                        })
-                      }
-                      showTimeSelect
-                      timeFormat="HH:mm"
-                      dateFormat="dd/MM/yyyy HH:mm"
-                      placeholderText="Select End Time"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="rating">Rating:</label>
-                    <select
-                      className="text-black rounded px-1 border bg-white ml-1 mt-1"
-                      id="rating"
-                      name="rating"
-                      value={updatedEntry.rating}
-                      onChange={(e) =>
-                        setUpdatedEntry({
-                          ...updatedEntry,
-                          rating: e.target.value,
-                        })
-                      }
-                    >
-                      <option value="no_data">I don't remember</option>
-                      <option value="horrible">Horrible</option>
-                      <option value="mediocre">Mediocre</option>
-                      <option value="OK">OK</option>
-                      <option value="good">Good</option>
-                      <option value="perfect">Perfect</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="notes">Notes:</label>
-                    <textarea
-                      className="text-black rounded px-1 border bg-white ml-1 mt-1"
-                      id="notes"
-                      name="notes"
-                      value={updatedEntry.notes}
-                      onChange={(e) =>
-                        setUpdatedEntry({
-                          ...updatedEntry,
-                          notes: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className="entry-actions mt-5 mb-3 space-x-2">
+                  <div className="entry-actions mt-4 mb-2 space-x-2 flex justify-center">
                     <button
-                      className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+                      className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                       onClick={handleEdit}
                     >
                       Save
                     </button>
                     <button
-                      className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+                      className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                       onClick={() => setEditing(false)}
                     >
                       Cancel
@@ -306,21 +317,32 @@ function CalendarView() {
                 </div>
               ) : (
                 filteredItems.map((item) => (
-                  <li key={item.id}>
-                    <strong>{item.date}</strong>
+                  <li key={item.id} className="flex flex-col">
                     <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                      Hours slept: {item.duration}
+                      Entry data
                     </p>
-                    <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
+                    <p className="dark:text-white text-black">
+                      Start time: {moment(item.start_time).format("DD/MM/YYYY")}
+                    </p>
+                    {item.end_time && (
+                      <p className="dark:text-white text-black">
+                        End time: {moment(item.end_time).format("DD/MM/YYYY")}
+                      </p>
+                    )}
+                    {item.duration && (
+                      <p className="dark:text-white text-black">
+                        Hours slept: {item.duration}
+                      </p>
+                    )}
+                    <p className="dark:text-white text-black">
                       Quality rating: {item.rating}
                     </p>
-                    <p className="dark:text-white text-black mt-4">
-                      Notes:
-                      <br />
-                      {item.notes}
-                    </p>
-                    <br />
-                    <div className="entry-actions mt-5 mb-3 space-x-2">
+                    {item.notes && (
+                      <p className="dark:text-white text-black">
+                        Notes: {item.notes}
+                      </p>
+                    )}
+                    <div className="entry-actions mt-2 mb-2 space-x-2 flex justify-center">
                       <button
                         className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                         onClick={() => handleEditClick(item.id)}

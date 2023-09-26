@@ -4,4 +4,13 @@ class Entry < ApplicationRecord
   validates :rating, presence: true
   validates :start_time, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validate :end_time_after_start_time
+  private
+
+  def end_time_after_start_time
+    if start_time.present? && end_time.present? && start_time >= end_time
+      errors.add(:end_time, "must be after start time")
+    end
+  end
+
 end
