@@ -45,7 +45,7 @@ function Profile() {
         });
 
         if (response.ok) {
-          toast.success("Profile deleted! Hope to see you again.");
+          toast.success("Profile deleted!");
           await handleLogout();
           navigate("/");
         } else {
