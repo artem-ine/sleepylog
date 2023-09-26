@@ -30,7 +30,7 @@ function Dashboard() {
           Welcome to your dashboard, {auth.user.username}!
         </h1>
       </div>
-      <p className="mx-48 px-5 flex-center text-justify">
+      <p className="mx-30 px-5 flex-center text-justify">
         Welcome to your dashboard. Below you will find your logbook, information
         on your sleeping patterns, and access to your profile. Remember to track
         your sleep as often as you can! The more consistent you are with your

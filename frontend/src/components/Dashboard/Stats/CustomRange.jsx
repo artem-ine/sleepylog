@@ -113,7 +113,7 @@ function CustomRangeComponent() {
           )}
         </>
       ) : (
-        <p className="dark:text-white text-black mt-2 rounded-lg px-2 py-1">Waiting for you to pick two dates...</p>
+        <p className="dark:text-white text-black mt-2 rounded-lg px-2 py-1">Waiting for you to pick a date range...</p>
       )}
     </div>
   );

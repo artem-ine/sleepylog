@@ -1,6 +1,7 @@
 import { useAtom } from "jotai";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode"; // Import jwt-decode
+import { toast } from 'react-toastify';
 
 import { authAtom } from "./authAtom";
 
@@ -54,9 +55,10 @@ export const useAuth = () => {
             user: null,
             token: null,
           });
+          toast.success("See you again soon!");
         })
         .catch((error) => {
-          console.error("Error logging out:", error);
+          toast.error("Whoops! Something went wrong.");
         });
     } else {
       setAuth({
