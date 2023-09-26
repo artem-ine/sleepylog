@@ -51,21 +51,33 @@ main{
 .dummy-chart-wrapper {
   display: inline-block;
   position: relative;
-  width: 400px;
+  width: 320px;
+}
+
+@media (max-width: 768px) {
+  .dummy-chart-wrapper {
+    width: 300px; 
+  }
+}
+
+@media (min-width: 769px) {
+  .dummy-chart-wrapper {
+    width: 400px; 
+  }
 }
 
 @media screen and (min-width: 1000px) {
   .calendar-view-container {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         margin-top: 20px;
-        width: 780px;
+        width: 880px;
   }
 
   .calendar-container {
     flex: 1;
-    margin-right: 20px;
+    /* margin-right: 20px; */
   }
 
   .logged-items-container {
