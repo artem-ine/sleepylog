@@ -12,10 +12,12 @@ function Stats() {
 
   return (
     <>
-      <h1 className="">
-        On the run and looking for quick stats for a specific period of time?
-      </h1>
-      <CustomRange />
+      <div className="border dark:border-primary border-secondary p-3 rounded-xl py-5">
+        <h1 className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
+          Looking for quick stats on a specific period of time? Use our calculator!
+        </h1>
+        <CustomRange />
+      </div>
 
       <button
         onClick={() => setSelectedTab("past-week")}

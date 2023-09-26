@@ -30,6 +30,7 @@ function AverageRatingPastMonth() {
           ],
           options: {
             responsive: true,
+            maintainAspectRatio: false,
           },
         };
         setDataChart(dataChart);
