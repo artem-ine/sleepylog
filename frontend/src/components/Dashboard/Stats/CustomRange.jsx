@@ -77,7 +77,7 @@ function CustomRangeComponent() {
   return (
     <div>
       <h2 className="font-logo text-sm px-2 py-2">Date filter:</h2>
-      <div className="flex justify-content space-evenly">
+      <div className="flex justify-around">
         From
         <DatePicker
           className="bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
@@ -108,7 +108,7 @@ function CustomRangeComponent() {
           )}
           {sleepDuration !== null && (
             <p className="dark:text-white text-black rounded-lg px-2 py-1">
-              Total amount of sleep: {sleepDuration.toFixed(2)} hours.
+              Total amount of sleep logged: {sleepDuration.toFixed(2)} hours.
             </p>
           )}
         </>
