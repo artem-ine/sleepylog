@@ -26,7 +26,7 @@ function AverageRatingPastWeek() {
           datasets: [
             {
               data: Object.values(data.ratings_count),
-              backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"], // Customize colors as needed
+              backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"],
             },
           ],
           options: {

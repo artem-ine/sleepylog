@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
 import jwt_decode from "jwt-decode";
 import PropTypes from "prop-types";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ function LoginForm({ onLoginSuccess }) {
           onLoginSuccess();
         }
         navigate("/");
-        toast.success('Login successful!');
+        toast.success("Login successful!");
       } else {
         toast.error(`Whoops! Something went wrong.`);
       }
@@ -89,10 +89,10 @@ function LoginForm({ onLoginSuccess }) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-2 flex justify-center">
             <button
               type="submit"
-              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm p-2 px-4 rounded-xl"
             >
               Submit
             </button>

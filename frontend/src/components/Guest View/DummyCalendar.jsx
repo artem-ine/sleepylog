@@ -8,14 +8,14 @@ import sun_icon from "../../assets/images/sun_icon.png";
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [clickedDate, setClickedDate] = useState(selectedDate);
-  const [selectedDummyEntry, setSelectedDummyEntry] = useState(null);
+  const [setSelectedDummyEntry] = useState(null);
 
-  const startOfWeek = moment().startOf("week");
+  const startOfWeek = moment().startOf("month");
   const possibleRatings = ["horrible", "mediocre", "OK", "good", "perfect"];
   const possibleDuration = [1, 3, 10, 8, 9, 7];
   const dummyCalendarData = [];
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 31; i++) {
     const date = startOfWeek.clone().add(i, "days").toDate();
     const randomRatingIndex = Math.floor(
       Math.random() * possibleRatings.length
@@ -33,6 +33,7 @@ function CalendarView() {
     };
     dummyCalendarData.push(entry);
   }
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setSelectedDummyEntry(date);
