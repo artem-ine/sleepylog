@@ -41,7 +41,7 @@ function AverageRatingPastMonth() {
   }, []);
 
   return (
-    <div className="mt-2 mb-10">
+    <div className="mt-2 mb-5">
       <h2>Ratings for the Past Month</h2>
       <div className="chart-wrapper">
         {Object.keys(dataChart).length > 0 ? (

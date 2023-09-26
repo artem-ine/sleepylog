@@ -14,7 +14,7 @@ function Stats() {
     <>
     <section className="border border-2 dark:border-primary border-secondary p-3 rounded-xl py-5">
 
-      <div className="mt-5 flex justify-center">
+      <div className="flex justify-center">
         <button
           onClick={() => setSelectedTab("past-week")}
           className={
@@ -33,7 +33,7 @@ function Stats() {
         </button>
       </div>
 
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center mt-2">
       {selectedTab === "past-week" && (
         <div>
           <AverageRatingPastWeek />
