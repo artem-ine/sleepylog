@@ -76,9 +76,9 @@ function CustomRangeComponent() {
 
   return (
     <div>
-      <h2 className="font-logo text-sm px-2 py-2">Date filter:</h2>
-      <div className="flex justify-around">
-        From
+      <h2 className="font-logo px-2 py-2">Date filter:</h2>
+      <div className="flex justify-around items-center px-2 text-sm">
+        From:{" "}
         <DatePicker
           className="dark:bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
           selected={startDate}
@@ -87,7 +87,7 @@ function CustomRangeComponent() {
           startDate={startDate}
           endDate={endDate}
         />
-        To
+        To:
         <DatePicker
           className="dark:bg-white border rounded-xl w-full py-1 px-3 text-black text-sm leading-tight"
           selected={endDate}
@@ -101,19 +101,20 @@ function CustomRangeComponent() {
       {dataFetched ? (
         <>
           {averageRating !== null && (
-            <p className="dark:text-white text-black mt-2 rounded-lg px-2 py-1">
-              Average quality of sleep rated: {averageRating}{" "}
-              out of 5.
+            <p className="dark:text-white text-black mt-2 text-sm rounded-lg px-2 py-1">
+              Average quality of sleep rated (out of 5): {averageRating}
             </p>
           )}
           {sleepDuration !== null && (
-            <p className="dark:text-white text-black rounded-lg px-2 py-1">
-              Total amount of sleep logged: {sleepDuration.toFixed(2)} hours.
+            <p className="dark:text-white text-black text-sm rounded-lg px-2 py-1">
+              Total amount of sleep logged: {sleepDuration.toFixed(2)} hours
             </p>
           )}
         </>
       ) : (
-        <p className="dark:text-white text-black mt-2 rounded-lg px-2 py-1">Waiting for you to pick a date range...</p>
+        <p className="dark:text-white text-black mt-2 text-sm rounded-lg px-2 py-1">
+          Waiting for you to pick a date range...
+        </p>
       )}
     </div>
   );

@@ -30,32 +30,10 @@ function SleepDurationPastMonth() {
       {
         label: "Sleep Duration (hours)",
         data: sleepDurations,
-        borderColor: "rgba(75, 192, 192, 0.5)", // Set line color
-        backgroundColor: "rgba(0, 0, 0, 0)", // Set background color to transparent
-        borderWidth: 2, // Set line width
-        fill: false, // Set to false to have an unfilled line
+        borderColor: "#AFC1D6",
+        backgroundColor: "#AFC1D6",
       },
     ],
-  };
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Sleep Duration for the Past Month",
-      },
-    },
-    scales: {
-      y: {
-        suggestedMax: 24,
-        beginAtZero: true,
-      },
-    },
   };
 
   return (
@@ -63,7 +41,7 @@ function SleepDurationPastMonth() {
       <h2>Sleep Duration for the Past Month</h2>
       <div className="chart-wrapper">
         {Object.keys(sleepData).length > 0 ? (
-          <Line data={data} options={options} />
+          <Line data={data} />
         ) : (
           <p>Loading...</p>
         )}
