@@ -25,8 +25,11 @@ function DummyChart() {
     Tooltip,
     Legend
   );
+
+  const labelsPie = ["horrible", "mediocre", "OK", "good", "excellent"];
+
   const dataChart = {
-    labels: ["January", "February", "March", "April", "May"],
+    labels: labelsPie,
     datasets: [
       {
         label: "Hours of Sleep",
@@ -35,7 +38,9 @@ function DummyChart() {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(75,192,192,0.4)",
         hoverBorderColor: "rgba(75,192,192,1)",
-        data: [6, 7, 6.5, 7.5, 6.8],
+        data: labelsPie.map(() =>
+          faker.datatype.float({ min: 1, max: 5, precision: 1 })
+        ),
       },
       {
         backgroundColor: ["#FF5733", "#FFC300", "#C70039", "#900C3F"],
@@ -47,7 +52,7 @@ function DummyChart() {
     },
   };
 
-  const labels = [
+  const labelsLine = [
     "January",
     "February",
     "March",
@@ -58,17 +63,28 @@ function DummyChart() {
   ];
 
   const dataLine = {
-    labels: labels,
+    labels: labelsLine,
     datasets: [
       {
         label: "Hours of Sleep",
-        data: labels.map(() =>
+        data: labelsLine.map(() =>
           faker.datatype.float({ min: 5, max: 12, precision: 1 })
         ),
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "#AFC1D6",
+        backgroundColor: "#AFC1D6",
       },
     ],
+    options: {
+      animations: {
+        tension: {
+          duration: 1000,
+          easing: "linear",
+          from: 1,
+          to: 0,
+          loop: true,
+        },
+      },
+    },
   };
 
   return (
