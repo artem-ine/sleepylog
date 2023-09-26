@@ -317,9 +317,9 @@ function CalendarView() {
                 </div>
               ) : (
                 filteredItems.map((item) => (
-                  <li key={item.id} className="flex flex-col">
+                  <li key={item.id} className="flex flex-col mb-4">
                     <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                      Entry data
+                      Log Entry
                     </p>
                     <p className="dark:text-white text-black">
                       Start time: {moment(item.start_time).format("DD/MM/YYYY")}
@@ -338,11 +338,11 @@ function CalendarView() {
                       Quality rating: {item.rating}
                     </p>
                     {item.notes && (
-                      <p className="dark:text-white text-black">
+                      <p className="dark:text-white text-black mt-5">
                         Notes: {item.notes}
                       </p>
                     )}
-                    <div className="entry-actions mt-2 mb-2 space-x-2 flex justify-center">
+                    <div className="entry-actions mt-8 mb-2 space-x-2 flex justify-center">
                       <button
                         className="h-8 px-4 bg-secondary dark:bg-primary border border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
                         onClick={() => handleEditClick(item.id)}
