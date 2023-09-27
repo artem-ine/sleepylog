@@ -259,12 +259,12 @@ function CalendarView() {
                         Notes: {item.notes}
                       </p>
                     )}
-                    <p className="text-center">***</p>
-                    <Quickie selectedDate={selectedDateForQuickie} />
                   </li>
                 ))
               )}
             </ul>
+            {/* <p className="text-center">***</p>
+            <Quickie selectedDate={selectedDateForQuickie} /> */}
           </div>
         </div>
       </div>
