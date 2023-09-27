@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../utils/useAuth";
-import useErrorHandler from "../../../utils/errorHandler";
 import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
 
@@ -9,12 +8,11 @@ function Quickie({ onEntrySuccess, selectedDate }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
   const [rating, setRating] = useState("");
-  const [duration, setDuration] = useState("");
-  const [start_time, setStartTime] = useState("");
-  const [end_time, setEndTime] = useState("");
-  const [notes, setNotes] = useState("");
+  const [duration] = useState("");
+  const [notes] = useState("");
 
-  const { error, showError } = useErrorHandler();
+  const oneDay = 24 * 60 * 60 * 1000;
+  const dayBefore = new Date(selectedDate.getTime() - oneDay);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,8 +28,8 @@ function Quickie({ onEntrySuccess, selectedDate }) {
         body: JSON.stringify({
           rating: rating,
           duration: duration,
-          start_time: selectedDate,
-          end_time: end_time,
+          start_time: dayBefore,
+          end_time: selectedDate,
           notes: notes,
         }),
       });

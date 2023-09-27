@@ -81,7 +81,7 @@ function CalendarView() {
       );
 
       const itemsForDate = loggedItems.filter((item) =>
-        moment(item.start_time).isSame(startOfDayDate, "day")
+        moment(item.end_time).isSame(startOfDayDate, "day")
       );
 
       if (itemsForDate.length > 0) {
@@ -93,7 +93,7 @@ function CalendarView() {
   };
 
   const filteredItems = loggedItems.filter((item) =>
-    moment(item.start_time).isSame(selectedDate, "day")
+    moment(item.end_time).isSame(selectedDate, "day")
   );
 
   const handleEditClick = (itemId) => {
