@@ -63,17 +63,18 @@ function Dashboard() {
       </div>
       <div className="flex flex-col items-center">
         <button
-          className="hover:underline decoration-accent"
+          className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent"
           onClick={toggleGuide}
         >
-          Need help?
+          Help?
         </button>
         {showGuide && (
           <div className="flex flex-col items-center">
             <Guide />
             <button
-              className="hover:underline decoration-accent mt-2 cursor-pointer"
+              className="hover:underline decoration-accent mt-2 cursor-pointer bouncey"
               onClick={toggleGuide}
+              style={{ fontSize: "22px" }}
             >
               <RiCloseCircleLine />
             </button>
