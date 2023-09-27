@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import EmojiPicker from "../Entries Modal/EmojiPicker";
+import { RiFileEditLine, RiDeleteBack2Line } from "react-icons/ri";
 
 function EditEntry({ entry, onUpdate, onCancel }) {
   const [updatedEntry, setUpdatedEntry] = useState({
@@ -32,9 +33,23 @@ function EditEntry({ entry, onUpdate, onCancel }) {
 
   return (
     <div>
-      <h2 className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-        Editing entry
-      </h2>
+      <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+        <span className="flex-grow">Editing entry</span>
+        <div className="flex space-x-2">
+          <button
+            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            onClick={handleEdit}
+          >
+          <RiFileEditLine />
+          </button>
+          <button
+            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            onClick={handleCancel}
+          >
+          <RiDeleteBack2Line />
+          </button>
+        </div>
+      </p>
       <div>
         <div className="flex justify-between">
           <label htmlFor="duration">Hours slept:</label>

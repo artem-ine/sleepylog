@@ -57,11 +57,9 @@ function CalendarView() {
   }, [auth]);
 
   const handleDateClick = (date) => {
-  // Check if editing mode is active, and if so, cancel it
     if (editing) {
       setEditing(false);
     }
-    // Set the selected date as clicked
     setClickedDate(date);
   };
 
