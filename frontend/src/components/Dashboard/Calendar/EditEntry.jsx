@@ -132,20 +132,6 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           />
         </div>
       </div>
-      <div className="entry-actions mt-8 mb-2 space-x-2 flex justify-center">
-        <button
-          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-          onClick={handleEdit}
-        >
-          Save
-        </button>
-        <button
-          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-      </div>
     </div>
   );
 }
