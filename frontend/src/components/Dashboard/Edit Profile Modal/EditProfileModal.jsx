@@ -28,7 +28,7 @@ function EditProfileForm({ onProfileChanged }) {
 
     try {
       if (!formData.username || !formData.email) {
-        showError("All fields are required");
+        toast.error("Whoops! A username and email is still required!");
         return;
       }
 
@@ -55,11 +55,11 @@ function EditProfileForm({ onProfileChanged }) {
           },
         });
       } else {
-        toast.error('Whoops,omething went wrong.');
+        toast.error('Whoops, something went wrong.');
       }
     } catch (error) {
       console.error(error);
-      showError("An error occurred during password change.");
+      showError("An error occurred.");
     }
   };
 
