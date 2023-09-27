@@ -19,4 +19,5 @@ Rails.application.routes.draw do
     resources :logbooks
     resources :entries
     resources :users
+    resources :contacts, only: [:create]
 end
