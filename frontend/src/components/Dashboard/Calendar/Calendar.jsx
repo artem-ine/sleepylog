@@ -56,6 +56,15 @@ function CalendarView() {
     fetchUserLogbookEntries();
   }, [auth]);
 
+  const handleDateClick = (date) => {
+  // Check if editing mode is active, and if so, cancel it
+    if (editing) {
+      setEditing(false);
+    }
+    // Set the selected date as clicked
+    setClickedDate(date);
+  };
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setSelectedDateForQuickie(date);
@@ -166,7 +175,7 @@ function CalendarView() {
             onChange={handleDateChange}
             value={selectedDate}
             tileContent={tileContent}
-            onClickDay={(date) => setClickedDate(date)}
+            onClickDay={handleDateClick}
           />
         </div>
 
