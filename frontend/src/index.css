@@ -76,11 +76,32 @@ main{
 
   .calendar-container {
     flex: 1;
+    border-radius: 30px;
   }
 
   .logged-items-container {
     flex: 1;
     height: 320px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.move-up-and-down {
+  position: relative;
+  animation: moveUpAndDown 6s infinite linear;
+}
+
+@keyframes moveUpAndDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  16.67% {
+    transform: translateY(-50px); /* Move up */
+  }
+  50% {
+    transform: translateY(0); /* Back to middle */
+  }
+  83.33% {
+    transform: translateY(50px); /* Move down */
   }
 }

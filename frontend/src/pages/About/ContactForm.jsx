@@ -40,7 +40,7 @@ function ContactForm() {
   };
 
   return (
-    <div className="flex flex-col mb-10 border-2 dark:border-primary border-secondary rounded-xl px-7 py-7">
+    <div className="shadow-xl flex  flex-col mb-10 border-2 dark:border-primary border-secondary rounded-xl px-7 py-7">
       <div className="flex items-center justify-around flex-wrap">
         <form
           onSubmit={handleSubmit}
