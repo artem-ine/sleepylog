@@ -6,6 +6,7 @@ import lil_icons from "../../assets/images/lil_icons.png";
 import SignupForm from "../Signup Modal/SignupForm";
 import SignupModal from "../Signup Modal";
 import "../../index.css";
+import "../Dashboard/Calendar/Calendar.css";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
