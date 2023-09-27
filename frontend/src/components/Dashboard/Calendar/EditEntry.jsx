@@ -50,7 +50,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           </button>
         </div>
       </p>
-      <div>
+      <div className="mt-3">
         <div className="flex justify-between">
           <label htmlFor="duration">Hours slept:</label>
           <input

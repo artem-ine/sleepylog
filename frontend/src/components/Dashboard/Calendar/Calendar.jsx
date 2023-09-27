@@ -223,7 +223,7 @@ function CalendarView() {
                         </button>
                       </div>
                     </p>
-                    <p className="dark:text-white text-black">
+                    <p className="dark:text-white text-black mt-1">
                       Start time: {moment(item.start_time).format("DD/MM/YYYY")}
                     </p>
                     {item.end_time && (
@@ -240,7 +240,7 @@ function CalendarView() {
                       Quality rating: {item.rating}
                     </p>
                     {item.notes && (
-                      <p className="dark:text-white text-black mt-5">
+                      <p className="dark:text-white text-black mt-5 mb-4">
                         Notes: {item.notes}
                       </p>
                     )}
