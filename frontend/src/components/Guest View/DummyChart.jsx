@@ -12,7 +12,6 @@ import {
 import { Line } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
-import faker from "faker";
 import { useState, useEffect } from "react";
 
 function DummyChart() {
@@ -41,8 +40,14 @@ function DummyChart() {
     Legend
   );
 
+  function getRandomFloat(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
   function getRandomDoughnutData() {
     const labelsPie = ["😫", "😐", "😊", "😄", "😍"];
+    const data = labelsPie.map(() => getRandomFloat(1, 5).toFixed(1));
+
     return {
       labels: labelsPie,
       datasets: [
@@ -57,9 +62,7 @@ function DummyChart() {
           ],
           borderColor: "#AFC1D6",
           borderWidth: 1,
-          data: labelsPie.map(() =>
-            faker.datatype.float({ min: 1, max: 5, precision: 1 })
-          ),
+          data: data,
         },
       ],
       options: {
@@ -79,14 +82,14 @@ function DummyChart() {
       "Saturday",
       "Sunday",
     ];
+    const data = labelsLine.map(() => getRandomFloat(1, 12).toFixed(1));
+
     return {
       labels: labelsLine,
       datasets: [
         {
           label: "Hours of sleep this week",
-          data: labelsLine.map(() =>
-            faker.datatype.float({ min: 5, max: 12, precision: 1 })
-          ),
+          data: data,
           borderColor: "#AFC1D6",
           backgroundColor: "#AFC1D6",
         },
