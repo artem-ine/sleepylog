@@ -50,7 +50,7 @@ function Dashboard() {
           className="h-20 pr-10 "
         />
         <button
-          className="font-logo hover:underline decoration-accent new-entry"
+          className="font-logo new-entry"
           onClick={openEntryModal}
         >
           Add an entry!
