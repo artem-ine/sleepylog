@@ -29,6 +29,11 @@ function ContactForm() {
       });
 
       if (response.ok) {
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
         toast.success("Message sent! We'll get back to you as soon as we can!");
       } else {
         const errorData = await response.json();
