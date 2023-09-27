@@ -72,6 +72,14 @@ function CalendarView() {
     setClickedDate(selectedDate);
   }, [selectedDate]);
 
+  const ratingEmojis = {
+    horrible: "😫",
+    mediocre: "😐",
+    OK: "😊",
+    good: "😄",
+    perfect: "😍",
+  };
+
   const tileContent = ({ date, view }) => {
     if (view === "month") {
       const startOfDayDate = new Date(
@@ -85,7 +93,11 @@ function CalendarView() {
       );
 
       if (itemsForDate.length > 0) {
-        return <div className="calendar-dot" />;
+        const rating = itemsForDate[0].rating;
+
+        if (ratingEmojis[rating]) {
+          return <div className="calendar-emoji">{ratingEmojis[rating]}</div>;
+        }
       }
     }
 
@@ -237,7 +249,10 @@ function CalendarView() {
                       </p>
                     )}
                     <p className="dark:text-white text-black">
-                      Quality rating: {item.rating}
+                      <span className="underline underline-offset-1">
+                        Quality rating:
+                      </span>{" "}
+                      {ratingEmojis[item.rating]}
                     </p>
                     {item.notes && (
                       <p className="dark:text-white text-black mt-5 mb-4">
