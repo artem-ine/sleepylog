@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Emoji.css";
 
 function EmojiPicker({ onSelectRating }) {
   const [selectedRating, setSelectedRating] = useState(null);
@@ -16,7 +17,7 @@ function EmojiPicker({ onSelectRating }) {
       key={emoji}
       type="button"
       onClick={() => handleEmojiClick(emojiToRating[emoji])}
-      className={selectedRating === emojiToRating[emoji] ? "selected" : ""}
+      className={`emoji-button ${selectedRating === emojiToRating[emoji] ? "selected" : ""}`}
     >
       {emoji}
     </button>
