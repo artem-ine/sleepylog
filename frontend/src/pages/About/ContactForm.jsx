@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import mimi from "../../assets/images/mimi.png";
 import snork from "../../assets/images/snork.png";
 import "./contact.css";
@@ -28,14 +29,20 @@ function ContactForm() {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log(data.message);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+        toast.success("Message sent! We'll get back to you as soon as we can!");
       } else {
         const errorData = await response.json();
         console.error(errorData.errors);
+        toast.error("Whoops! Is everything correctly filled out?");
       }
     } catch (error) {
       console.error("An error occurred:", error);
+      toast.error("Whoops, an error occurred! Please try again later.");
     }
   };
 
