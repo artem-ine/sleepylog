@@ -72,6 +72,14 @@ function CalendarView() {
     setClickedDate(selectedDate);
   }, [selectedDate]);
 
+  const ratingEmojis = {
+    horrible: "😫",
+    mediocre: "😐",
+    OK: "😊",
+    good: "😄",
+    perfect: "😍",
+  };
+
   const tileContent = ({ date, view }) => {
     if (view === "month") {
       const startOfDayDate = new Date(
@@ -85,7 +93,11 @@ function CalendarView() {
       );
 
       if (itemsForDate.length > 0) {
-        return <div className="calendar-dot" />;
+        const rating = itemsForDate[0].rating;
+
+        if (ratingEmojis[rating]) {
+          return <div className="calendar-emoji">{ratingEmojis[rating]}</div>;
+        }
       }
     }
 
@@ -198,8 +210,8 @@ function CalendarView() {
                 />
               ) : filteredItems.length === 0 ? (
                 <div>
-                  <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                    No entries yet - wanna do a quickie?
+                  <p className="font-logo dark:text-white text-black border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+                    No entry for last night yet — wanna do a quickie?
                   </p>
                   <Quickie selectedDate={selectedDateForQuickie} />
                 </div>
@@ -237,10 +249,13 @@ function CalendarView() {
                       </p>
                     )}
                     <p className="dark:text-white text-black">
-                      Quality rating: {item.rating}
+                      <span className="underline underline-offset-1">
+                        Quality rating:
+                      </span>{" "}
+                      {ratingEmojis[item.rating]}
                     </p>
                     {item.notes && (
-                      <p className="dark:text-white text-black mt-5 mb-4">
+                      <p className="dark:text-white text-black mt-5">
                         Notes: {item.notes}
                       </p>
                     )}
@@ -248,6 +263,8 @@ function CalendarView() {
                 ))
               )}
             </ul>
+            {/* <p className="text-center">***</p>
+            <Quickie selectedDate={selectedDateForQuickie} /> */}
           </div>
         </div>
       </div>

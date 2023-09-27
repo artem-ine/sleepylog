@@ -152,3 +152,9 @@
   background-color: #AFC1D6; 
   border-radius: 80%;
 }
+
+.calendar-emoji {
+  width: 7px;
+  height: 7px;
+  margin-top: 4px; 
+}
