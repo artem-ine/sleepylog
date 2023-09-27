@@ -127,7 +127,7 @@ function Navbar() {
       <SignupModal
         isOpen={signupModalIsOpen}
         onRequestClose={closeSignupModal}
-        openSignupModal={closeLoginModal}
+        openSignupModal={closeSignupModal}
       >
         <SignupForm onSignupSuccess={closeSignupModal} />
       </SignupModal>
