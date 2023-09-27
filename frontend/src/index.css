@@ -111,3 +111,17 @@ main{
   border-radius: "15px";
   max-width: "250px";
 }
+
+.bouncey {
+  animation: bouncey 0.5s infinite alternate;
+}
+
+@keyframes bouncey {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.3);
+  }
+}
