@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../utils/useAuth";
-import useErrorHandler from "../../utils/errorHandler";
-import EmojiPicker from "../Dashboard/Entries Modal/EmojiPicker";
+import { useAuth } from "../../../utils/useAuth";
+import useErrorHandler from "../../../utils/errorHandler";
+import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
 
 function Quickie({ onEntrySuccess, selectedDate }) {

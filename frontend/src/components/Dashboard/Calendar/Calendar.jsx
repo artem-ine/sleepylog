@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import { useAuth } from "../../../utils/useAuth";
-import Quickie from "../Quickie";
+import Quickie from "../Entries Modal/Quickie";
 import "./Calendar.css";
 import { toast } from "react-toastify";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import lil_icons from "../../../assets/images/lil_icons.png";
-import EmojiPicker from "../Entries Modal/EmojiPicker";
 import EditEntry from "./EditEntry";
 
 function CalendarView() {

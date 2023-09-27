@@ -4,9 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import EmojiPicker from "../Entries Modal/EmojiPicker";
 
 function EditEntry({ entry, onUpdate, onCancel }) {
-  // Initialize the state with the values from the entry prop
   const [updatedEntry, setUpdatedEntry] = useState({
-    duration: entry.duration || "", // Use entry.duration if available, otherwise an empty string
+    duration: entry.duration || "",
     start_time: entry.start_time || null,
     end_time: entry.end_time || null,
     notes: entry.notes || "",
