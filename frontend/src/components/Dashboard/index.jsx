@@ -8,6 +8,7 @@ import { useAuth } from "../../utils/useAuth";
 import EntryModal from "./Entries Modal";
 import EntryForm from "./Entries Modal/Entries";
 import Guide from "./Guide";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 function Dashboard() {
   const { auth } = useAuth();
@@ -74,7 +75,7 @@ function Dashboard() {
               className="hover:underline decoration-accent mt-2 cursor-pointer"
               onClick={toggleGuide}
             >
-              x
+              <RiCloseCircleLine />
             </button>
           </div>
         )}
