@@ -112,7 +112,7 @@ main{
   max-width: "250px";
 }
 
-.bouncey {
+.bouncey, .light-toggle:hover {
   animation: bouncey 0.5s infinite alternate;
 }
 

@@ -5,7 +5,6 @@ import LogInModal from "./Login Modal";
 import SignupModal from "./Signup Modal";
 import LoginForm from "./Login Modal/LoginForm";
 import SignupForm from "./Signup Modal/SignupForm";
-import LightToggle from "./LightToggle";
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -45,7 +44,6 @@ function Navbar() {
                   SLEEPYLOG
                 </h2>
               </Link>
-              <LightToggle />
               <div className="md:hidden">
                 <button
                   className="p-2 text-black dark:text-white rounded-md outline-none focus:border-gray-400 focus:border"

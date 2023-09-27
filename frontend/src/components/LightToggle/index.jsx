@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { RiLightbulbLine } from "react-icons/ri";
 
 function LightToggle() {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
@@ -18,8 +19,8 @@ function LightToggle() {
   };
 
   return (
-    <button onClick={toggleTheme}>
-      Toggle Theme
+    <button onClick={toggleTheme} className="light-toggle">
+      <RiLightbulbLine />
     </button>
   );
 }
