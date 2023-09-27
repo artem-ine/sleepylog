@@ -7,11 +7,12 @@ import mimi from "../../assets/images/mimi.png";
 import { useAuth } from "../../utils/useAuth";
 import EntryModal from "./Entries Modal";
 import EntryForm from "./Entries Modal/Entries";
+import Guide from "./Guide";
 
 function Dashboard() {
   const { auth } = useAuth();
   const [selectedTab, setSelectedTab] = useState("calendar");
-
+  const [showGuide, setShowGuide] = useState(false);
   const [entryModalIsOpen, setEntryModalIsOpen] = useState(false);
 
   const openEntryModal = () => {
@@ -20,6 +21,10 @@ function Dashboard() {
 
   const closeEntryModal = () => {
     setEntryModalIsOpen(false);
+  };
+
+  const toggleGuide = () => {
+    setShowGuide(!showGuide);
   };
 
   return (
@@ -49,21 +54,38 @@ function Dashboard() {
         >
           Add an entry!
         </button>
-
         <img
           src={mimi}
           alt="sun looking happy wearing a sunhat"
           className="h-20 pl-10"
         />
-
-        <EntryModal
-          isOpen={entryModalIsOpen}
-          onRequestClose={closeEntryModal}
-          onEntrySuccess={closeEntryModal}
-        >
-          <EntryForm onEntrySuccess={closeEntryModal} />
-        </EntryModal>
       </div>
+      <div className="flex flex-col items-center">
+        <button
+          className="hover:underline decoration-accent"
+          onClick={toggleGuide}
+        >
+          Need help?
+        </button>
+        {showGuide && (
+          <div className="flex flex-col items-center">
+            <Guide />
+            <button
+              className="hover:underline decoration-accent mt-2 cursor-pointer"
+              onClick={toggleGuide}
+            >
+              x
+            </button>
+          </div>
+        )}
+      </div>
+      <EntryModal
+        isOpen={entryModalIsOpen}
+        onRequestClose={closeEntryModal}
+        onEntrySuccess={closeEntryModal}
+      >
+        <EntryForm onEntrySuccess={closeEntryModal} />
+      </EntryModal>
       <br />
 
       <div className="tab-nav mb-3 font-logo">
