@@ -3,6 +3,7 @@ import useErrorHandler from "../../../utils/errorHandler";
 import { useAuth } from "../../../utils/useAuth";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function ChangePasswordForm({ onPasswordChanged }) {
   const navigate = useNavigate();
@@ -42,12 +43,12 @@ function ChangePasswordForm({ onPasswordChanged }) {
 
     try {
       if (!formData.newPassword || !formData.confirmPassword) {
-        showError("All fields are required");
+        toast.error("All fields are required!");
         return;
       }
 
       if (formData.newPassword !== formData.confirmPassword) {
-        showError("New password and confirmation do not match");
+        toast.error("New password and password confirmation do not match!");
         return;
       }
 
@@ -66,7 +67,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
       });
 
       if (response.status === 200) {
-        alert("Password updated successfully.");
+        toast.success("Password updated successfully!");
         if (onPasswordChanged) {
           onPasswordChanged();
         }
