@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import EmojiPicker from "../Entries Modal/EmojiPicker";
-import { RiFileEditLine, RiDeleteBack2Line } from "react-icons/ri";
+import { RiSave3Fill, RiDeleteBack2Line } from "react-icons/ri";
 
 function EditEntry({ entry, onUpdate, onCancel }) {
   const [updatedEntry, setUpdatedEntry] = useState({
@@ -40,7 +40,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleEdit}
           >
-          <RiFileEditLine />
+          <RiSave3Fill />
           </button>
           <button
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
