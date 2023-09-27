@@ -107,7 +107,7 @@ function CalendarView() {
           <div className="overflow-y-auto h-56 pt-2 px-1 flex flex-col justify-around items">
             <ul className="dark:text-white text-black text-sm px-2">
               {filteredItems.map((dummyEntry, index) => (
-                <li key={dummyEntry.id} className="flex flex-col mb-5">
+                <li key={index} className="flex flex-col mb-5">
                   <div key={index} className="dummy-entry">
                     <p className="font-logo dark:text-white text-black mb-3 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
                       Sleep Entry

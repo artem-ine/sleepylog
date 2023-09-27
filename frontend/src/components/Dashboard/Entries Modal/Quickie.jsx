@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../utils/useAuth";
-import useErrorHandler from "../../utils/errorHandler";
-import EmojiPicker from "../Dashboard/Entries Modal/EmojiPicker";
+import { useAuth } from "../../../utils/useAuth";
+import useErrorHandler from "../../../utils/errorHandler";
+import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
 
 function Quickie({ onEntrySuccess, selectedDate }) {
@@ -57,18 +57,20 @@ function Quickie({ onEntrySuccess, selectedDate }) {
     <div>
       <form className="px-4 pt-3" onSubmit={handleSubmit}>
         <div className="mt-4">
-        <EmojiPicker
-          onSelectRating={(selectedRating) => setRating(selectedRating)}
-        />
+          <h2 className="text-sm font mb-1 font-bold">
+            How well did you sleep?
+          </h2>
+          <EmojiPicker
+            onSelectRating={(selectedRating) => setRating(selectedRating)}
+          />
         </div>
-
         <div className="flex justify-center">
-        <button
-          type="submit"
-          className="mt-8 h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-        >
-          Done
-        </button>
+          <button
+            type="submit"
+            className="mt-8 h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+          >
+            Done
+          </button>
         </div>
       </form>
     </div>
