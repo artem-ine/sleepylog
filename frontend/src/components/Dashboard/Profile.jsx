@@ -98,7 +98,7 @@ function Profile() {
 
   return (
     <div>
-      <div className="border border-2 dark:border-primary border-secondary p-3 rounded-xl py-5">
+      <div className="border border-2 dark:border-primary border-secondary p-3 rounded-xl py-5 mt-5">
         <h2 className="font-logo mb-2 text-center dark:text-white text-black text-lg">
           Account details
         </h2>
