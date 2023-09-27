@@ -105,3 +105,9 @@ main{
     transform: translateY(15px); 
   }
 }
+
+.bubble{
+  box-shadow: "0px 0px 10px rgba(0, 0, 0, 0.2)";
+  border-radius: "15px";
+  max-width: "250px";
+}

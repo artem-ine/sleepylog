@@ -11,7 +11,7 @@ function Stats() {
 
   return (
     <>
-      <div className="border-2 shadow-xl flex flex-col dark:border-primary border-secondary px-3 rounded-xl py-5 mt-5">
+      <div className="border-2 shadow-xl  flex flex-col dark:border-primary border-secondary px-3 rounded-xl py-5 mt-5">
         <h1 className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
           Looking for quick stats on a specific period of time? Use our
           calculator!

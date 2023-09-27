@@ -4,7 +4,6 @@ import Stats from "./Stats/Stats";
 import Profile from "./Profile";
 import snork from "../../assets/images/snork.png";
 import mimi from "../../assets/images/mimi.png";
-import lil_icons from "../../assets/images/lil_icons.png";
 import { useAuth } from "../../utils/useAuth";
 import EntryModal from "./Entries Modal";
 import EntryForm from "./Entries Modal/Entries";
@@ -42,7 +41,7 @@ function Dashboard() {
         <img
           src={snork}
           alt="moon sleeping wearing a nightcap"
-          className="h-20 pr-10"
+          className="h-20 pr-10 "
         />
         <button
           className="font-logo hover:underline decoration-accent"
