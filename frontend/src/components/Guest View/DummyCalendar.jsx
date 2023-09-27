@@ -3,11 +3,22 @@ import Calendar from "react-calendar";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import lil_icons from "../../assets/images/lil_icons.png";
+import SignupForm from "../Signup Modal/SignupForm";
+import SignupModal from "../Signup Modal";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [clickedDate, setClickedDate] = useState(selectedDate);
   const [setSelectedDummyEntry] = useState(null);
+  const [signupModalIsOpen, setSignupModalIsOpen] = useState(false);
+
+  const openSignupModal = () => {
+    setSignupModalIsOpen(true);
+  };
+
+  const closeSignupModal = () => {
+    setSignupModalIsOpen(false);
+  };
 
   const startOfWeek = moment().startOf("month");
   const possibleRatings = ["😫", "😐", "😊", "😄", "😍"];
@@ -124,8 +135,8 @@ function CalendarView() {
             </ul>
             <div className="flex justify-center">
               <button
-                className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-                onClick={() => handleEditClick(null)}
+                className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-1 px-4 rounded-xl"
+                onClick={openSignupModal}
               >
                 Join sleepyLog and start logging now!
               </button>
@@ -133,6 +144,13 @@ function CalendarView() {
           </div>
         </div>
       </div>
+      <SignupModal
+        isOpen={signupModalIsOpen}
+        onRequestClose={closeSignupModal}
+        openSignupModal={closeSignupModal}
+      >
+        <SignupForm onSignupSuccess={closeSignupModal} />
+      </SignupModal>
     </>
   );
 }

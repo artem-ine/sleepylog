@@ -42,7 +42,7 @@ function DummyChart() {
   );
 
   function getRandomDoughnutData() {
-    const labelsPie = ["horrible", "mediocre", "OK", "good", "perfect"];
+    const labelsPie = ["😫", "😐", "😊", "😄", "😍"];
     return {
       labels: labelsPie,
       datasets: [
@@ -57,8 +57,6 @@ function DummyChart() {
           ],
           borderColor: "#AFC1D6",
           borderWidth: 1,
-          hoverBackgroundColor: "rgba(75,192,192,0.4)",
-          hoverBorderColor: "rgba(75,192,192,1)",
           data: labelsPie.map(() =>
             faker.datatype.float({ min: 1, max: 5, precision: 1 })
           ),
