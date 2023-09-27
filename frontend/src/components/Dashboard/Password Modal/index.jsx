@@ -7,7 +7,7 @@ const PasswordModal = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Password Modal"
-      className=".custom-modal"
+      className="custom-modal"
     >
       <PasswordForm onPasswordChanged={onRequestClose} />
       <div className="modal-actions">

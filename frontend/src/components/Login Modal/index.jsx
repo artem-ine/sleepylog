@@ -11,7 +11,7 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Login/Signup Modal"
-      className=".custom-modal"
+      className="custom-modal"
     >
       {isPasswordResetRequested ? (
         <PasswordResetRequestForm
