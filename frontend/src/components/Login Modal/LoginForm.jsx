@@ -1,57 +1,36 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import useErrorHandler from "../../utils/errorHandler";
-import jwt_decode from "jwt-decode";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
+import { useAuth } from "../../utils/useAuth";
 
 function LoginForm({ onLoginSuccess }) {
   const navigate = useNavigate();
+  const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const data = {};
-  const { error, showError } = useErrorHandler();
+  const { error } = useErrorHandler();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("/api/users/sign_in", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: { email: email, password: password },
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const token = response.headers.get("Authorization");
-        console.log("loggin in:" + token);
-        console.log("check token + user data:", data.user + token);
-        Cookies.set("token", token);
-        const decToken = jwt_decode(token);
-        console.log("dec tok" + decToken.sub);
-        if (onLoginSuccess) {
-          onLoginSuccess();
-        }
-        navigate("/");
-        toast.success("Login successful!");
-      } else {
-        toast.error(`Whoops! Invalid email or password.`);
+      await signIn(email, password, false);
+      if (onLoginSuccess) {
+        onLoginSuccess();
       }
+      navigate("/");
+      toast.success("Login successful!");
     } catch (error) {
-      toast.error(`Whoops. Something went wrong.`);
+      toast.error(`Whoops! ${error.message}`);
     }
   };
+
   return (
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
         <form
-          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
+          className="bg-primary shadow-md rounded-2xl  border-secondary border-4 px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">
