@@ -41,7 +41,7 @@ function LoginForm({ onLoginSuccess }) {
         navigate("/");
         toast.success("Login successful!");
       } else {
-        toast.error(`Whoops! Something went wrong.`);
+        toast.error(`Whoops! Invalid email or password.`);
       }
     } catch (error) {
       toast.error(`Whoops. Something went wrong.`);
