@@ -40,40 +40,43 @@ function ContactForm() {
   };
 
   return (
-    <section>
-      <div className="flex flex-col border-2 dark:border-primary border-secondary rounded-xl px-7 py-7 sm:text-left">
-        <div className="flex items-center justify-around">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+    <div className="flex flex-col mb-10 border-2 dark:border-primary border-secondary rounded-xl px-7 py-7">
+      <div className="flex items-center justify-around flex-wrap">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-2 mb-5 w-full max-w-xs"
+        >
+          <div className="flex flex-col gap-2">
             <h1 className="font-heading mb-2">Contact Us</h1>
-            <div className="flex  items-center gap-3">
-              <label className="block text-black dark:text-white font-bold mb-2">
+            <div className="flex items-center gap-3">
+              <label className="block text-black dark:text-white font-bold mb-2 text-sm">
                 Name:
               </label>
               <input
                 type="text"
                 name="name"
-                className="bg-white  appearance-none border rounded-xl py-2 px-3 text-black text-sm leading-tight"
+                className="bg-white truncate appearance-none border rounded-xl py-2 px-3 text-black text-sm  leading-tight"
                 value={formData.name}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="flex gap-3">
-              <label className="block text-black dark:text-white font-bold mb-2">
+              <label className="block text-black dark:text-white font-bold mb-2 text-sm">
                 Email:
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className="bg-white appearance-none border rounded-xl py-2 px-3 text-black text-sm leading-tight"
+                className="bg-white truncate appearance-none border rounded-xl py-2 px-3 text-black text-sm leading-tight"
                 required
                 value={formData.email}
                 onChange={handleChange}
               />
             </div>
             <div className="flex flex-col">
-              <label className="block text-black dark:text-white font-bold mb-2">
+              <label className="block text-black dark:text-white font-bold mb-2 text-sm">
                 Message:
               </label>
               <textarea
@@ -83,7 +86,7 @@ function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="bg-white appearance-none border rounded-xl py-2 px-3 text-black text-sm leading-tight"
+                className="bg-white truncate appearance-none border rounded-xl py-2 px-3 text-black text-sm leading-tight"
               />
             </div>
             <button
@@ -92,22 +95,22 @@ function ContactForm() {
             >
               Submit
             </button>
-          </form>
-          <div className="flex flex-col justify-stretch">
-            <img
-              src={mimi}
-              alt="sun looking happy wearing a sunhat"
-              className="h-28 px-6 animate-bounce"
-            />
-            <img
-              src={snork}
-              alt="moon sleeping with a sleephat"
-              className="h-28 px-6 animate-pulse"
-            />
           </div>
+        </form>
+        <div className="flex flex-col justify-stretch mt-8">
+          <img
+            src={mimi}
+            alt="sun looking happy wearing a sunhat"
+            className="h-28 px-6 animate-bounce"
+          />
+          <img
+            src={snork}
+            alt="moon sleeping with a sleephat"
+            className="h-28 px-6 animate-pulse"
+          />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

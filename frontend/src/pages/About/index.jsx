@@ -8,8 +8,8 @@ function About() {
     <>
       <Navbar />
       <main className="bg-white dark:bg-black text-black dark:text-white flex flex-col items-center">
-        <section className="mt-10 flex flex-col px-10 lg:w-2/3">
-          <div className="flex flex-col border-2 mb-5 dark:border-primary border-secondary rounded-xl px-7 py-7 sm:text-left">
+        <section className="mt-10 flex flex-col px-10 w-full lg:w-2/3">
+          <div className="flex flex-col border-2 mb-5 dark:border-primary border-secondary rounded-xl px-7 py-7">
             <h1 className="font-heading mb-2">About Us</h1>
             <p className="mb-2 text-justify">
               Based on shared sentiments about inconsistent sleeping schedules,
