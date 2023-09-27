@@ -54,7 +54,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
         <div className="flex justify-between">
           <label htmlFor="duration">Hours slept:</label>
           <input
-            className="text-black rounded px-1 border bg-white ml-1"
+            className="text-black rounded-lg px-1 border bg-white ml-1"
             type="number"
             min="0"
             id="duration"
@@ -72,7 +72,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           <label htmlFor="start_time">Start Time:</label>
           <DatePicker
             id="start_time"
-            className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-white shadow appearance-none border rounded-lg w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
             selected={
               updatedEntry.start_time ? new Date(updatedEntry.start_time) : null
             }
@@ -92,7 +92,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           <label htmlFor="end_time">End Time:</label>
           <DatePicker
             id="end_time"
-            className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-white shadow appearance-none border rounded-lg w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
             selected={
               updatedEntry.end_time ? new Date(updatedEntry.end_time) : null
             }
@@ -119,9 +119,11 @@ function EditEntry({ entry, onUpdate, onCancel }) {
         <div className="flex justify-between">
           <label htmlFor="notes">Notes:</label>
           <textarea
-            className="text-black rounded px-1 border bg-white ml-1 mt-1"
+            className="text-black rounded-lg px-1 border bg-white ml-1 mt-1"
             id="notes"
             name="notes"
+            rows="2"
+            cols="30"
             value={updatedEntry.notes}
             onChange={(e) =>
               setUpdatedEntry({
