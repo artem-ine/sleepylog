@@ -25,17 +25,18 @@ function Dashboard() {
 
   return (
     <div className="flex flex-col items-center p-10">
-      <div className="flex">
-        <h1 className="font-logo text-xl flex self-center">
+      <div className="flex flex-col w-full lg:w-2/3 text-center">
+        <h1 className="font-logo text-xl">
           Welcome to your dashboard, {auth.user.username}!
         </h1>
+        <p className="px-5 flex-center text-justify">
+          Welcome to your dashboard. Below you will find your logbook,
+          information on your sleeping patterns, and access to your profile.
+          Remember to track your sleep as often as you can! The more consistent
+          you are with your entries, the better and more accurate the metrics
+          will be.
+        </p>
       </div>
-      <p className="mx-30 px-5 flex-center text-justify">
-        Welcome to your dashboard. Below you will find your logbook, information
-        on your sleeping patterns, and access to your profile. Remember to track
-        your sleep as often as you can! The more consistent you are with your
-        entries, the better and more accurate the metrics will be.
-      </p>
       <br />
       <div className="flex">
         <img
@@ -70,23 +71,21 @@ function Dashboard() {
         <button
           onClick={() => setSelectedTab("calendar")}
           className={
-            selectedTab === "calendar" ? "active pr-10 font-bold" : "pr-10"
+            selectedTab === "calendar" ? "active pr-8 font-bold" : "pr-8"
           }
         >
           Calendar
         </button>
         <button
           onClick={() => setSelectedTab("stats")}
-          className={
-            selectedTab === "stats" ? "active pr-10 font-bold" : "pr-10"
-          }
+          className={selectedTab === "stats" ? "active pr-8 font-bold" : "pr-8"}
         >
           Stats
         </button>
         <button
           onClick={() => setSelectedTab("profile")}
           className={
-            selectedTab === "profile" ? "active pr-10 font-bold" : "pr-10"
+            selectedTab === "profile" ? "active pr-8 font-bold" : "pr-8"
           }
         >
           Profile

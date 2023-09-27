@@ -24,7 +24,7 @@ function Stats() {
           onClick={() => setSelectedTab("past-week")}
           className={
             selectedTab === "past-week"
-              ? "active pr-10 font-bold font-logo"
+              ? "active lg:pr-10 font-bold font-logo"
               : "p-2 font-logo"
           }
         >
@@ -34,7 +34,7 @@ function Stats() {
           onClick={() => setSelectedTab("past-month")}
           className={
             selectedTab === "past-month"
-              ? "active pl-10 font-bold font-logo"
+              ? "active lg:pl-10 font-bold font-logo"
               : "p-2 font-logo"
           }
         >
@@ -50,7 +50,7 @@ function Stats() {
               <div className="">
                 <AverageRatingPastWeek />
               </div>
-              <div className="">
+              <div className="pt-5">
                 <SleepDurationPastWeek />
               </div>
             </div>
