@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { toast } from 'react-toastify';
 
 function PasswordResetRequestForm({ onRequestClose }) {
   const [email, setEmail] = useState("");
@@ -10,29 +11,36 @@ function PasswordResetRequestForm({ onRequestClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/api/users/password/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: { email: email },
-        }),
-      });
 
-      if (response.ok) {
-        alert("Password reset link sent successfully");
-      } else {
-        const errorData = await response.json();
-        const errorMessage =
-          errorData.message || "Failed to send password reset link.";
-        alert(errorMessage);
+    const confirmResetPassword = window.confirm(
+      "Are you sure you want to reset your password?"
+    );
+
+      if (confirmResetPassword) {
+      try {
+        const response = await fetch("/api/users/password/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: { email: email },
+          }),
+        });
+
+        if (response.ok) {
+          toast.success("Please check your email to change your password!");
+        } else {
+          const errorData = await response.json();
+          const errorMessage =
+            errorData.message || "Failed to send password reset link.";
+          alert(errorMessage);
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred while sending the password reset link.");
       }
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred while sending the password reset link.");
-    }
+    };
   };
 
   return (

@@ -58,48 +58,53 @@ function Profile() {
         alert("An error occurred during profile deletion.");
       }
     };
-  }
+  };
 
   console.log(auth.user.email);
   console.log(auth.user.id);
 
   const handleResetPassword = async () => {
-    try {
-      const response = await fetch("/api/users/password/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`,
-        },
-        body: JSON.stringify({
-          user: { email: auth.user.email },
-        }),
-      });
+    const confirmResetPassword = window.confirm(
+      "Are you sure you want to reset your password?"
+    );
 
-      if (response.ok) {
-        alert("Password reset link sent successfully");
-      } else {
-        const errorData = await response.json();
-        const errorMessage =
-          errorData.message || "Failed to send password reset link.";
-        alert(errorMessage);
+      if (confirmResetPassword) {
+      try {
+        const response = await fetch("/api/users/password/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+          body: JSON.stringify({
+            user: { email: auth.user.email },
+          }),
+        });
+
+        if (response.ok) {
+          toast.success("Please check your email to change your password!");
+        } else {
+          const errorData = await response.json();
+          const errorMessage =
+            errorData.message || "Failed to send password reset link.";
+          alert(errorMessage);
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred while sending the password reset link.");
       }
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred while sending the password reset link.");
-    }
+    };
   };
 
   return (
     <div>
       <div className="border border-2 dark:border-primary border-secondary p-3 rounded-xl py-5">
-        <h2 className="text-center dark:text-white text-black text-lg">
+        <h2 className="font-logo mb-2 text-center dark:text-white text-black text-lg">
           Account details
         </h2>
         <p>Username: {auth.user.username}</p>
         <p>Email: {auth.user.email}</p>
-        <br />
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 mt-5">
           <button
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={openEditProfileModal}
