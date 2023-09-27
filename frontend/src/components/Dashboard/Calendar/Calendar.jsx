@@ -6,8 +6,9 @@ import Quickie from "../Entries Modal/Quickie";
 import "./Calendar.css";
 import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
-import lil_icons from "../../../assets/images/lil_icons.png";
+import moon_icon from "../../../assets/images/moon_icon.png";
 import EditEntry from "./EditEntry";
+import { RiPencilLine, RiDeleteBinLine } from "react-icons/ri";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -168,18 +169,17 @@ function CalendarView() {
             onClickDay={(date) => setClickedDate(date)}
           />
         </div>
-        <div className="flex justify-center">
-          <img
-            src={lil_icons}
-            alt="doodled sun and moon with a cloud"
-            className="h-15"
-          />
-        </div>
+
         <div className="logged-items-container border-secondary dark:border-primary border-2 rounded-2xl p-2">
           <div className="flex justify-evenly items-center pb-1">
             <h2 className="font-heading dark:text-white text-black text-sm mt-2">
               {moment(clickedDate).format("LL")}
             </h2>
+            <img
+              src={moon_icon}
+              alt="doodled sun and moon with a cloud"
+              className="h-8"
+            />
           </div>
           <div className="overflow-y-auto h-56 pt-2 px-1">
             <ul className="dark:text-white text-black text-sm px-2">
@@ -199,8 +199,22 @@ function CalendarView() {
               ) : (
                 filteredItems.map((item) => (
                   <li key={item.id} className="flex flex-col mb-5">
-                    <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                      Sleep Entry
+                    <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+                      <span className="flex-grow">Sleep Entry</span>
+                      <div className="flex space-x-2">
+                        <button
+                          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent text-white dark:text-black rounded-xl"
+                          onClick={() => handleEditClick(item.id)}
+                        >
+                          <RiPencilLine />
+                        </button>
+                        <button
+                          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent text-white dark:text-black rounded-xl"
+                          onClick={() => handleDeleteClick(item.id)}
+                        >
+                          <RiDeleteBinLine />
+                        </button>
+                      </div>
                     </p>
                     <p className="dark:text-white text-black">
                       Start time: {moment(item.start_time).format("DD/MM/YYYY")}
@@ -223,20 +237,6 @@ function CalendarView() {
                         Notes: {item.notes}
                       </p>
                     )}
-                    <div className="entry-actions mt-8 mb-2 space-x-2 flex justify-center">
-                      <button
-                        className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-                        onClick={() => handleEditClick(item.id)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-                        onClick={() => handleDeleteClick(item.id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
                   </li>
                 ))
               )}

@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "moment": "^2.29.4",
-    "react-big-calendar": "^1.8.2"
+    "react-big-calendar": "^1.8.2",
+    "react-icons": "^4.11.0"
   }
 }

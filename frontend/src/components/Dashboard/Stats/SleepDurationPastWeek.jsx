@@ -47,7 +47,6 @@ function SleepDurationPastWeek() {
         )}
       </div>
       <br />
-
       {totalDuration !== null && (
         <p>You've slept a total of {totalDuration} hours this week.</p>
       )}
