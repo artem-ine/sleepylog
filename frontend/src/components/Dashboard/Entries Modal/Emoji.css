@@ -1,9 +1,9 @@
 .emoji-button:hover,
 .emoji-button.selected {
-  animation: pulse 0.5s infinite alternate;
+  animation: wee 0.5s infinite alternate;
 }
 
-@keyframes pulse {
+@keyframes wee {
   0% {
     transform: scale(1);
   }
