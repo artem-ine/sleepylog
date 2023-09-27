@@ -51,11 +51,11 @@ function Profile() {
         } else {
           const errorData = await response.json();
           const errorMessage = errorData.message || "Profile deletion failed.";
-          alert(errorMessage);
+          toast.error(errorMessage);
         }
       } catch (error) {
         console.error(error);
-        alert("An error occurred during profile deletion.");
+        toast.error("An error occurred during profile deletion.");
       }
     };
   };
