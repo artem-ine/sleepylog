@@ -50,7 +50,7 @@ function Dashboard() {
           className="h-20 pr-10 "
         />
         <button
-          className="font-logo hover:underline decoration-accent"
+          className="font-logo hover:underline decoration-accent new-entry"
           onClick={openEntryModal}
         >
           Add an entry!
@@ -63,7 +63,7 @@ function Dashboard() {
       </div>
       <div className="flex flex-col items-center">
         <button
-          className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent"
+          className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
           onClick={toggleGuide}
         >
           Help?
