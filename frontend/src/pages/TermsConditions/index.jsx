@@ -7,7 +7,7 @@ function TermsConditions() {
       <Navbar />
       <main className="bg-white dark:bg-black text-black dark:text-white flex flex-col items-center">
         <section className="mt-10 flex flex-col px-10 w-full lg:w-2/3">
-          <div className="flex flex-col border-2 mb-5 dark:border-primary border-secondary rounded-xl px-7 py-7 text-justify max-h-[450px] overflow-y-auto">
+          <div className="flex flex-col border-2 mb-5 dark:border-primary border-secondary rounded-xl px-7 py-7 max-h-[350px] overflow-y-auto">
             <h1 className="font-heading mb-3 text-lg">Terms and Conditions</h1>
             <p className="mb-4 px-5">Effective Date: 01.09.2023</p>
             
@@ -77,6 +77,80 @@ function TermsConditions() {
             </p>
           </div>
         </section>
+
+        <section className="mt-10 flex flex-col px-10 w-full lg:w-2/3">
+          <div className="flex flex-col border-2 mb-5 dark:border-primary border-secondary rounded-xl px-7 py-7 max-h-[350px] overflow-y-auto">
+            <h1 className="font-heading mb-3 text-lg">Privacy Policy</h1>
+            <p className="mb-4 px-5">Effective Date: 01.09.2023</p>
+
+            <h2 className="font-heading mb-2">1. Information We Collect</h2>
+            <p className="mb-2 px-5">
+              1.1. Personal Information: We may collect personal information that you provide when using the App, including but not limited to your name, email address, sleep mood, sleep duration, and dream log entries.
+            </p>
+            <p className="mb-2 px-5">
+              1.2. Device Information: We may collect information about your device, such as your device type, operating system, and unique device identifiers.
+            </p>
+            <p className="mb-2 px-5">
+              1.3. Usage Information: We may collect information about how you use the App, including your interactions with the app's features and content.
+            </p>
+            
+            <h2 className="font-heading mb-2">2. How We Use Your Information</h2>
+            <p className="mb-2 px-5">
+              2.1. Personalization: We use the information you provide to personalize your experience with the App, including providing sleep insights, recommendations, and tracking your sleep patterns.
+            </p>
+            <p className="mb-2 px-5">
+              2.2. Research and Analysis: We may use aggregated and anonymized data for research and analysis to improve the App's features and functionality.
+            </p>
+
+            <p className="mb-2 px-5">
+              2.3. Communication: We may use your contact information to send you updates, newsletters, and important notices related to the App. You can opt-out of receiving these communications at any time.
+            </p>
+
+            <h2 className="font-heading mb-2">3. Data Security</h2>
+            <p className="mb-2 px-5">
+              We implement reasonable security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no data transmission or storage system can be guaranteed to be 100% secure.
+            </p>
+            
+            <h2 className="font-heading mb-2">4. Disclosure of Your Information</h2>
+            <p className="mb-2 px-5">
+              We may share your personal information under the following circumstances:
+            </p>
+
+            <ul className="mb-2 px-10">
+              <li>5.1. With Your Consent: We may share your information with third parties when you provide explicit consent to do so.</li>
+
+              <li>5.2. Service Providers: We may share your information with third-party service providers who help us operate and improve the App, such as hosting, data analysis, and customer support services.</li>
+
+              <li>5.3. Legal Compliance: We may disclose your information to comply with applicable laws, regulations, or legal processes.</li>
+            </ul>
+
+            
+            <h2 className="font-heading mb-2">5. Your Choices</h2>
+            <p className="mb-2 px-5">
+              5.1. Access and Correction: You have the right to access and correct your personal information stored in the App. You can do so by editing your Profile under "Account Details", located in the "Profile" tab in your Dashboard. For any further issues, questions, or concerns, please do not hesitate to contact us at: sleepylog.kz@gmail.com.
+            </p>
+
+            <p className="mb-2 px-5">
+              5.2. Data Deletion: You can request the deletion of your account and personal information. Please note that some information may be retained for legal or operational purposes.
+            </p>
+            
+            <h2 className="font-heading mb-2">6. Children's Privacy</h2>
+            <p className="mb-2 px-5">
+              The App is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe that a child under 13 has provided us with personal information, please contact us, and we will take steps to delete such information.
+            </p>
+            
+            <h2 className="font-heading mb-2">7. Changes to this Privacy Policy</h2>
+            <p className="mb-2 px-5">
+              We may update this Privacy Policy to reflect changes to our data practices. We will notify you of any material changes by posting the revised policy on the App. Please review this Privacy Policy periodically.
+            </p>
+            
+            <h2 className="font-heading mb-2">8. Contact Us</h2>
+            <p className="mb-2 px-5">
+              If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at: sleepylog.kz@gmail.com.
+            </p>
+          </div>
+        </section>
+
       </main>
       <Footer />
     </>
