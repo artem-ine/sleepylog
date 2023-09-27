@@ -99,13 +99,12 @@ function Profile() {
   return (
     <div>
       <div className="border border-2 dark:border-primary border-secondary p-3 rounded-xl py-5">
-        <h2 className="text-center dark:text-white text-black text-lg">
+        <h2 className="font-logo mb-2 text-center dark:text-white text-black text-lg">
           Account details
         </h2>
         <p>Username: {auth.user.username}</p>
         <p>Email: {auth.user.email}</p>
-        <br />
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 mt-5">
           <button
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={openEditProfileModal}
