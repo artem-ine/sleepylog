@@ -1,80 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
-import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode";
 import useErrorHandler from "../../utils/errorHandler";
 import { toast } from "react-toastify";
+import { useAuth } from "../../utils/useAuth";
 
 function SignupForm({ onSignupSuccess }) {
-  const { error, showError } = useErrorHandler();
+  const { error } = useErrorHandler();
+  const { signUp } = useAuth();
+  const { signIn } = useAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPassword_Confirmation] = useState("");
-  const data = {};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: {
-            username,
-            email,
-            password,
-            password_confirmation: password_confirmation,
-          },
-        }),
-      });
+      const signUpResponse = await signUp(
+        username,
+        email,
+        password,
+        password_confirmation
+      );
 
-      if (response.ok) {
-        try {
-          const response = await fetch("/api/users/sign_in", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              user: { email: email, password: password },
-            }),
-          });
+      if (!signUpResponse.error) {
+        const signInResponse = await signIn(email, password, false);
 
-          if (response.ok) {
-            const data = await response.json();
-            const token = response.headers.get("Authorization");
-            console.log("loggin in:" + token);
-            console.log("check token + user data:", data.user + token);
-            Cookies.set("token", token);
-            const decToken = jwt_decode(token);
-            console.log("dec tok" + decToken.sub);
-          } else {
-            const errorMessage = data.message || "Login failed.";
-            showError(errorMessage);
+        if (!signInResponse.error) {
+          if (onSignupSuccess) {
+            onSignupSuccess();
           }
-        } catch (error) {
-          console.error(error);
-          showError("An error occurred during login.");
+          window.location.reload();
+          toast.success("Yay! Sign up and login successful!");
+        } else {
+          toast.error(
+            `Whoops! Sign up succeeded but login failed: ${signInResponse.error}`
+          );
         }
-        if (onSignupSuccess) {
-          onSignupSuccess();
-        }
-        window.location.reload();
-        toast.success("Yay! Sign up successful!");
       } else {
-        const errorData = await response.json();
-        if (errorData && errorData.errors) {
-          const errorMessages = errorData.errors.join(", ");
-          toast.error(`Whoops! ${errorMessages}`);
-        }
+        toast.error(`Whoops! ${signUpResponse.error}`);
       }
     } catch (error) {
-      console.error(error);
-      showError("An error occurred during registration.");
+      toast.error(`Whoops! ${error.message}`);
     }
   };
 

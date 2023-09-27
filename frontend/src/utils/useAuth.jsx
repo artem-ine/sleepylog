@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import Cookies from "js-cookie";
-import jwt_decode from "jwt-decode"; // Import jwt-decode
-import { toast } from 'react-toastify';
+import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 import { authAtom } from "./authAtom";
 
@@ -35,6 +35,67 @@ export const useAuth = () => {
       console.error("Error decoding JWT token:", error);
     }
   }
+
+  const signUp = async (username, email, password, password_confirmation) => {
+    try {
+      const response = await fetch("/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username,
+            email,
+            password,
+            password_confirmation,
+          },
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = response.headers.get("Authorization");
+        Cookies.set("token", token);
+        return data;
+      } else {
+        const errorData = await response.json();
+        return { error: errorData.message || "Sign-up failed." };
+      }
+    } catch (error) {
+      return {
+        error: error.message || "An error occurred during sign-up.",
+      };
+    }
+  };
+
+  const signIn = async (email, password) => {
+    try {
+      const response = await fetch("/api/users/sign_in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: { email, password },
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = response.headers.get("Authorization");
+        Cookies.set("token", token);
+        return data;
+      } else {
+        const errorData = await response.json();
+        return { error: errorData.message || "Sign-in failed." };
+      }
+    } catch (error) {
+      return {
+        error: error.message || "An error occurred during sign-in.",
+      };
+    }
+  };
 
   const handleLogout = () => {
     const authToken = Cookies.get("token");
@@ -73,5 +134,7 @@ export const useAuth = () => {
     auth,
     handleLogout,
     setAuth,
+    signUp,
+    signIn,
   };
 };
