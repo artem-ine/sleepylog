@@ -210,8 +210,8 @@ function CalendarView() {
                 />
               ) : filteredItems.length === 0 ? (
                 <div>
-                  <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                    No entries yet - wanna do a quickie?
+                  <p className="font-logo dark:text-white text-black border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+                    No entry for last night yet — wanna do a quickie?
                   </p>
                   <Quickie selectedDate={selectedDateForQuickie} />
                 </div>
@@ -255,10 +255,12 @@ function CalendarView() {
                       {ratingEmojis[item.rating]}
                     </p>
                     {item.notes && (
-                      <p className="dark:text-white text-black mt-5 mb-4">
+                      <p className="dark:text-white text-black mt-5">
                         Notes: {item.notes}
                       </p>
                     )}
+                    <p className="text-center">***</p>
+                    <Quickie selectedDate={selectedDateForQuickie} />
                   </li>
                 ))
               )}

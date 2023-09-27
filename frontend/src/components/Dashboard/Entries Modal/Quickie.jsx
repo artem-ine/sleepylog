@@ -54,10 +54,8 @@ function Quickie({ onEntrySuccess, selectedDate }) {
   return (
     <div>
       <form className="px-4 pt-3" onSubmit={handleSubmit}>
-        <div className="mt-4">
-          <h2 className="text-sm font mb-1 font-bold">
-            How well did you sleep?
-          </h2>
+        <div className="">
+          <h2 className="text-sm mb-1 text-center">How was your sleep?</h2>
           <EmojiPicker
             onSelectRating={(selectedRating) => setRating(selectedRating)}
           />
@@ -65,7 +63,7 @@ function Quickie({ onEntrySuccess, selectedDate }) {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="mt-8 h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            className="mt-3 h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
           >
             Done
           </button>
