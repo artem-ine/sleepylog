@@ -98,7 +98,7 @@ function DummyChart() {
   }
 
   return (
-    <div className="border-2 dark:border-primary border-secondary px-3 rounded-xl py-5 flex items-center">
+    <div className=" shadow-xl border-2 dark:border-primary border-secondary px-3 rounded-xl py-5 flex items-center">
       <div className="flex flex-col items-center lg:flex-row lg:space-x-6">
         <div className="lg:mb-0 dummy-chart-wrapper flex pb-4">
           <Doughnut data={doughnutData} className="p-4" />

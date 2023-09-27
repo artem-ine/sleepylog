@@ -5,7 +5,7 @@ import ChangePasswordForm from "./Password Modal/PasswordModal";
 import EditProfileModal from "./Edit Profile Modal";
 import EditProfileForm from "./Edit Profile Modal/EditProfileModal";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function Profile() {
   const { auth, handleLogout } = useAuth();
@@ -30,12 +30,11 @@ function Profile() {
   };
 
   const handleDeleteProfile = async () => {
-
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this profile?"
     );
 
-      if (confirmDelete) {
+    if (confirmDelete) {
       try {
         const response = await fetch(`/api/users/${auth.user.id}`, {
           method: "DELETE",
@@ -57,7 +56,7 @@ function Profile() {
         console.error(error);
         toast.error("An error occurred during profile deletion.");
       }
-    };
+    }
   };
 
   console.log(auth.user.email);
@@ -68,7 +67,7 @@ function Profile() {
       "Are you sure you want to reset your password?"
     );
 
-      if (confirmResetPassword) {
+    if (confirmResetPassword) {
       try {
         const response = await fetch("/api/users/password/", {
           method: "POST",
@@ -93,12 +92,12 @@ function Profile() {
         console.error(error);
         toast.error("An error occurred while sending the password reset link.");
       }
-    };
+    }
   };
 
   return (
     <div>
-      <div className="border border-2 dark:border-primary border-secondary p-3 rounded-xl py-5 mt-5">
+      <div className="shadow-xl border-2 dark:border-primary border-secondary p-3 rounded-xl py-5 mt-5">
         <h2 className="font-logo mb-2 text-center dark:text-white text-black text-lg">
           Account details
         </h2>

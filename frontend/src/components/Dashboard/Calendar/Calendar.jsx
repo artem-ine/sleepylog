@@ -167,7 +167,7 @@ function CalendarView() {
 
   return (
     <>
-      <div className="calendar-view-container">
+      <div className="calendar-view-container gap-10">
         <div className="calendar-container pb-2">
           <Calendar
             onChange={handleDateChange}

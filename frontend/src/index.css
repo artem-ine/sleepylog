@@ -76,6 +76,7 @@ main{
 
   .calendar-container {
     flex: 1;
+    border-radius: 30px;
   }
 
   .logged-items-container {
@@ -83,4 +84,30 @@ main{
     height: 320px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
+}
+
+.move-up-and-down {
+  position: relative;
+  animation: moveUpAndDown 6s infinite linear;
+}
+
+@keyframes moveUpAndDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  16.67% {
+    transform: translateY(-10px); 
+  }
+  50% {
+    transform: translateY(0); 
+  }
+  83.33% {
+    transform: translateY(15px); 
+  }
+}
+
+.bubble{
+  box-shadow: "0px 0px 10px rgba(0, 0, 0, 0.2)";
+  border-radius: "15px";
+  max-width: "250px";
 }

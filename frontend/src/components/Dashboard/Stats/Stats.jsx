@@ -11,7 +11,7 @@ function Stats() {
 
   return (
     <>
-      <div className="border-2 flex flex-col dark:border-primary border-secondary px-3 rounded-xl py-5 mt-5">
+      <div className="border-2 shadow-xl  flex flex-col dark:border-primary border-secondary px-3 rounded-xl py-5 mt-5">
         <h1 className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
           Looking for quick stats on a specific period of time? Use our
           calculator!
@@ -24,7 +24,7 @@ function Stats() {
           onClick={() => setSelectedTab("past-week")}
           className={
             selectedTab === "past-week"
-              ? "active pr-10 font-bold font-logo"
+              ? "active lg:pr-10 font-bold font-logo"
               : "p-2 font-logo"
           }
         >
@@ -34,7 +34,7 @@ function Stats() {
           onClick={() => setSelectedTab("past-month")}
           className={
             selectedTab === "past-month"
-              ? "active pl-10 font-bold font-logo"
+              ? "active lg:pl-10 font-bold font-logo"
               : "p-2 font-logo"
           }
         >
@@ -42,7 +42,7 @@ function Stats() {
         </button>
       </div>
 
-      <div className="border-2 flex flex-col lg:flex-row lg:space-x-6 dark:border-primary border-secondary px-3 rounded-xl py-5 items-center">
+      <div className="border-2 shadow-xl flex flex-col lg:flex-row lg:space-x-6 dark:border-primary border-secondary px-3 rounded-xl py-5 items-center">
         <div className="lg:w-1/2">
           <div className="lg:flex lg:flex-row lg:space-y-4"></div>
           {selectedTab === "past-week" && (
@@ -50,7 +50,7 @@ function Stats() {
               <div className="">
                 <AverageRatingPastWeek />
               </div>
-              <div className="">
+              <div className="pt-5">
                 <SleepDurationPastWeek />
               </div>
             </div>
