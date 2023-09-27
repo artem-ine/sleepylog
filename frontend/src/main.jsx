@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import TermsConditions from "./pages/TermsConditions";
 import PasswordReset from "./pages/Home/PasswordReset";
 import ErrorPage from "./pages/ErrorPage/index.jsx";
 import "./index.css";
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/terms-and-conditions",
+    element: <TermsConditions />,
     errorElement: <ErrorPage />,
   },
 ]);
