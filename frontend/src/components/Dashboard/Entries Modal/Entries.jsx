@@ -50,8 +50,12 @@ function EntryForm({ onEntrySuccess }) {
           },
         });
       } else {
-        toast.error("Whoops, something went wrong.");
-      }
+        const errorData = await response.json();
+        if (errorData && errorData.errors) {
+          const errorMessages = errorData.errors.join(", ");
+          toast.error(`Whoops! ${errorMessages}`);
+        };
+      };
     } catch (error) {
       console.error("API request error:", error);
     }
