@@ -3,7 +3,7 @@ import { RiLightbulbLine } from "react-icons/ri";
 
 function LightToggle() {
   const [isDarkTheme, setIsDarkTheme] = useState(
-    localStorage.getItem("themePreference") === "dark"
+    localStorage.getItem("themePreference") === "light" ? false : true
   );
 
   const toggleTheme = () => {
