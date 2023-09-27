@@ -50,16 +50,17 @@ function AverageRatingPastMonth() {
   }, []);
 
   return (
-    <div className="mt-2 mb-5">
-      <h2>Ratings for the Past Month</h2>
+    <div className="flex flex-col justify-center items-center">
+      <h2 className="font-heading text-sm">Ratings</h2>
       <div className="chart-wrapper">
         {Object.keys(dataChart).length > 0 ? (
           <Doughnut data={dataChart} />
         ) : (
           <p>Loading...</p>
         )}
-        {averageRating !== null && <p>Average Rating: {averageRating}</p>}
       </div>
+      <br />
+      <p> {averageRating !== null && <p>Average Rating: {averageRating}</p>}</p>
     </div>
   );
 }

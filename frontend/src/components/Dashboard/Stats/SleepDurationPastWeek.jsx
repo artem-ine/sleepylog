@@ -37,8 +37,8 @@ function SleepDurationPastWeek() {
   };
 
   return (
-    <div>
-      <h2>Sleep Duration for the Past Week</h2>
+    <div className="flex flex-col justify-center items-center">
+      <h2 className="font-heading text-sm pb-3">Sleep duration</h2>
       <div className="chart-wrapper">
         {Object.keys(sleepData).length > 0 ? (
           <Line data={data} />
@@ -46,6 +46,8 @@ function SleepDurationPastWeek() {
           <p>Loading...</p>
         )}
       </div>
+      <br />
+
       {totalDuration !== null && (
         <p>You've slept a total of {totalDuration} hours this week.</p>
       )}
