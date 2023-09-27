@@ -7,18 +7,18 @@ function About() {
   return (
     <>
       <Navbar />
-      <main className="bg-white dark:bg-black text-black dark:text-white">
-        <section className="mt-10 px-10">
+      <main className="bg-white dark:bg-black text-black dark:text-white flex flex-col items-center">
+        <section className="mt-10 flex flex-col px-10 lg:w-2/3">
           <div className="flex flex-col border-2 mb-5 dark:border-primary border-secondary rounded-xl px-7 py-7 sm:text-left">
             <h1 className="font-heading mb-2">About Us</h1>
-            <p className="mb-2">
+            <p className="mb-2 text-justify">
               Based on shared sentiments about inconsistent sleeping schedules,
               restless nights, and moods fluctuating from day to day, Kat and
               Zeke wanted to create an app that could help keep track of these
               various factors in order to learn more about the possible
               influences that sleep could have on a daily basis.
             </p>
-            <p>
+            <p className="text-justify">
               The idea and design of sleepLog thus stemmed from a mood tracker
               app that provided a very quick and user-friendly way to log your
               mood for the day. Since it was so easy and simple to use, it
