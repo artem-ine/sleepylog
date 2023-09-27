@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import EmojiPicker from "../Entries Modal/EmojiPicker";
+import { RiSave3Fill, RiDeleteBack2Line } from "react-icons/ri";
 
 function EditEntry({ entry, onUpdate, onCancel }) {
   const [updatedEntry, setUpdatedEntry] = useState({
@@ -32,14 +33,28 @@ function EditEntry({ entry, onUpdate, onCancel }) {
 
   return (
     <div>
-      <h2 className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-        Editing entry
-      </h2>
-      <div>
+      <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+        <span className="flex-grow">Editing entry</span>
+        <div className="flex space-x-2">
+          <button
+            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            onClick={handleEdit}
+          >
+          <RiSave3Fill />
+          </button>
+          <button
+            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            onClick={handleCancel}
+          >
+          <RiDeleteBack2Line />
+          </button>
+        </div>
+      </p>
+      <div className="mt-3 flex flex-col">
         <div className="flex justify-between">
           <label htmlFor="duration">Hours slept:</label>
           <input
-            className="text-black rounded px-1 border bg-white ml-1"
+            className="text-black rounded-lg px-1 border bg-white ml-1"
             type="number"
             min="0"
             id="duration"
@@ -57,7 +72,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           <label htmlFor="start_time">Start Time:</label>
           <DatePicker
             id="start_time"
-            className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-white shadow appearance-none border rounded-lg w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
             selected={
               updatedEntry.start_time ? new Date(updatedEntry.start_time) : null
             }
@@ -77,7 +92,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           <label htmlFor="end_time">End Time:</label>
           <DatePicker
             id="end_time"
-            className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
+            className="bg-white shadow appearance-none border rounded-lg w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
             selected={
               updatedEntry.end_time ? new Date(updatedEntry.end_time) : null
             }
@@ -104,9 +119,11 @@ function EditEntry({ entry, onUpdate, onCancel }) {
         <div className="flex justify-between">
           <label htmlFor="notes">Notes:</label>
           <textarea
-            className="text-black rounded px-1 border bg-white ml-1 mt-1"
+            className="text-black rounded-lg px-1 border bg-white ml-1 mt-1"
             id="notes"
             name="notes"
+            rows="2"
+            cols="30"
             value={updatedEntry.notes}
             onChange={(e) =>
               setUpdatedEntry({
@@ -116,20 +133,6 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             }
           />
         </div>
-      </div>
-      <div className="entry-actions mt-8 mb-2 space-x-2 flex justify-center">
-        <button
-          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-          onClick={handleEdit}
-        >
-          Save
-        </button>
-        <button
-          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
       </div>
     </div>
   );

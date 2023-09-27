@@ -56,6 +56,13 @@ function CalendarView() {
     fetchUserLogbookEntries();
   }, [auth]);
 
+  const handleDateClick = (date) => {
+    if (editing) {
+      setEditing(false);
+    }
+    setClickedDate(date);
+  };
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setSelectedDateForQuickie(date);
@@ -166,7 +173,7 @@ function CalendarView() {
             onChange={handleDateChange}
             value={selectedDate}
             tileContent={tileContent}
-            onClickDay={(date) => setClickedDate(date)}
+            onClickDay={handleDateClick}
           />
         </div>
 
@@ -216,7 +223,7 @@ function CalendarView() {
                         </button>
                       </div>
                     </p>
-                    <p className="dark:text-white text-black">
+                    <p className="dark:text-white text-black mt-1">
                       Start time: {moment(item.start_time).format("DD/MM/YYYY")}
                     </p>
                     {item.end_time && (
@@ -233,7 +240,7 @@ function CalendarView() {
                       Quality rating: {item.rating}
                     </p>
                     {item.notes && (
-                      <p className="dark:text-white text-black mt-5">
+                      <p className="dark:text-white text-black mt-5 mb-4">
                         Notes: {item.notes}
                       </p>
                     )}

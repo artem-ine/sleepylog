@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Emoji.css";
 
 function EmojiPicker({ onSelectRating }) {
   const [selectedRating, setSelectedRating] = useState(null);
@@ -16,7 +17,7 @@ function EmojiPicker({ onSelectRating }) {
       key={emoji}
       type="button"
       onClick={() => handleEmojiClick(emojiToRating[emoji])}
-      className={selectedRating === emojiToRating[emoji] ? "selected" : ""}
+      className={`emoji-button ${selectedRating === emojiToRating[emoji] ? "selected" : ""}`}
     >
       {emoji}
     </button>
@@ -29,11 +30,11 @@ function EmojiPicker({ onSelectRating }) {
 
   return (
     <div>
-      <div className="emoji-buttons flex flex-row gap-8 pb-1">
+      <div className="emoji-buttons flex justify-center flex-row gap-6 pb-1 rounded-xl py-2">
         {emojiButtons}
       </div>
       {selectedRating && (
-        <p className="text-sm">You've had a {selectedRating} sleep!</p>
+        <p className="text-sm flex justify-center">You've had a {selectedRating} sleep!</p>
       )}
     </div>
   );
