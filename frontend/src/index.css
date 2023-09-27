@@ -96,12 +96,12 @@ main{
     transform: translateY(0);
   }
   16.67% {
-    transform: translateY(-50px); 
+    transform: translateY(-10px); 
   }
   50% {
     transform: translateY(0); 
   }
   83.33% {
-    transform: translateY(50px); 
+    transform: translateY(15px); 
   }
 }
