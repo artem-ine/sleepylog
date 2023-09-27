@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CalendarView from "./Calendar";
+import CalendarView from "./Calendar/Calendar";
 import Stats from "./Stats/Stats";
 import Profile from "./Profile";
 import snork from "../../assets/images/snork.png";

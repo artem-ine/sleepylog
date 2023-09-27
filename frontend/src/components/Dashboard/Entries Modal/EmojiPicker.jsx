@@ -29,7 +29,6 @@ function EmojiPicker({ onSelectRating }) {
 
   return (
     <div>
-      <h2 className="text-sm font mb-1 font-bold">How well did you sleep?</h2>
       <div className="emoji-buttons flex flex-row gap-8 pb-1">
         {emojiButtons}
       </div>

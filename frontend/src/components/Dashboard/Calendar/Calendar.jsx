@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
-import { useAuth } from "../../utils/useAuth";
-import Quickie from "./Quickie";
+import { useAuth } from "../../../utils/useAuth";
+import Quickie from "../Quickie";
 import "./Calendar.css";
 import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import lil_icons from "../../assets/images/lil_icons.png";
+import lil_icons from "../../../assets/images/lil_icons.png";
+import EmojiPicker from "../Entries Modal/EmojiPicker";
+import EditEntry from "./EditEntry";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -95,18 +97,12 @@ function CalendarView() {
     setUpdatedEntry(selectedItem);
   };
 
-  const handleEdit = () => {
+  const handleCancelEdit = () => {
+    setEditing(false);
+  };
+
+  const handleSaveEntry = (updatedItem) => {
     const jwtToken = auth.token;
-
-    const updatedItem = {
-      rating: updatedEntry.rating,
-      start_time: updatedEntry.start_time,
-      end_time: updatedEntry.end_time,
-      notes: updatedEntry.notes,
-      duration: updatedEntry.duration,
-    };
-
-    console.log("Updated Entry:", updatedItem);
 
     fetch(`/api/entries/${editItemId}`, {
       method: "PATCH",
@@ -190,125 +186,11 @@ function CalendarView() {
           <div className="overflow-y-auto h-56 pt-2 px-1">
             <ul className="dark:text-white text-black text-sm px-2">
               {editing ? (
-                <li key={updatedEntry.id}>
-                  <h2 className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
-                    Editing entry
-                  </h2>
-                  <div>
-                    <div className="flex justify-between">
-                      <label htmlFor="duration">Hours slept:</label>
-                      <input
-                        className="text-black rounded px-1 border bg-white ml-1"
-                        type="number"
-                        min="0"
-                        id="duration"
-                        name="duration"
-                        value={updatedEntry.duration}
-                        onChange={(e) =>
-                          setUpdatedEntry({
-                            ...updatedEntry,
-                            duration: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="flex justify-between">
-                      <label htmlFor="start_time">Start Time:</label>
-                      <DatePicker
-                        id="start_time"
-                        className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-                        selected={
-                          updatedEntry.start_time
-                            ? new Date(updatedEntry.start_time)
-                            : null
-                        }
-                        onChange={(date) =>
-                          setUpdatedEntry({
-                            ...updatedEntry,
-                            start_time: date,
-                          })
-                        }
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        dateFormat="dd/MM/yyyy HH:mm"
-                        placeholderText="Select Start Time"
-                      />
-                    </div>
-                    <div className="flex justify-between">
-                      <label htmlFor="end_time">End Time:</label>
-                      <DatePicker
-                        id="end_time"
-                        className="bg-white shadow appearance-none border rounded-xl w-full p-1 text-black text-sm leading-tight focus:outline-none focus:shadow-outline"
-                        selected={
-                          updatedEntry.end_time
-                            ? new Date(updatedEntry.end_time)
-                            : null
-                        }
-                        onChange={(date) =>
-                          setUpdatedEntry({
-                            ...updatedEntry,
-                            end_time: date,
-                          })
-                        }
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        dateFormat="dd/MM/yyyy HH:mm"
-                        placeholderText="Select End Time"
-                      />
-                    </div>
-                    <div className="flex justify-between">
-                      <label htmlFor="rating">Rating:</label>
-                      <select
-                        className="text-black rounded px-1 border bg-white ml-1 mt-1"
-                        id="rating"
-                        name="rating"
-                        value={updatedEntry.rating}
-                        onChange={(e) =>
-                          setUpdatedEntry({
-                            ...updatedEntry,
-                            rating: e.target.value,
-                          })
-                        }
-                      >
-                        <option value="no_data">I don't remember</option>
-                        <option value="horrible">Horrible</option>
-                        <option value="mediocre">Mediocre</option>
-                        <option value="OK">OK</option>
-                        <option value="good">Good</option>
-                        <option value="perfect">Perfect</option>
-                      </select>
-                    </div>
-                    <div className="flex justify-between">
-                      <label htmlFor="notes">Notes:</label>
-                      <textarea
-                        className="text-black rounded px-1 border bg-white ml-1 mt-1"
-                        id="notes"
-                        name="notes"
-                        value={updatedEntry.notes}
-                        onChange={(e) =>
-                          setUpdatedEntry({
-                            ...updatedEntry,
-                            notes: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                  </div>
-                  <div className="entry-actions mt-8 mb-2 space-x-2 flex justify-center">
-                    <button
-                      className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-                      onClick={handleEdit}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
-                      onClick={() => setEditing(false)}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </li>
+                <EditEntry
+                  entry={updatedEntry}
+                  onUpdate={handleSaveEntry}
+                  onCancel={handleCancelEdit}
+                />
               ) : filteredItems.length === 0 ? (
                 <div>
                   <p className="dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1">
