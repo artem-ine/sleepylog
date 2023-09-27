@@ -37,13 +37,13 @@ function EditEntry({ entry, onUpdate, onCancel }) {
         <span className="flex-grow">Editing entry</span>
         <div className="flex space-x-2">
           <button
-            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleEdit}
           >
           <RiSave3Fill />
           </button>
           <button
-            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleCancel}
           >
           <RiDeleteBack2Line />
