@@ -13,12 +13,8 @@ function Footer() {
           <Link to="/terms-and-conditions" className="px-3">Terms and Conditions</Link>
         </div>
         <span className="text-sm sm:text-center">
-          <p>
-            kat & zeke // doodles by hummy
-          </p>
-          <p>
-          All Rights Reserved. © 2023
-          </p>
+          <p>kat & zeke // doodles by hummy</p>
+          <p>All Rights Reserved. © 2023</p>
         </span>
       </div>
     </footer>

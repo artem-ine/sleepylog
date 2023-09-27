@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import lil_icons from "../../assets/images/lil_icons.png";
 import SignupForm from "../Signup Modal/SignupForm";
 import SignupModal from "../Signup Modal";
+import "../../index.css";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -94,7 +95,7 @@ function CalendarView() {
           <img
             src={lil_icons}
             alt="doodled sun and moon with a cloud"
-            className="h-15"
+            className="h-15 move-up-and-down"
           />
         </div>
         <div className="logged-items-container border-secondary dark:border-primary border-2 rounded-2xl p-2">
