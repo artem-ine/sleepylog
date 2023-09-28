@@ -247,11 +247,13 @@ function CalendarView() {
                       </span>
                     </div>
                     <p className="dark:text-white text-black mt-1">
-                      Start time: {moment(item.start_time).format("DD/MM/YYYY")}
+                      Start time:{" "}
+                      {moment(item.start_time).format("DD/MM/YYYY HH:mm")}
                     </p>
                     {item.end_time && (
                       <p className="dark:text-white text-black">
-                        End time: {moment(item.end_time).format("DD/MM/YYYY")}
+                        End time:{" "}
+                        {moment(item.end_time).format("DD/MM/YYYY HH:mm")}
                       </p>
                     )}
                     {item.duration && (
