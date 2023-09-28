@@ -9,13 +9,13 @@ function Footer() {
     >
       <div className="w-full mx-auto max-w-screen-xl px-3 p-4 flex justify-around gap-3">
         <div className="text-sm text-right flex">
-          <Link to="/" className="px-3">
+          <Link to="/" className="px-3 hover:underline">
             Home
           </Link>
-          <Link to="/about" className="px-3">
+          <Link to="/about" className="px-3 hover:underline">
             About
           </Link>
-          <Link to="/terms-and-conditions" className="px-3">
+          <Link to="/terms-and-conditions" className="px-3 hover:underline">
             Terms and Conditions
           </Link>
         </div>
