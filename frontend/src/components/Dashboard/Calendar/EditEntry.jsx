@@ -39,7 +39,6 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           <button
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleEdit}
-            disabled={!updatedEntry.start_time || !updatedEntry.end_time}
           >
             <RiSave3Fill />
           </button>
