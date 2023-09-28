@@ -299,13 +299,6 @@ function CalendarView() {
                   {showQuickie && (
                     <div className="flex flex-col items-center">
                       <Quickie selectedDate={selectedDateForQuickie} />
-                      <button
-                        className="hover:underline decoration-accent mt-2 cursor-pointer bouncey"
-                        onClick={toggleQuickie}
-                        style={{ fontSize: "22px" }}
-                      >
-                        <RiCloseCircleLine />
-                      </button>
                     </div>
                   )}
                 </div>

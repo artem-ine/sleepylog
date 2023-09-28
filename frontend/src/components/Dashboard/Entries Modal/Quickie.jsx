@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../utils/useAuth";
 import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
+import { PiCheckCircleBold } from "react-icons/pi";
 
 function Quickie({ onEntrySuccess, selectedDate }) {
   const navigate = useNavigate();
@@ -63,9 +64,10 @@ function Quickie({ onEntrySuccess, selectedDate }) {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="mt-3 h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
+            className="mt-3 h-8 px-4 check-icon"
+            style={{ fontSize: "22px" }}
           >
-            Done
+            <PiCheckCircleBold />
           </button>
         </div>
       </form>

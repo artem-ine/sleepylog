@@ -114,7 +114,9 @@ main{
 
 .bouncey,
 .light-toggle:hover,
-.new-entry:hover {
+.new-entry:hover,
+.check-icon:hover,
+.close-icon:hover {
   animation: bouncey 0.5s infinite alternate;
 }
 
