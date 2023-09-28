@@ -17,12 +17,14 @@ import {
   FaPen,
   FaTrashCan,
 } from "react-icons/fa6";
+import DreamJournal from "../Dream Journal";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [loggedItems, setLoggedItems] = useState([]);
   const [clickedDate, setClickedDate] = useState(selectedDate);
   const [showQuickie, setShowQuickie] = useState(false);
+  const [showDreamJournal, setShowDreamJournal] = useState(false);
   const { auth } = useAuth();
   const [editing, setEditing] = useState(false);
   const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(
@@ -62,6 +64,8 @@ function CalendarView() {
 
     fetchUserLogbookEntries();
   }, [auth]);
+
+  const likedEntries = loggedItems.filter((item) => item.like);
 
   const handleDateClick = (date) => {
     if (editing) {
@@ -230,6 +234,10 @@ function CalendarView() {
     setShowQuickie(!showQuickie);
   };
 
+  const toggleDreamJournal = () => {
+    setShowDreamJournal(!showDreamJournal);
+  };
+
   return (
     <>
       <div className="calendar-view-container gap-10">
@@ -247,11 +255,7 @@ function CalendarView() {
             <h2 className="font-heading dark:text-white text-black text-sm mt-2">
               {moment(clickedDate).format("LL")}
             </h2>
-            <img
-              src={moon_icon}
-              alt="doodled sun and moon with a cloud"
-              className="h-8"
-            />
+            <img src={moon_icon} alt="doodled moon" className="h-8" />
           </div>
           <div className="overflow-y-auto h-56 pt-2 px-1">
             <ul className="dark:text-white text-black text-sm px-2">
@@ -356,6 +360,25 @@ function CalendarView() {
               )}
             </ul>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-col w-full lg:w-2/3">
+        <div className="pt-5">
+          <button
+            className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
+            onClick={toggleDreamJournal}
+            aria-label="toggle open quick entry"
+          >
+            Dream Journal
+          </button>
+          <p className="pt-3">
+            All the entries you like will be displayed underneath.
+          </p>
+          {showDreamJournal && (
+            <div className="flex flex-col shadow-xl border-2 dark:border-primary border-secondary p-3 rounded-xl py-5 mt-5">
+              <DreamJournal likedEntries={likedEntries} />
+            </div>
+          )}
         </div>
       </div>
     </>
