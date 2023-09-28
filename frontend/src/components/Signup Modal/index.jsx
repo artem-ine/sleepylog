@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import SignupForm from "./SignupForm";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 const SignupModal = ({ isOpen, onRequestClose }) => {
   return (
@@ -13,9 +14,10 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       <div className="modal-actions">
         <button
           onClick={onRequestClose}
-          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+          className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-3"
+          style={{ fontSize: "22px" }}
         >
-          Close
+          <RiCloseCircleLine />
         </button>
       </div>
     </Modal>

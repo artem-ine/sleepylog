@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import LoginForm from "./LoginForm";
-import PasswordResetRequestForm from "./PasswordResetRequestForm"; // Import the new component
+import PasswordResetRequestForm from "./PasswordResetRequestForm";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 const LogInModal = ({ isOpen, onRequestClose }) => {
   const [isPasswordResetRequested, setPasswordResetRequested] = useState(false);
@@ -24,9 +25,10 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
           <div className="modal-actions gap-3 flex justify-center">
             <button
               onClick={onRequestClose}
-              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+              className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
+              style={{ fontSize: "22px" }}
             >
-              x
+              <RiCloseCircleLine />
             </button>
             <button
               onClick={() => setPasswordResetRequested(true)}
