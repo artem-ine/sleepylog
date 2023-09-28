@@ -25,6 +25,11 @@ function Guide() {
           the floppy disk icon!
         </p>
         <p>
+          Logged a really good dream that you'd like to go back to often? Click
+          the heart button to like your entry, and its notes will appear on your
+          dream journal.
+        </p>
+        <p>
           The "stats" tab allows you to visualize your total sleep hours and
           average mood rating (out of 5) over the past week and month. There's
           also a calculator to get quick average stats from a custom range of

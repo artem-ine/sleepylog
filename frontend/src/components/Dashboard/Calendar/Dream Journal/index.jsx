@@ -15,7 +15,9 @@ function DreamJournal({ likedEntries }) {
               {moment(entry.start_time).format("DD/MM/YYYY")}
             </p>
             <p className="dark:text-white text-black py-2 mb-8">
-              {entry.notes}
+              {entry.notes
+                ? entry.notes
+                : "You didn't add a note to this entry, but you sure liked the date!"}
             </p>
             <div className="justify-center flex">
               <img
