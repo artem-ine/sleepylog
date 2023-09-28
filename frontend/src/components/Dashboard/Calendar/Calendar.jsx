@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import moon_icon from "../../../assets/images/moon_icon.png";
 import EditEntry from "./EditEntry";
-import { RiDeleteBinLine } from "react-icons/ri";
 import {
   FaFaceGrinWide,
   FaFaceSmile,
@@ -18,7 +17,6 @@ import {
   FaPen,
   FaTrashCan,
 } from "react-icons/fa6";
-import { RiCloseCircleLine } from "react-icons/ri";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
