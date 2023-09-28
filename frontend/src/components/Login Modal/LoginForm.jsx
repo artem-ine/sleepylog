@@ -15,12 +15,16 @@ function LoginForm({ onLoginSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signIn(email, password, false);
-      if (onLoginSuccess) {
-        onLoginSuccess();
+      const result = await signIn(email, password, false);
+      if (result.error) {
+        toast.error(`Sign-in failed: ${result.error}`);
+      } else {
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
+        navigate("/");
+        toast.success("Login successful!");
       }
-      navigate("/");
-      toast.success("Login successful!");
     } catch (error) {
       toast.error(`Whoops! ${error.message}`);
     }
