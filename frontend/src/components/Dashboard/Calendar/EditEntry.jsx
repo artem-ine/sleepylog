@@ -33,8 +33,8 @@ function EditEntry({ entry, onUpdate, onCancel }) {
   }, [entry]);
 
   return (
-    <div>
-      <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+    <>
+      <div className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
         <span className="flex-grow">Editing entry</span>
         <div className="flex space-x-2">
           <button
@@ -54,7 +54,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             <MdBackspace />
           </button>
         </div>
-      </p>
+      </div>
       <div className="mt-3 flex flex-col">
         <div className="flex justify-between">
           <label htmlFor="duration">Hours slept:</label>
@@ -141,7 +141,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

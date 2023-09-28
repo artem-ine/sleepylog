@@ -66,7 +66,10 @@ function AverageRatingPastWeek() {
         )}
       </div>
       <br />
-      <p> {averageRating !== null && <p>Average Rating: {averageRating}</p>}</p>
+      <p>
+        {" "}
+        {averageRating !== null && <span>Average Rating: {averageRating}</span>}
+      </p>
     </div>
   );
 }

@@ -169,9 +169,9 @@ function CalendarView() {
                     </p>
                     <p className="dark:text-white text-black flex gap-2 items-center">
                       <span className="">Quality rating:</span>
-                      <p className="text-xl">
+                      <span className="text-xl">
                         {renderRatingIcon(dummyEntry.rating)}
-                      </p>
+                      </span>
                     </p>
                     <p className="dark:text-white text-black mt-5">
                       Notes: {dummyEntry.notes}
