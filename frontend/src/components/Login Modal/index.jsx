@@ -22,19 +22,19 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
         <>
           {" "}
           <LoginForm onLoginSuccess={onRequestClose} />
-          <div className="modal-actions gap-3 flex justify-center">
+          <div className="modal-actions flex flex-col items-center mt-3">
+            <button
+              onClick={() => setPasswordResetRequested(true)}
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+            >
+              Forgot your password?
+            </button>
             <button
               onClick={onRequestClose}
               className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
               style={{ fontSize: "22px" }}
             >
               <RiCloseCircleLine />
-            </button>
-            <button
-              onClick={() => setPasswordResetRequested(true)}
-              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-            >
-              Forgot your password?
             </button>
           </div>
         </>

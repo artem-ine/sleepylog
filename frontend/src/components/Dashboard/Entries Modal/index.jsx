@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import EntryForm from "./Entries";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 const EntryModal = ({ isOpen, onRequestClose }) => {
   return (
@@ -13,9 +14,10 @@ const EntryModal = ({ isOpen, onRequestClose }) => {
       <div className="modal-actions">
         <button
           onClick={onRequestClose}
-          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+          className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
+          style={{ fontSize: "22px" }}
         >
-          Close
+          <RiCloseCircleLine />
         </button>
       </div>
     </Modal>
