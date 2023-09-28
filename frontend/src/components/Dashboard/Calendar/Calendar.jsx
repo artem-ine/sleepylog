@@ -127,6 +127,21 @@ function CalendarView() {
   };
 
   const handleSaveEntry = (updatedItem) => {
+    if (!updatedItem.start_time || !updatedItem.end_time) {
+      toast.error("Start time and end time cannot be blank.");
+      return;
+    }
+
+    if (updatedItem.start_time && updatedItem.end_time) {
+      const startTime = moment(updatedItem.start_time);
+      const endTime = moment(updatedItem.end_time);
+
+      if (startTime.isAfter(endTime)) {
+        toast.error("Start time cannot be after end time.");
+        return;
+      }
+    }
+
     const jwtToken = auth.token;
 
     fetch(`/api/entries/${editItemId}`, {
@@ -273,7 +288,7 @@ function CalendarView() {
                   </li>
                 ))
               )}
-              {filteredItems.length > 0 && (
+              {filteredItems.length > 0 && !editing && (
                 <div className="flex flex-col items-center">
                   <button
                     className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
