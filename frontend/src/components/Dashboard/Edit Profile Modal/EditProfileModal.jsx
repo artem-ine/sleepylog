@@ -3,7 +3,7 @@ import useErrorHandler from "../../../utils/errorHandler";
 import { useAuth } from "../../../utils/useAuth";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function EditProfileForm({ onProfileChanged }) {
   const { auth } = useAuth();
@@ -49,16 +49,16 @@ function EditProfileForm({ onProfileChanged }) {
         if (onProfileChanged) {
           onProfileChanged();
         }
-        toast.success('Your profile was successfully updated!', {
+        toast.success("Your profile was successfully updated!", {
           onClose: () => {
             window.location.reload();
           },
         });
       } else {
         const errorData = await response.json();
-        const errorMessage = errorData.errors.join(', ');
+        const errorMessage = errorData.errors.join(", ");
         toast.error(`Whoops! ${errorMessage}.`);
-      };
+      }
     } catch (error) {
       console.error(error);
       showError("An error occurred.");
@@ -113,6 +113,7 @@ function EditProfileForm({ onProfileChanged }) {
           </div>
           <div className="mb-6">
             <button
+              aria-label="update profile"
               type="submit"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >

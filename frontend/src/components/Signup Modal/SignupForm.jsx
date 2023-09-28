@@ -30,11 +30,11 @@ function SignupForm({ onSignupSuccess }) {
           if (onSignupSuccess) {
             onSignupSuccess();
           }
-          toast.success("Yay! Sign up and login successful!" , {
-          onClose: () => {
-            window.location.reload();
-          },
-        });
+          toast.success("Yay! Sign up and login successful!", {
+            onClose: () => {
+              window.location.reload();
+            },
+          });
         } else {
           toast.error(
             `Whoops! Sign up succeeded but login failed: ${signInResponse.error}`
@@ -128,6 +128,7 @@ function SignupForm({ onSignupSuccess }) {
           </div>
           <div className="mb-2 flex justify-center">
             <button
+              aria-label="sign up"
               type="submit"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm p-2 px-4 rounded-xl"
             >

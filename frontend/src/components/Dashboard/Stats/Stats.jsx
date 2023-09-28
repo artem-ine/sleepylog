@@ -22,6 +22,7 @@ function Stats() {
       <div className="pt-5 pb-2">
         <button
           onClick={() => setSelectedTab("past-week")}
+          aria-label="stats past week"
           className={
             selectedTab === "past-week"
               ? "active lg:pr-10 font-bold font-logo"
@@ -32,6 +33,7 @@ function Stats() {
         </button>
         <button
           onClick={() => setSelectedTab("past-month")}
+          aria-label="stats past month"
           className={
             selectedTab === "past-month"
               ? "active lg:pl-10 font-bold font-logo"

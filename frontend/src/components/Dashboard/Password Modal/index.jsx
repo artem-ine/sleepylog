@@ -12,6 +12,7 @@ const PasswordModal = ({ isOpen, onRequestClose }) => {
       <PasswordForm onPasswordChanged={onRequestClose} />
       <div className="modal-actions">
         <button
+          aria-label="close password form modal"
           onClick={onRequestClose}
           className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
         >

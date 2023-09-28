@@ -105,18 +105,21 @@ function Profile() {
         <p>Email: {auth.user.email}</p>
         <div className="flex flex-row gap-4 mt-5">
           <button
+            aria-label="open edit profile form"
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={openEditProfileModal}
           >
             Edit Profile
           </button>
           <button
+            aria-label="open reset password form"
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={handleResetPassword}
           >
             Reset Password
           </button>
           <button
+            aria-label="delete profile"
             className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
             onClick={handleDeleteProfile}
           >

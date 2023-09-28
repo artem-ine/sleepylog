@@ -182,6 +182,7 @@ function CalendarView() {
             </ul>
             <div className="flex justify-center">
               <button
+                aria-label="open sign up form"
                 className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-1 px-4 rounded-xl"
                 onClick={openSignupModal}
               >

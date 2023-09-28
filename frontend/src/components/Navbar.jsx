@@ -40,12 +40,13 @@ function Navbar() {
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <Link to="/">
-                <h2 className="text-3xl font-logo text-black dark:text-white">
+                <h1 className="text-3xl font-logo text-black dark:text-white">
                   SLEEPYLOG
-                </h2>
+                </h1>
               </Link>
               <div className="md:hidden">
                 <button
+                  aria-label="toggle navbar menu"
                   className="p-2 text-black dark:text-white rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={toggleMenu}
                 >
@@ -92,12 +93,14 @@ function Navbar() {
                 {!auth.isAuthenticated ? (
                   <>
                     <button
+                      aria-label="open sign up form"
                       className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                       onClick={openSignupModal}
                     >
                       Sign Up
                     </button>
                     <button
+                      aria-label="open log in form"
                       className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                       onClick={openLoginModal}
                     >
@@ -106,6 +109,7 @@ function Navbar() {
                   </>
                 ) : (
                   <button
+                    aria-label="logout"
                     onClick={handleLogout}
                     className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                   >
