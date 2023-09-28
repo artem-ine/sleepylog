@@ -17,12 +17,14 @@ import {
   FaPen,
   FaTrashCan,
 } from "react-icons/fa6";
+import DreamJournal from "../Dream Journal";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [loggedItems, setLoggedItems] = useState([]);
   const [clickedDate, setClickedDate] = useState(selectedDate);
   const [showQuickie, setShowQuickie] = useState(false);
+  const [showDreamJournal, setShowDreamJournal] = useState(false);
   const { auth } = useAuth();
   const [editing, setEditing] = useState(false);
   const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(
@@ -62,6 +64,8 @@ function CalendarView() {
 
     fetchUserLogbookEntries();
   }, [auth]);
+
+  const likedEntries = loggedItems.filter((item) => item.like);
 
   const handleDateClick = (date) => {
     if (editing) {
@@ -230,6 +234,10 @@ function CalendarView() {
     setShowQuickie(!showQuickie);
   };
 
+  const toggleDreamJournal = () => {
+    setShowDreamJournal(!showDreamJournal);
+  };
+
   return (
     <>
       <div className="calendar-view-container gap-10">
@@ -356,6 +364,22 @@ function CalendarView() {
               )}
             </ul>
           </div>
+        </div>
+      </div>
+      <div>
+        <div className="flex flex-col pt-5">
+          <button
+            className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
+            onClick={toggleDreamJournal}
+            aria-label="toggle open quick entry"
+          >
+            Dream Journal
+          </button>
+          {showDreamJournal && (
+            <div className="flex flex-col items-center">
+              <DreamJournal likedEntries={likedEntries} />
+            </div>
+          )}
         </div>
       </div>
     </>
