@@ -7,12 +7,20 @@ import SignupForm from "../Signup Modal/SignupForm";
 import SignupModal from "../Signup Modal";
 import "../../index.css";
 import "../Dashboard/Calendar/Calendar.css";
+import {
+  FaFaceGrinWide,
+  FaFaceSmile,
+  FaFaceMeh,
+  FaFaceSadTear,
+  FaFaceSadCry,
+} from "react-icons/fa6";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [clickedDate, setClickedDate] = useState(selectedDate);
-  const [setSelectedDummyEntry] = useState(null);
+  const [selectedDummyEntry, setSelectedDummyEntry] = useState(null);
   const [signupModalIsOpen, setSignupModalIsOpen] = useState(false);
+  const [dummyCalendarData, setDummyCalendarData] = useState([]);
 
   const openSignupModal = () => {
     setSignupModalIsOpen(true);
@@ -23,7 +31,7 @@ function CalendarView() {
   };
 
   const startOfWeek = moment().startOf("month");
-  const possibleRatings = ["😫", "😐", "😊", "😄", "😍"];
+  const possibleRatings = ["horrible", "mediocre", "OK", "good", "perfect"];
   const possibleDuration = [1, 3, 10, 8, 9, 7];
   const possibleNotes = [
     "Had a great night's sleep!",
@@ -32,31 +40,36 @@ function CalendarView() {
     "Could have slept longer.",
     "Need more sleep next time.",
   ];
-  const dummyCalendarData = [];
 
-  for (let i = 0; i < 31; i++) {
-    const date = startOfWeek.clone().add(i, "days").toDate();
-    const nextDay = moment(date).add(1, "day").toDate();
-    const randomRatingIndex = Math.floor(
-      Math.random() * possibleRatings.length
-    );
-    const randomDurationIndex = Math.floor(
-      Math.random() * possibleDuration.length
-    );
-    const randomNoteIndex = Math.floor(Math.random() * possibleNotes.length);
-    const notes = possibleNotes[randomNoteIndex];
-    const rating = possibleRatings[randomRatingIndex];
-    const duration = possibleDuration[randomDurationIndex];
+  useEffect(() => {
+    const initialDummyCalendarData = [];
 
-    const entry = {
-      start_time: date,
-      end_time: nextDay,
-      rating,
-      duration,
-      notes,
-    };
-    dummyCalendarData.push(entry);
-  }
+    for (let i = 0; i < 31; i++) {
+      const date = startOfWeek.clone().add(i, "days").toDate();
+      const nextDay = moment(date).add(1, "day").toDate();
+      const randomRatingIndex = Math.floor(
+        Math.random() * possibleRatings.length
+      );
+      const randomDurationIndex = Math.floor(
+        Math.random() * possibleDuration.length
+      );
+      const randomNoteIndex = Math.floor(Math.random() * possibleNotes.length);
+      const notes = possibleNotes[randomNoteIndex];
+      const rating = possibleRatings[randomRatingIndex];
+      const duration = possibleDuration[randomDurationIndex];
+
+      const entry = {
+        start_time: date,
+        end_time: nextDay,
+        rating,
+        duration,
+        notes,
+      };
+      initialDummyCalendarData.push(entry);
+    }
+
+    setDummyCalendarData(initialDummyCalendarData);
+  }, []);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -71,6 +84,23 @@ function CalendarView() {
     moment(item.start_time).isSame(selectedDate, "day")
   );
 
+  function renderRatingIcon(rating) {
+    switch (rating) {
+      case "horrible":
+        return <FaFaceSadCry style={{ color: "#790119" }} />;
+      case "mediocre":
+        return <FaFaceSadTear style={{ color: "#CC6600" }} />;
+      case "OK":
+        return <FaFaceMeh style={{ color: "#E3A92C" }} />;
+      case "good":
+        return <FaFaceSmile style={{ color: "#B3B319" }} />;
+      case "perfect":
+        return <FaFaceGrinWide style={{ color: "#4f8f00" }} />;
+      default:
+        return null;
+    }
+  }
+
   return (
     <>
       <div className="calendar-view-container flex items-center">
@@ -80,15 +110,27 @@ function CalendarView() {
             value={selectedDate}
             onClickDay={(date) => setClickedDate(date)}
             tileContent={({ date }) => {
-              const dummyEntry = dummyCalendarData.find((entry) =>
+              const dummyEntries = dummyCalendarData.filter((entry) =>
                 moment(entry.start_time).isSame(date, "day")
               );
 
-              if (dummyEntry) {
-                return <div className="calendar-dot" />;
+              if (dummyEntries.length === 0) {
+                return null;
               }
 
-              return null;
+              return (
+                <div className="calendar-emoji">
+                  {dummyEntries.map((entry, index) => (
+                    <span
+                      key={index}
+                      className="mr-1"
+                      title={`Quality rating: ${entry.rating}`}
+                    >
+                      {renderRatingIcon(entry.rating)}
+                    </span>
+                  ))}
+                </div>
+              );
             }}
           />
         </div>
@@ -125,8 +167,11 @@ function CalendarView() {
                     <p className="dark:text-white text-black">
                       Hours slept: {dummyEntry.duration}
                     </p>
-                    <p className="dark:text-white text-black">
-                      Quality rating: {dummyEntry.rating}
+                    <p className="dark:text-white text-black flex gap-2 items-center">
+                      <span className="">Quality rating:</span>
+                      <p className="text-xl">
+                        {renderRatingIcon(dummyEntry.rating)}
+                      </p>
                     </p>
                     <p className="dark:text-white text-black mt-5">
                       Notes: {dummyEntry.notes}

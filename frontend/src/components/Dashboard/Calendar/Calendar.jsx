@@ -9,6 +9,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import moon_icon from "../../../assets/images/moon_icon.png";
 import EditEntry from "./EditEntry";
 import { RiPencilLine, RiDeleteBinLine } from "react-icons/ri";
+import {
+  FaFaceGrinWide,
+  FaFaceSmile,
+  FaFaceMeh,
+  FaFaceSadTear,
+  FaFaceSadCry,
+} from "react-icons/fa6";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -73,11 +80,11 @@ function CalendarView() {
   }, [selectedDate]);
 
   const ratingEmojis = {
-    horrible: "😫",
-    mediocre: "😐",
-    OK: "😊",
-    good: "😄",
-    perfect: "😍",
+    horrible: <FaFaceSadCry style={{ color: "#790119" }} />,
+    mediocre: <FaFaceSadTear style={{ color: "#CC6600" }} />,
+    OK: <FaFaceMeh style={{ color: "#E3A92C" }} />,
+    good: <FaFaceSmile style={{ color: "#B3B319" }} />,
+    perfect: <FaFaceGrinWide style={{ color: "#4f8f00" }} />,
   };
 
   const tileContent = ({ date, view }) => {
@@ -248,11 +255,9 @@ function CalendarView() {
                         Hours slept: {item.duration}
                       </p>
                     )}
-                    <p className="dark:text-white text-black">
-                      <span className="underline underline-offset-1">
-                        Quality rating:
-                      </span>{" "}
-                      {ratingEmojis[item.rating]}
+                    <p className="dark:text-white text-black flex gap-2 items-center">
+                      <span className="">Quality rating:</span>
+                      <p className="text-xl">{ratingEmojis[item.rating]}</p>
                     </p>
                     {item.notes && (
                       <p className="dark:text-white text-black mt-5">
