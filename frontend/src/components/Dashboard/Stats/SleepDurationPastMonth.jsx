@@ -36,20 +36,28 @@ function SleepDurationPastMonth() {
     ],
   };
 
+  const hasSleepData =
+    labels.length > 0 && sleepDurations.some((duration) => duration > 0);
+
   return (
     <div className="flex flex-col justify-center items-center">
       <h2 className="font-heading text-sm pb-3">Sleep duration</h2>
       <div className="chart-wrapper">
-        {Object.keys(sleepData).length > 0 ? (
-          <Line data={data} />
+        {hasSleepData ? (
+          <>
+            <Line data={data} />
+            <br />
+            {totalDuration !== null && (
+              <p>You've slept a total of {totalDuration} hours this month.</p>
+            )}
+          </>
         ) : (
-          <p>Loading...</p>
+          <p className="text-center">
+            This is where a chart of how many hours you've slept this month will
+            appear once you start logging entries.
+          </p>
         )}
       </div>
-      <br />
-      {totalDuration !== null && (
-        <p>You've slept a total of {totalDuration} hours this month.</p>
-      )}
     </div>
   );
 }
