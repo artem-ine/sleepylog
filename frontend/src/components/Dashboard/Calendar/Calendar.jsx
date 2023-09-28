@@ -16,13 +16,18 @@ import {
   FaFaceSadTear,
   FaFaceSadCry,
 } from "react-icons/fa6";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [loggedItems, setLoggedItems] = useState([]);
   const [clickedDate, setClickedDate] = useState(selectedDate);
+  const [showQuickie, setShowQuickie] = useState(false);
   const { auth } = useAuth();
   const [editing, setEditing] = useState(false);
+  const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(
+    new Date()
+  );
   const [updatedEntry, setUpdatedEntry] = useState({
     rating: "",
     start_time: null,
@@ -32,10 +37,6 @@ function CalendarView() {
   });
 
   const [editItemId, setEditItemId] = useState(null);
-
-  const [selectedDateForQuickie, setSelectedDateForQuickie] = useState(
-    new Date()
-  );
 
   useEffect(() => {
     const fetchUserLogbookEntries = async () => {
@@ -51,7 +52,6 @@ function CalendarView() {
         if (response.ok) {
           const data = await response.json();
           setLoggedItems(data);
-          console.log("Logged Items:", data);
         } else {
           throw new Error("Network response was not ok");
         }
@@ -184,6 +184,10 @@ function CalendarView() {
     }
   };
 
+  const toggleQuickie = () => {
+    setShowQuickie(!showQuickie);
+  };
+
   return (
     <>
       <div className="calendar-view-container gap-10">
@@ -225,9 +229,9 @@ function CalendarView() {
               ) : (
                 filteredItems.map((item) => (
                   <li key={item.id} className="flex flex-col mb-5">
-                    <p className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
+                    <div className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
                       <span className="flex-grow">Sleep Entry</span>
-                      <div className="flex space-x-2">
+                      <span className="flex space-x-2">
                         <button
                           className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleEditClick(item.id)}
@@ -240,8 +244,8 @@ function CalendarView() {
                         >
                           <RiDeleteBinLine />
                         </button>
-                      </div>
-                    </p>
+                      </span>
+                    </div>
                     <p className="dark:text-white text-black mt-1">
                       Start time: {moment(item.start_time).format("DD/MM/YYYY")}
                     </p>
@@ -255,10 +259,10 @@ function CalendarView() {
                         Hours slept: {item.duration}
                       </p>
                     )}
-                    <p className="dark:text-white text-black flex gap-2 items-center">
+                    <div className="dark:text-white text-black flex gap-2 items-center">
                       <span className="">Quality rating:</span>
                       <p className="text-xl">{ratingEmojis[item.rating]}</p>
-                    </p>
+                    </div>
                     {item.notes && (
                       <p className="dark:text-white text-black mt-5">
                         Notes: {item.notes}
@@ -267,9 +271,29 @@ function CalendarView() {
                   </li>
                 ))
               )}
+              {filteredItems.length > 0 && (
+                <div className="flex flex-col items-center">
+                  <button
+                    className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
+                    onClick={toggleQuickie}
+                  >
+                    Want to quickly log another sleep for today?
+                  </button>
+                  {showQuickie && (
+                    <div className="flex flex-col items-center">
+                      <Quickie selectedDate={selectedDateForQuickie} />
+                      <button
+                        className="hover:underline decoration-accent mt-2 cursor-pointer bouncey"
+                        onClick={toggleQuickie}
+                        style={{ fontSize: "22px" }}
+                      >
+                        <RiCloseCircleLine />
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </ul>
-            {/* <p className="text-center">***</p>
-            <Quickie selectedDate={selectedDateForQuickie} /> */}
           </div>
         </div>
       </div>
