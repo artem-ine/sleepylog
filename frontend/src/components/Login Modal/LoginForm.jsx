@@ -17,7 +17,7 @@ function LoginForm({ onLoginSuccess }) {
     try {
       const result = await signIn(email, password, false);
       if (result.error) {
-        toast.error(`Sign-in failed: ${result.error}`);
+        toast.error(`Whoops! ${result.error}`);
       } else {
         if (onLoginSuccess) {
           onLoginSuccess();
