@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useErrorHandler from "../../../utils/errorHandler";
-import { useAuth } from "../../../utils/useAuth";
+import useErrorHandler from "../../../../utils/errorHandler";
+import { useAuth } from "../../../../utils/useAuth";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

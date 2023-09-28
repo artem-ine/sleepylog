@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import EmojiPicker from "../Entries Modal/EmojiPicker";
+import EmojiPicker from "./EmojiPicker";
 import { MdBackspace } from "react-icons/md";
 import { FaFloppyDisk } from "react-icons/fa6";
 

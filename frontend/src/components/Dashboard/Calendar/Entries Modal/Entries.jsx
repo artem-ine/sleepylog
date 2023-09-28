@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../utils/useAuth";
-import useErrorHandler from "../../../utils/errorHandler";
+import { useAuth } from "../../../../utils/useAuth";
+import useErrorHandler from "../../../../utils/errorHandler";
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
