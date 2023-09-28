@@ -49,10 +49,10 @@ function Stats() {
           <div className="lg:flex lg:flex-row lg:space-y-4"></div>
           {selectedTab === "past-week" && (
             <div className="lg:flex lg:space-x-4 items-center">
-              <div className="">
+              <div className="flex justify-center">
                 <AverageRatingPastWeek />
               </div>
-              <div className="pt-5">
+              <div className="">
                 <SleepDurationPastWeek />
               </div>
             </div>
@@ -63,7 +63,7 @@ function Stats() {
                 <AverageRatingPastMonth />
               </div>
 
-              <div className="pt-5">
+              <div className="">
                 <SleepDurationPastMonth />
               </div>
             </div>

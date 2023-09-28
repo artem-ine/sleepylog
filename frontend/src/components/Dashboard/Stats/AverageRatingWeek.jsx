@@ -57,12 +57,14 @@ function AverageRatingPastWeek() {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2 className="font-heading text-sm">Ratings</h2>
+      <h2 className="font-heading text-sm pb-3">Ratings</h2>
       <div className="chart-wrapper">
-        {Object.keys(dataChart).length > 0 ? (
+        {Object.keys(dataChart).length > 0 && dataChart.labels.length > 0 ? (
           <Doughnut data={dataChart} />
         ) : (
-          <p>Loading...</p>
+          <p className="text-center">
+            This is where ratings will appear once you start logging entries.
+          </p>
         )}
       </div>
       <br />
