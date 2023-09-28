@@ -23,12 +23,14 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
           <LoginForm onLoginSuccess={onRequestClose} />
           <div className="modal-actions gap-3 flex justify-center">
             <button
+              aria-label="close"
               onClick={onRequestClose}
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               x
             </button>
             <button
+              aria-label="open forgot your password"
               onClick={() => setPasswordResetRequested(true)}
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >

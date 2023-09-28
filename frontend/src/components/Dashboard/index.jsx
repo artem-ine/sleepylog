@@ -50,6 +50,7 @@ function Dashboard() {
           className="h-20 pr-10 "
         />
         <button
+          aria-label="open add an entry form"
           className="font-logo new-entry"
           onClick={openEntryModal}
         >
@@ -63,6 +64,7 @@ function Dashboard() {
       </div>
       <div className="flex flex-col items-center">
         <button
+          aria-label="open guide"
           className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
           onClick={toggleGuide}
         >
@@ -72,6 +74,7 @@ function Dashboard() {
           <div className="flex flex-col items-center">
             <Guide />
             <button
+              aria-label="close guide"
               className="hover:underline decoration-accent mt-2 cursor-pointer bouncey"
               onClick={toggleGuide}
               style={{ fontSize: "22px" }}
@@ -92,6 +95,7 @@ function Dashboard() {
 
       <div className="tab-nav mb-3 font-logo">
         <button
+          aria-label="open calendar tab"
           onClick={() => setSelectedTab("calendar")}
           className={
             selectedTab === "calendar" ? "active pr-8 font-bold" : "pr-8"
@@ -100,12 +104,14 @@ function Dashboard() {
           Calendar
         </button>
         <button
+          aria-label="open stats tab"
           onClick={() => setSelectedTab("stats")}
           className={selectedTab === "stats" ? "active pr-8 font-bold" : "pr-8"}
         >
           Stats
         </button>
         <button
+          aria-label="open profile tab"
           onClick={() => setSelectedTab("profile")}
           className={
             selectedTab === "profile" ? "active pr-8 font-bold" : "pr-8"

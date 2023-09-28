@@ -46,6 +46,7 @@ function Navbar() {
               </Link>
               <div className="md:hidden">
                 <button
+                  aria-label="toggle navbar menu"
                   className="p-2 text-black dark:text-white rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={toggleMenu}
                 >
@@ -92,12 +93,14 @@ function Navbar() {
                 {!auth.isAuthenticated ? (
                   <>
                     <button
+                      aria-label="open sign up form"
                       className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                       onClick={openSignupModal}
                     >
                       Sign Up
                     </button>
                     <button
+                      aria-label="open log in form"
                       className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                       onClick={openLoginModal}
                     >
@@ -106,6 +109,7 @@ function Navbar() {
                   </>
                 ) : (
                   <button
+                    aria-label="logout"
                     onClick={handleLogout}
                     className="bg-secondary dark:bg-primary text-white dark:text-black border border-black hover:border-accent hover:border-2 font-bold text-sm py-2 px-4 rounded-xl"
                   >

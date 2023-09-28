@@ -13,13 +13,6 @@ import { Line } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 import { useState, useEffect } from "react";
-import {
-  FaFaceGrinWide,
-  FaFaceSmile,
-  FaFaceMeh,
-  FaFaceSadTear,
-  FaFaceSadCry,
-} from "react-icons/fa6";
 
 function DummyChart() {
   const [doughnutData, setDoughnutData] = useState(getRandomDoughnutData());

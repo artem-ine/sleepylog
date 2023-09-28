@@ -3,7 +3,7 @@ import useErrorHandler from "../../../utils/errorHandler";
 import { useAuth } from "../../../utils/useAuth";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function ChangePasswordForm({ onPasswordChanged }) {
   const navigate = useNavigate();
@@ -143,6 +143,7 @@ function ChangePasswordForm({ onPasswordChanged }) {
           <div className="mb-6">
             <button
               type="submit"
+              aria-label="submit change password"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               Change Password

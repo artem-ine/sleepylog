@@ -250,12 +250,14 @@ function CalendarView() {
                         <button
                           className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleEditClick(item.id)}
+                          aria-label="edit"
                         >
                           <RiPencilLine />
                         </button>
                         <button
                           className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleDeleteClick(item.id)}
+                          aria-label="delete"
                         >
                           <RiDeleteBinLine />
                         </button>
@@ -293,6 +295,7 @@ function CalendarView() {
                   <button
                     className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
                     onClick={toggleQuickie}
+                    aria-label="toggle open quick entry"
                   >
                     Want to quickly log another sleep for today?
                   </button>
@@ -303,6 +306,7 @@ function CalendarView() {
                         className="hover:underline decoration-accent mt-2 cursor-pointer bouncey"
                         onClick={toggleQuickie}
                         style={{ fontSize: "22px" }}
+                        aria-label="toggle close quick entry"
                       >
                         <RiCloseCircleLine />
                       </button>

@@ -12,6 +12,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       <SignupForm onSignupSuccess={onRequestClose} />
       <div className="modal-actions">
         <button
+          aria-label="close sign up form"
           onClick={onRequestClose}
           className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
         >
