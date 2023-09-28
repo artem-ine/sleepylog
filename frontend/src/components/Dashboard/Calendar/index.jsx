@@ -235,7 +235,7 @@ function CalendarView() {
   };
 
   return (
-    <>
+    <div className="flex flex-col">
       <div className="calendar-view-container gap-10">
         <div className="calendar-container pb-2">
           <Calendar
@@ -277,7 +277,7 @@ function CalendarView() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
