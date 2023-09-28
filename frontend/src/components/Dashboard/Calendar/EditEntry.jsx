@@ -39,14 +39,15 @@ function EditEntry({ entry, onUpdate, onCancel }) {
           <button
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleEdit}
+            disabled={!updatedEntry.start_time || !updatedEntry.end_time}
           >
-          <RiSave3Fill />
+            <RiSave3Fill />
           </button>
           <button
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleCancel}
           >
-          <RiDeleteBack2Line />
+            <RiDeleteBack2Line />
           </button>
         </div>
       </p>
@@ -86,6 +87,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             timeFormat="HH:mm"
             dateFormat="dd/MM/yyyy HH:mm"
             placeholderText="Select Start Time"
+            required
           />
         </div>
         <div className="flex justify-between">
@@ -106,6 +108,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             timeFormat="HH:mm"
             dateFormat="dd/MM/yyyy HH:mm"
             placeholderText="Select End Time"
+            required
           />
         </div>
         <div className="flex justify-between">

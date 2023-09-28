@@ -69,6 +69,7 @@ function SignupForm({ onSignupSuccess }) {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </div>
           <div className="mb-4">
@@ -85,6 +86,7 @@ function SignupForm({ onSignupSuccess }) {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="mb-4">
@@ -101,6 +103,7 @@ function SignupForm({ onSignupSuccess }) {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div className="mb-6">
@@ -117,6 +120,7 @@ function SignupForm({ onSignupSuccess }) {
               placeholder="Password Confirmation"
               value={password_confirmation}
               onChange={(e) => setPassword_Confirmation(e.target.value)}
+              required
             />
           </div>
           <div className="mb-2 flex justify-center">

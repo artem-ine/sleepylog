@@ -60,7 +60,7 @@ export const useAuth = () => {
         return data;
       } else {
         const errorData = await response.json();
-        return { error: errorData.message || "Sign-up failed." };
+        return { error: errorData.errors || "Sign-up failed." };
       }
     } catch (error) {
       return {
@@ -87,8 +87,8 @@ export const useAuth = () => {
         Cookies.set("token", token);
         return data;
       } else {
-        const errorData = await response.json();
-        return { error: errorData.message || "Sign-in failed." };
+        const errorData = await response.text();
+        return { error: errorData || "Sign-in failed." };
       }
     } catch (error) {
       return {
