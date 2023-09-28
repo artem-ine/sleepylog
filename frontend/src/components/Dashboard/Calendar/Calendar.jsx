@@ -8,15 +8,15 @@ import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import moon_icon from "../../../assets/images/moon_icon.png";
 import EditEntry from "./EditEntry";
-import { RiPencilLine, RiDeleteBinLine } from "react-icons/ri";
 import {
   FaFaceGrinWide,
   FaFaceSmile,
   FaFaceMeh,
   FaFaceSadTear,
   FaFaceSadCry,
+  FaPen,
+  FaTrashCan,
 } from "react-icons/fa6";
-import { RiCloseCircleLine } from "react-icons/ri";
 
 function CalendarView() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -250,16 +250,18 @@ function CalendarView() {
                         <button
                           className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleEditClick(item.id)}
+                          style={{ fontSize: "12px" }}
                           aria-label="edit"
                         >
-                          <RiPencilLine />
+                          <FaPen />
                         </button>
                         <button
                           className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleDeleteClick(item.id)}
+                          style={{ fontSize: "12px" }}
                           aria-label="delete"
                         >
-                          <RiDeleteBinLine />
+                          <FaTrashCan />
                         </button>
                       </span>
                     </div>

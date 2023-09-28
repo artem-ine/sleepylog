@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import EditProfileForm from "./EditProfileModal";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 const EditProfileModal = ({ isOpen, onRequestClose }) => {
   return (
@@ -14,9 +15,10 @@ const EditProfileModal = ({ isOpen, onRequestClose }) => {
         <button
           aria-label="close"
           onClick={onRequestClose}
-          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+          className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
+          style={{ fontSize: "22px" }}
         >
-          Close
+          <RiCloseCircleLine />
         </button>
       </div>
     </Modal>

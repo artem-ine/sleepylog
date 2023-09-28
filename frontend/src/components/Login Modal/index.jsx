@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import LoginForm from "./LoginForm";
-import PasswordResetRequestForm from "./PasswordResetRequestForm"; // Import the new component
+import PasswordResetRequestForm from "./PasswordResetRequestForm";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 const LogInModal = ({ isOpen, onRequestClose }) => {
   const [isPasswordResetRequested, setPasswordResetRequested] = useState(false);
@@ -21,20 +22,21 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
         <>
           {" "}
           <LoginForm onLoginSuccess={onRequestClose} />
-          <div className="modal-actions gap-3 flex justify-center">
+          <div className="modal-actions flex flex-col items-center mt-3">
             <button
-              aria-label="close"
-              onClick={onRequestClose}
-              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-            >
-              x
-            </button>
-            <button
-              aria-label="open forgot your password"
               onClick={() => setPasswordResetRequested(true)}
+              aria-label="close"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               Forgot your password?
+            </button>
+            <button
+              onClick={onRequestClose}
+              className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
+              style={{ fontSize: "22px" }}
+              aria-label="open forgot your password"
+            >
+              <RiCloseCircleLine />
             </button>
           </div>
         </>

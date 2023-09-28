@@ -52,7 +52,7 @@ function SignupForm({ onSignupSuccess }) {
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
         <form
-          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
+          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">
