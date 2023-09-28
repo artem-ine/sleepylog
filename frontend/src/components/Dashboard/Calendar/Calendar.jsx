@@ -131,11 +131,9 @@ function CalendarView() {
       toast.error("Start time and end time cannot be blank.");
       return;
     }
-
     if (updatedItem.start_time && updatedItem.end_time) {
       const startTime = moment(updatedItem.start_time);
       const endTime = moment(updatedItem.end_time);
-
       if (startTime.isAfter(endTime)) {
         toast.error("Start time cannot be after end time.");
         return;
@@ -199,6 +197,35 @@ function CalendarView() {
     }
   };
 
+  const handleLikeClick = (itemId) => {
+    const likedEntry = loggedItems.find((item) => item.id === itemId);
+
+    const updatedLikedEntry = { ...likedEntry, like: !likedEntry.like };
+
+    const jwtToken = auth.token;
+
+    fetch(`/api/entries/${itemId}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedLikedEntry),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response from server:", data);
+        const updatedItems = loggedItems.map((item) =>
+          item.id === itemId ? data : item
+        );
+        setLoggedItems(updatedItems);
+        toast.success(`Success! Entry ${data.like ? "liked" : "unliked"}!`);
+      })
+      .catch((error) => {
+        console.error("Error updating entry:", error);
+      });
+  };
+
   const toggleQuickie = () => {
     setShowQuickie(!showQuickie);
   };
@@ -247,6 +274,25 @@ function CalendarView() {
                     <div className="font-logo dark:text-white text-black mb-2 border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center">
                       <span className="flex-grow">Sleep Entry</span>
                       <span className="flex space-x-2">
+                        {item.like ? (
+                          <button
+                            className={`h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl`}
+                            onClick={() => handleLikeClick(item.id)}
+                            style={{ fontSize: "12px" }}
+                            aria-label="unlike"
+                          >
+                            Unlike
+                          </button>
+                        ) : (
+                          <button
+                            className={`h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl`}
+                            onClick={() => handleLikeClick(item.id)}
+                            style={{ fontSize: "12px" }}
+                            aria-label="like"
+                          >
+                            Like
+                          </button>
+                        )}
                         <button
                           className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleEditClick(item.id)}
