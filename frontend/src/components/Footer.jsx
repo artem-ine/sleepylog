@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LightToggle from "./LightToggle";
 
 function Footer() {
   return (
@@ -22,6 +23,7 @@ function Footer() {
           <p>kat & zeke // doodles by hummy</p>
           <p>All Rights Reserved. © 2023</p>
         </span>
+        <LightToggle />
       </div>
     </footer>
   );

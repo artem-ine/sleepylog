@@ -222,13 +222,13 @@ function CalendarView() {
                       <span className="flex-grow">Sleep Entry</span>
                       <div className="flex space-x-2">
                         <button
-                          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent text-white dark:text-black rounded-xl"
+                          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleEditClick(item.id)}
                         >
                           <RiPencilLine />
                         </button>
                         <button
-                          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent text-white dark:text-black rounded-xl"
+                          className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent text-white dark:text-black rounded-xl"
                           onClick={() => handleDeleteClick(item.id)}
                         >
                           <RiDeleteBinLine />
