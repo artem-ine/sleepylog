@@ -8,6 +8,14 @@ function AverageRatingPastMonth() {
   const [dataChart, setDataChart] = useState({}); // Declare dataChart as state
 
   useEffect(() => {
+    const moodColors = {
+      horrible: "#790119",
+      mediocre: "#CC6600",
+      OK: "#E3A92C",
+      good: "#B3B319",
+      perfect: "#4F8F00",
+    };
+
     fetch("/api/average_rating_past_month")
       .then((response) => {
         if (!response.ok) {
@@ -20,19 +28,16 @@ function AverageRatingPastMonth() {
         setAverageRating(data.average_rating);
 
         ChartJS.register(ArcElement, Tooltip, Legend);
+        const backgroundColors = Object.keys(data.ratings_count).map(
+          (mood) => moodColors[mood]
+        );
         const dataChart = {
           labels: Object.keys(data.ratings_count),
           datasets: [
             {
               data: Object.values(data.ratings_count),
               label: "Average Rating",
-              backgroundColor: [
-                "#790119",
-                "#CC6600",
-                "#E3A92C",
-                "#B3B319",
-                "#4F8F00",
-              ],
+              backgroundColor: backgroundColors,
               borderColor: "#AFC1D6",
               borderWidth: 1,
             },
