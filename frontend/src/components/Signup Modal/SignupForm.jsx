@@ -30,15 +30,18 @@ function SignupForm({ onSignupSuccess }) {
           if (onSignupSuccess) {
             onSignupSuccess();
           }
-          window.location.reload();
-          toast.success("Yay! Sign up and login successful!");
+          toast.success("Yay! Sign up and login successful!" , {
+          onClose: () => {
+            window.location.reload();
+          },
+        });
         } else {
           toast.error(
             `Whoops! Sign up succeeded but login failed: ${signInResponse.error}`
           );
         }
       } else {
-        toast.error(`Whoops! ${signUpResponse.error}`);
+        toast.error(`Whoops! ${signUpResponse.error}.`);
       }
     } catch (error) {
       toast.error(`Whoops! ${error.message}`);

@@ -55,8 +55,10 @@ function EditProfileForm({ onProfileChanged }) {
           },
         });
       } else {
-        toast.error('Whoops, something went wrong.');
-      }
+        const errorData = await response.json();
+        const errorMessage = errorData.errors.join(', ');
+        toast.error(`Whoops! ${errorMessage}.`);
+      };
     } catch (error) {
       console.error(error);
       showError("An error occurred.");
