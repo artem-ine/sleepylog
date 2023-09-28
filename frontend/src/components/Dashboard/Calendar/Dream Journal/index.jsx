@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import sun_icon from "../../../assets/images/sun_icon.png";
+import sun_icon from "../../../../assets/images/sun_icon.png";
 
 function DreamJournal({ likedEntries }) {
   return (

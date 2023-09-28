@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import CalendarView from "./Calendar/Calendar";
+import CalendarView from "./Calendar";
 import Stats from "./Stats/Stats";
-import Profile from "./Profile";
+import Profile from "./Profile/Profile";
 import snork from "../../assets/images/snork.png";
 import mimi from "../../assets/images/mimi.png";
 import { useAuth } from "../../utils/useAuth";
-import EntryModal from "./Entries Modal";
-import EntryForm from "./Entries Modal/Entries";
+import EntryModal from "./Calendar/Entries Modal";
+import EntryForm from "./Calendar/Entries Modal/Entries";
 import Guide from "./Guide";
 import { RiCloseCircleLine } from "react-icons/ri";
 
