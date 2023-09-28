@@ -8,8 +8,9 @@ function Guide() {
         <p>
           Click on "add an entry" to get started! You'll be able to choose an
           emoji that best sums up how you slept, how long you've slept, when you
-          got into bed, and when you left its warm embrace. Anything to say about
-          your sleep? Had any dreams worth remembering? Put it all in the notes!
+          got into bed, and when you left its warm embrace. Anything to say
+          about your sleep? Had any dreams worth remembering? Put it all in the
+          notes!
         </p>
         <p>
           Upon submission, the entry will be displayed in the calendar
@@ -19,19 +20,24 @@ function Guide() {
         <p>
           In a hurry? Click on a day and click on an emoji: it will
           automatically fill in and save last night's rating for you. If you
-          want to more info to that entry, then just hit the edit button at
-          the top right of the log. Do or write what you'd like, then save it with the
-          floppy disk icon!
+          want to more info to that entry, then just hit the edit button at the
+          top right of the log. Do or write what you'd like, then save it with
+          the floppy disk icon!
         </p>
         <p>
-          The "stats" tab allows you to visualize your total sleep hours and average
-          mood rating (out of 5) over the past week and month. There's also a calculator to get quick average stats from a custom range of
+          The "stats" tab allows you to visualize your total sleep hours and
+          average mood rating (out of 5) over the past week and month. There's
+          also a calculator to get quick average stats from a custom range of
           your choice. More stats will come soon. Hopefully.
         </p>
         <p>
           You can change your profile, reset your password, or delete your
-          account on the "profile" tab. If you need any help, hit "about" in the
-          footer and send us an email.
+          account on the "profile" tab.
+        </p>
+        <p>
+          Need help? Have some feedback for us? You just got a brilliant idea
+          for sleepyLog and would like to see it come to life? Hit "about" in
+          the footer, fill in the contact form, and we'll get back to you.
         </p>
         <p>Happy logging! </p>
         <p>Kat & Zeke</p>
