@@ -229,7 +229,7 @@ function TermsConditions() {
             </p>
 
             <h2 className="font-heading m-2">8. Contact Us</h2>
-            <p className="mb-2 px-5">
+            <p className="px-5">
               If you have any questions or concerns about this Privacy Policy or
               our data practices, please contact us at: sleepylog.kz@gmail.com.
             </p>

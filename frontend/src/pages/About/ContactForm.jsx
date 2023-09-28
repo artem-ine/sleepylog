@@ -74,7 +74,7 @@ function ContactForm() {
               </label>
               <input
                 type="email"
-                id="email"
+                id="contact_email"
                 name="email"
                 className="bg-white truncate appearance-none border rounded-xl py-2 px-3 text-black text-sm leading-tight"
                 required
