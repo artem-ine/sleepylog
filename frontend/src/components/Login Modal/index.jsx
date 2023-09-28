@@ -18,22 +18,25 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
           onRequestClose={() => setPasswordResetRequested(false)}
         />
       ) : (
-        <LoginForm onLoginSuccess={onRequestClose} />
+        <>
+          {" "}
+          <LoginForm onLoginSuccess={onRequestClose} />
+          <div className="modal-actions gap-3 flex justify-center">
+            <button
+              onClick={onRequestClose}
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+            >
+              x
+            </button>
+            <button
+              onClick={() => setPasswordResetRequested(true)}
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+            >
+              Forgot your password?
+            </button>
+          </div>
+        </>
       )}
-      <div className="modal-actions gap-3">
-        <button
-          onClick={onRequestClose}
-          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-        >
-          x
-        </button>
-        <button
-          onClick={() => setPasswordResetRequested(true)}
-          className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-        >
-          Forgot your password?
-        </button>
-      </div>
     </Modal>
   );
 };
