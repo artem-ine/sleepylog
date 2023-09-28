@@ -66,6 +66,7 @@ function Quickie({ onEntrySuccess, selectedDate }) {
             type="submit"
             className="mt-3 h-8 px-4 check-icon"
             style={{ fontSize: "22px" }}
+            aria-label="submit emoji rating"
           >
             <PiCheckCircleBold />
           </button>

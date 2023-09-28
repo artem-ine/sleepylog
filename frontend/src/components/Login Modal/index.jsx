@@ -25,6 +25,7 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
           <div className="modal-actions flex flex-col items-center mt-3">
             <button
               onClick={() => setPasswordResetRequested(true)}
+              aria-label="close"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               Forgot your password?
@@ -33,6 +34,7 @@ const LogInModal = ({ isOpen, onRequestClose }) => {
               onClick={onRequestClose}
               className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
               style={{ fontSize: "22px" }}
+              aria-label="open forgot your password"
             >
               <RiCloseCircleLine />
             </button>

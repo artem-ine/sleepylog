@@ -78,12 +78,14 @@ function PasswordResetRequestForm({ onRequestClose }) {
           </div>
           <div className="flex gap-2 justify-center">
             <button
+              aria-label="return to login form"
               onClick={onRequestClose}
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >
               <FaArrowLeftLong />
             </button>
             <button
+              aria-label="send reset link"
               type="submit"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >

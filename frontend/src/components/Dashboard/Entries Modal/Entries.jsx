@@ -149,6 +149,7 @@ function EntryForm({ onEntrySuccess }) {
           </div>
           <div className="mb-6 flex gap-3 justify-center items-center">
             <button
+              aria-label="submit sleep log"
               type="submit"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
             >

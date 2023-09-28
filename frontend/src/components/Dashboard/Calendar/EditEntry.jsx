@@ -41,6 +41,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleEdit}
             style={{ fontSize: "12px" }}
+            aria-label="edit"
           >
             <FaFloppyDisk />
           </button>
@@ -48,6 +49,7 @@ function EditEntry({ entry, onUpdate, onCancel }) {
             className="h-8 px-4 bg-secondary dark:bg-primary border-2 border-secondary dark:border-primary hover:border-accent dark:hover:border-accent font-bold text-white dark:text-black text-sm rounded-xl"
             onClick={handleCancel}
             style={{ fontSize: "12px" }}
+            aria-label="delete"
           >
             <MdBackspace />
           </button>

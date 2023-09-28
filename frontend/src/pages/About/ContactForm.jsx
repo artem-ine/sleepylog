@@ -97,6 +97,7 @@ function ContactForm() {
               />
             </div>
             <button
+              aria-label="send mail"
               type="submit"
               className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm p-2 px-4 rounded-xl"
             >

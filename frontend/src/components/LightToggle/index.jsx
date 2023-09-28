@@ -22,7 +22,11 @@ function LightToggle() {
   }, [isDarkTheme]);
 
   return (
-    <button onClick={toggleTheme} className="light-toggle">
+    <button
+      aria-label="toggle dark mode"
+      onClick={toggleTheme}
+      className="light-toggle"
+    >
       <RiLightbulbLine />
     </button>
   );

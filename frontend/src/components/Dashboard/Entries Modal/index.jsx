@@ -13,6 +13,7 @@ const EntryModal = ({ isOpen, onRequestClose }) => {
       <EntryForm onEntrySuccess={onRequestClose} />
       <div className="modal-actions">
         <button
+          aria-label="close"
           onClick={onRequestClose}
           className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-2"
           style={{ fontSize: "22px" }}

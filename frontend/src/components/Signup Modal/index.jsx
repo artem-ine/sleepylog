@@ -13,6 +13,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       <SignupForm onSignupSuccess={onRequestClose} />
       <div className="modal-actions">
         <button
+          aria-label="close sign up form"
           onClick={onRequestClose}
           className="hover:underline decoration-accent mt-2 cursor-pointer bouncey mb-3"
           style={{ fontSize: "22px" }}

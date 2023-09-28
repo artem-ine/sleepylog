@@ -25,6 +25,7 @@ function EmojiPicker({ onSelectRating }) {
       type="button"
       onClick={() => handleEmojiClick(emoji)}
       className={`emoji-button ${selectedRating === emoji ? "selected" : ""}`}
+      aria-label="select emoji"
     >
       {emojiToRating[emoji]}
     </button>
