@@ -44,7 +44,7 @@ function CalendarView() {
   useEffect(() => {
     const initialDummyCalendarData = [];
 
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 30; i++) {
       const date = startOfWeek.clone().add(i, "days").toDate();
       const nextDay = moment(date).add(1, "day").toDate();
       const randomRatingIndex = Math.floor(
