@@ -1,25 +1,32 @@
 import React, { useState } from "react";
+import {
+  FaFaceGrinWide,
+  FaFaceSmile,
+  FaFaceMeh,
+  FaFaceSadTear,
+  FaFaceSadCry,
+} from "react-icons/fa6";
 import "./Emoji.css";
 
 function EmojiPicker({ onSelectRating }) {
   const [selectedRating, setSelectedRating] = useState(null);
 
   const emojiToRating = {
-    "😫": "horrible",
-    "😐": "mediocre",
-    "😊": "OK",
-    "😄": "good",
-    "😍": "perfect",
+    horrible: <FaFaceSadCry style={{ color: "#790119" }} />,
+    mediocre: <FaFaceSadTear style={{ color: "#CC6600" }} />,
+    OK: <FaFaceMeh style={{ color: "#E3A92C" }} />,
+    good: <FaFaceSmile style={{ color: "#B3B319" }} />,
+    perfect: <FaFaceGrinWide style={{ color: "#4f8f00" }} />,
   };
 
   const emojiButtons = Object.keys(emojiToRating).map((emoji) => (
     <button
       key={emoji}
       type="button"
-      onClick={() => handleEmojiClick(emojiToRating[emoji])}
-      className={`emoji-button ${selectedRating === emojiToRating[emoji] ? "selected" : ""}`}
+      onClick={() => handleEmojiClick(emoji)}
+      className={`emoji-button ${selectedRating === emoji ? "selected" : ""}`}
     >
-      {emoji}
+      {emojiToRating[emoji]}
     </button>
   ));
 
@@ -30,11 +37,13 @@ function EmojiPicker({ onSelectRating }) {
 
   return (
     <div>
-      <div className="emoji-buttons flex justify-center flex-row gap-6 pb-1 rounded-xl py-2">
+      <div className="emoji-buttons flex text-xl justify-center flex-row gap-6 pb-1 rounded-xl py-2">
         {emojiButtons}
       </div>
       {selectedRating && (
-        <p className="text-sm flex justify-center">You've had a {selectedRating} sleep!</p>
+        <p className="text-sm flex justify-center">
+          You've had a {selectedRating} sleep!
+        </p>
       )}
     </div>
   );
