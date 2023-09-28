@@ -59,9 +59,6 @@ function Profile() {
     }
   };
 
-  console.log(auth.user.email);
-  console.log(auth.user.id);
-
   const handleResetPassword = async () => {
     const confirmResetPassword = window.confirm(
       "Are you sure you want to reset your password?"
