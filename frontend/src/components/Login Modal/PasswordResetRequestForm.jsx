@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 function PasswordResetRequestForm({ onRequestClose }) {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function PasswordResetRequestForm({ onRequestClose }) {
       "Are you sure you want to reset your password?"
     );
 
-      if (confirmResetPassword) {
+    if (confirmResetPassword) {
       try {
         const response = await fetch("/api/users/password/", {
           method: "POST",
@@ -40,7 +40,7 @@ function PasswordResetRequestForm({ onRequestClose }) {
         console.error(error);
         toast.error("An error occurred while sending the password reset link.");
       }
-    };
+    }
   };
 
   return (
@@ -50,7 +50,9 @@ function PasswordResetRequestForm({ onRequestClose }) {
           className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
         >
-          <h2 className="font-heading">Forgot your password?</h2>
+          <h1 className="font-heading text-center text-black text-2xl mb-5">
+            Forgot your password?
+          </h1>
           <p>
             Pop your email in, and if it matches an existing account, we'll send
             you a link.
@@ -74,18 +76,20 @@ function PasswordResetRequestForm({ onRequestClose }) {
               required
             />
           </div>
-          <button
-            type="submit"
-            className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-          >
-            Send Reset Link
-          </button>
-          <button
-            onClick={onRequestClose}
-            className="mt-4 bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
-          >
-            Return to login
-          </button>
+          <div className="flex gap-2 justify-center">
+            <button
+              onClick={onRequestClose}
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+            >
+              <FaArrowLeftLong />
+            </button>
+            <button
+              type="submit"
+              className="bg-secondary border border-black hover:border-accent font-bold text-white text-sm py-2 px-4 rounded-xl"
+            >
+              Send Reset Link
+            </button>
+          </div>
         </form>
       </div>
     </div>
