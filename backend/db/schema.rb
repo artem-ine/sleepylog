@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_144526) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_191233) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_144526) do
     t.bigint "logbook_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "like", default: false
     t.index ["logbook_id"], name: "index_entries_on_logbook_id"
   end
 

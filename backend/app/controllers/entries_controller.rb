@@ -87,14 +87,14 @@ class EntriesController < ActionController::API
     end_time = Time.now
     dates = (one_week_ago.to_date..end_time.to_date).to_a
 
-    sleep_data = Hash.new(0) # Initialize a hash with default values of 0
+    sleep_data = Hash.new(0) 
     total_duration = 0
 
     dates.each do |date|
       entries_on_date = @logbook.entries.where(start_time: date.beginning_of_day..date.end_of_day)
       daily_duration = entries_on_date.sum(:duration)
-      sleep_data[date.strftime("%A")] += daily_duration # Use day name as label and accumulate duration
-      total_duration += daily_duration # Accumulate total duration
+      sleep_data[date.strftime("%A")] += daily_duration 
+      total_duration += daily_duration 
     end
 
     render json: { sleep_data: sleep_data, total_duration: total_duration }
@@ -116,9 +116,9 @@ class EntriesController < ActionController::API
     one_month_ago = 1.month.ago
     end_time = Time.now
     dates = (one_month_ago.to_date..end_time.to_date).to_a
-    total_duration = 0 # Initialize total_duration to 0
+    total_duration = 0 
 
-    sleep_data = Hash.new(0) # Initialize a hash with default values of 0
+    sleep_data = Hash.new(0) 
 
     current_week_start = nil
     current_week_end = nil
@@ -130,12 +130,10 @@ class EntriesController < ActionController::API
 
       current_week_end = date
 
-      # Check if a week has ended
       if current_week_end.end_of_week(:sunday) == date
         entries_in_week = @logbook.entries.where(start_time: current_week_start.beginning_of_day..current_week_end.end_of_day)
         total_duration_in_week = entries_in_week.sum(:duration)
 
-        # Accumulate sleep hours for each week
         total_duration += total_duration_in_week
 
         week_label = "#{current_week_start.strftime('%B %d')} - #{current_week_end.strftime('%B %d')}"
@@ -252,7 +250,7 @@ class EntriesController < ActionController::API
   private
 
   def entry_params
-    params.require(:entry).permit(:logbook_id, :start_time, :end_time, :duration, :rating, :notes) 
+    params.require(:entry).permit(:logbook_id, :start_time, :end_time, :duration, :rating, :notes, :like) 
   end
 
 end
