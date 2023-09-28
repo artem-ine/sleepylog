@@ -16,6 +16,8 @@ function LoggedEntries({
   ratingEmojis,
   clickedDate,
   updatedEntry,
+  toggleQuickie,
+  showQuickie,
 }) {
   return (
     <div className="logged-items-container border-secondary dark:border-primary border-2 rounded-2xl p-2">
@@ -108,6 +110,22 @@ function LoggedEntries({
                 )}
               </li>
             ))
+          )}
+          {filteredItems.length > 0 && !editing && (
+            <div className="flex flex-col items-center">
+              <button
+                className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
+                onClick={toggleQuickie}
+                aria-label="toggle open quick entry"
+              >
+                Want to quickly log another sleep for today?
+              </button>
+              {showQuickie && (
+                <div className="flex flex-col items-center">
+                  <Quickie selectedDate={selectedDateForQuickie} />
+                </div>
+              )}
+            </div>
           )}
         </ul>
       </div>

@@ -264,24 +264,10 @@ function CalendarView() {
           ratingEmojis={ratingEmojis}
           clickedDate={clickedDate}
           updatedEntry={updatedEntry}
+          toggleQuickie={toggleQuickie}
+          showQuickie={showQuickie}
         />
       </div>
-      {filteredItems.length > 0 && !editing && (
-        <div className="flex flex-col items-center">
-          <button
-            className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
-            onClick={toggleQuickie}
-            aria-label="toggle open quick entry"
-          >
-            Want to quickly log another sleep for today?
-          </button>
-          {showQuickie && (
-            <div className="flex flex-col items-center">
-              <Quickie selectedDate={selectedDateForQuickie} />
-            </div>
-          )}
-        </div>
-      )}
       <div className="flex flex-col w-full lg:w-2/3">
         <div className="pt-5">
           <button
