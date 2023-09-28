@@ -45,7 +45,7 @@ function Quickie({ onEntrySuccess, selectedDate }) {
           },
         });
       } else {
-        toast.error("Whoops! Something went wrong.");
+        toast.error("Whoops! You haven't chosen an emoji!");
       }
     } catch (error) {
       console.error("API request error:", error);
