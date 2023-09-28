@@ -5,14 +5,17 @@ import sun_icon from "../../../../assets/images/sun_icon.png";
 function DreamJournal({ likedEntries }) {
   return (
     <div>
+      <h2 className="font-logo dark:text-white text-black border dark:border-primary border-secondary rounded-lg dark:bg-secondary bg-primary px-2 py-1 flex items-center mb-5">
+        Here's all your liked entries!
+      </h2>
       <ul className="flex flex-col">
         {likedEntries.map((entry) => (
           <li key={entry.id}>
-            <p className="dark:text-white text-black pt-15">
-              Start time: {moment(entry.start_time).format("DD/MM/YYYY")}
+            <p className="font-logo">
+              {moment(entry.start_time).format("DD/MM/YYYY")}
             </p>
-            <p className="dark:text-white text-black py-2">
-              Notes: {entry.notes}
+            <p className="dark:text-white text-black py-2 mb-8">
+              {entry.notes}
             </p>
             <div className="justify-center flex">
               <img

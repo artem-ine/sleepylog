@@ -261,7 +261,7 @@ function CalendarView() {
           showQuickie={showQuickie}
         />
       </div>
-      <div className="flex flex-col w-full lg:w-2/3">
+      <div className="flex flex-col w-full sm:w-2/3 lg:w-1/3">
         <div className="pt-5">
           <button
             className="text-sm font-logo border-2 rounded-xl px-2 dark:border-secondary border-primary dark:text-black text-white dark:bg-primary bg-secondary hover:border-accent dark:hover:border-accent"
@@ -270,11 +270,8 @@ function CalendarView() {
           >
             Dream Journal
           </button>
-          <p className="pt-3">
-            All the entries you like will be displayed underneath.
-          </p>
           {showDreamJournal && (
-            <div className="flex flex-col shadow-xl border-2 dark:border-primary border-secondary p-3 rounded-xl py-5 mt-5">
+            <div className="flex flex-col shadow-xl border-2 dark:border-primary border-secondary p-3 rounded-xl py-5 mt-5 max-h-[300px] overflow-y-auto">
               <DreamJournal likedEntries={likedEntries} />
             </div>
           )}
