@@ -2,22 +2,15 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import { useAuth } from "../../../utils/useAuth";
-import Quickie from "./Entries Modal/Quickie";
 import "./Calendar.css";
 import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
-import moon_icon from "../../../assets/images/moon_icon.png";
-import EditEntry from "./Entries Modal/EditEntry";
 import {
   FaFaceGrinWide,
   FaFaceSmile,
   FaFaceMeh,
   FaFaceSadTear,
   FaFaceSadCry,
-  FaPen,
-  FaTrashCan,
-  FaRegHeart,
-  FaHeart,
 } from "react-icons/fa6";
 import DreamJournal from "./Dream Journal";
 import LoggedEntries from "./Entries Modal/LoggedEntries";
