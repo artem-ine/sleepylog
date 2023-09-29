@@ -4,7 +4,7 @@ class UsersController < ActionController::API
 
   def index
     if current_user
-      @users = User.all
+      @users = User.find(current_user.id)
       render json: @users
     else
       render json: { error: "This is only for admins." }, status: :unprocessable_entity
