@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { FaArrowLeftLong } from "react-icons/fa6";

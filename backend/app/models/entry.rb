@@ -11,7 +11,7 @@ class Entry < ApplicationRecord
 
   def end_time_after_start_time
     if start_time.present? && end_time.present? && start_time >= end_time
-      errors.add(:end_time, "must be after start time")
+      errors.add(:end_time, "must be after start time. Don't time travel!")
     end
   end
 

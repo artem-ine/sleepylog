@@ -12,12 +12,8 @@ Rails.application.routes.draw do
   get 'average_rating_past_week', to: 'entries#average_rating_past_week'
   get 'average_rating_past_month', to: 'entries#average_rating_past_month'
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-    resources :logbooks
-    resources :entries
-    resources :users
-    resources :contacts, only: [:create]
+  resources :logbooks
+  resources :entries
+  resources :users
+  resources :contacts, only: [:create]
 end

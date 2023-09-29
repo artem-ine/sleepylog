@@ -1,12 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../utils/useAuth";
 import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
 import { PiCheckCircleBold } from "react-icons/pi";
 
 function Quickie({ onEntrySuccess, selectedDate }) {
-  const navigate = useNavigate();
   const { auth } = useAuth();
   const [rating, setRating] = useState("");
   const [duration] = useState("");

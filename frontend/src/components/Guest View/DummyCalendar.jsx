@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";

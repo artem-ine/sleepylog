@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import moment from "moment";
 import sun_icon from "../../../../assets/images/sun_icon.png";
 

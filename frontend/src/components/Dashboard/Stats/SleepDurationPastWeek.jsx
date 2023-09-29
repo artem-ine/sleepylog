@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2"; // Import Line from 'react-chartjs-2'
+import { useEffect, useState } from "react";
+import { Line } from "react-chartjs-2";
 
 function SleepDurationPastWeek() {
   const [sleepData, setSleepData] = useState({});

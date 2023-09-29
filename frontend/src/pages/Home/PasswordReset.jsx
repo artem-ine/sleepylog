@@ -1,12 +1,8 @@
-import { Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ChangePasswordForm from "../../components/Dashboard/Profile/Password Modal/PasswordModal";
-import { useAuth } from "../../utils/useAuth";
 
 function PasswordReset() {
-  const { auth } = useAuth();
-
   return (
     <>
       {" "}

@@ -7,7 +7,7 @@ class UsersController < ActionController::API
       @users = User.all
       render json: @users
     else
-      render json: { error: "Action réservée aux administrateurs." }, status: :unprocessable_entity
+      render json: { error: "This is only for admins." }, status: :unprocessable_entity
     end
   end
 
@@ -15,7 +15,7 @@ class UsersController < ActionController::API
     if current_user || current_user&.id == @user.id
       render json: @user
     else
-      render json: { error: "Action réservée aux administrateurs et à l'utilisateur du compte." }, status: :unprocessable_entity
+      render json: { error: "This is only for admins, or the user's own account." }, status: :unprocessable_entity
     end
   end
 
@@ -33,13 +33,13 @@ class UsersController < ActionController::API
     end
   end
 
-    def update
-      if current_user.update(user_params)
-        render json: current_user
-      else
-        render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
-      end
+  def update
+    if current_user.update(user_params)
+      render json: current_user
+    else
+      render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
 
   def destroy
     if current_user&.id == @user.id
