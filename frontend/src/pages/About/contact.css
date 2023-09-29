@@ -6,7 +6,6 @@
   animation: pulse 1s infinite;
 }
 
-/* Define the animation keyframes */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);

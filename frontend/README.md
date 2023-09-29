@@ -1,3 +1,3 @@
 # React + Vite boilerplate
 
-This boilerplate includes some default utils (fetch, authentication with jotai, dateTime parser), tailwind, a navbar, default react-router-dom v6 routes and a error page.
+This is the React + Vite frontend to our sleepyLog app. Refer to README.md in root file for more info.

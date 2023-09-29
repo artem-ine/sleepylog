@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { useState } from "react";
 import Modal from "react-modal";
 import LoginForm from "./LoginForm";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../../utils/useAuth";
 import PasswordModal from "./Password Modal";
 import ChangePasswordForm from "./Password Modal/PasswordModal";

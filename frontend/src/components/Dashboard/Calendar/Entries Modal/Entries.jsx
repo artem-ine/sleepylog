@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../utils/useAuth";
 import useErrorHandler from "../../../../utils/errorHandler";
 import PropTypes from "prop-types";
@@ -10,7 +9,6 @@ import EmojiPicker from "./EmojiPicker";
 import { toast } from "react-toastify";
 
 function EntryForm({ onEntrySuccess }) {
-  const navigate = useNavigate();
   const { auth } = useAuth();
   const [rating, setRating] = useState("");
   const [duration, setDuration] = useState("");
@@ -65,7 +63,7 @@ function EntryForm({ onEntrySuccess }) {
     <div className="flex justify-center items-center mt-20">
       <div className="w-full max-w-xs">
         <form
-          className="bg-primary shadow-md rounded-2xl border border-secondary border-4 px-8 pt-6 pb-8"
+          className="bg-primary shadow-md rounded-2xl border-secondary border-4 px-8 pt-6 pb-8"
           onSubmit={handleSubmit}
         >
           <div className="mb-4">

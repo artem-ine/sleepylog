@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CalendarView from "./Calendar";
 import Stats from "./Stats/Stats";
 import Profile from "./Profile/Profile";

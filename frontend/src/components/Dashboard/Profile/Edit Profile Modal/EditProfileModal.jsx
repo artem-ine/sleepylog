@@ -2,12 +2,10 @@ import { useState } from "react";
 import useErrorHandler from "../../../../utils/errorHandler";
 import { useAuth } from "../../../../utils/useAuth";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function EditProfileForm({ onProfileChanged }) {
   const { auth } = useAuth();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: auth.user.username,
     email: auth.user.email,
@@ -45,7 +43,7 @@ function EditProfileForm({ onProfileChanged }) {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        await response.json();
         if (onProfileChanged) {
           onProfileChanged();
         }

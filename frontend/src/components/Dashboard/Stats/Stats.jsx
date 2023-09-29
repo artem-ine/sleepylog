@@ -3,7 +3,6 @@ import CustomRange from "./CustomRange";
 import SleepDurationPastMonth from "./SleepDurationPastMonth";
 import AverageRatingPastWeek from "./AverageRatingWeek";
 import AverageRatingPastMonth from "./AverageRatingMonthly";
-import { useAuth } from "../../../utils/useAuth";
 import { useState } from "react";
 
 function Stats() {

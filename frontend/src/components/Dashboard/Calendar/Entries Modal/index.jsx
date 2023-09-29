@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import Modal from "react-modal";
 import EntryForm from "./Entries";
 import { RiCloseCircleLine } from "react-icons/ri";

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import moment from "moment";
 import moon_icon from "../../../../assets/images/moon_icon.png";
 import { FaPen, FaTrashCan, FaRegHeart, FaHeart } from "react-icons/fa6";
@@ -64,7 +65,7 @@ function LoggedEntries({
                         style={{ fontSize: "12px" }}
                         aria-label="like"
                       >
-                        <FaRegHeart />{" "}
+                        <FaRegHeart />
                       </button>
                     )}
                     <button
@@ -89,11 +90,9 @@ function LoggedEntries({
                   Start time:{" "}
                   {moment(item.start_time).format("DD/MM/YYYY HH:mm")}
                 </p>
-                {item.end_time && (
-                  <p className="dark:text-white text-black">
-                    End time: {moment(item.end_time).format("DD/MM/YYYY HH:mm")}
-                  </p>
-                )}
+                <p className="dark:text-white text-black">
+                  End time: {moment(item.end_time).format("DD/MM/YYYY HH:mm")}
+                </p>
                 {item.duration && (
                   <p className="dark:text-white text-black">
                     Hours slept: {item.duration}

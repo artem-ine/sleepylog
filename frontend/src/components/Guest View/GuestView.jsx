@@ -14,7 +14,7 @@ function GuestView() {
           your naps at the click of a button. sleepyLog is like a e-diary or
           sleep journal - but better: bedtime routine, hours slept, a rating per
           sleep, and any notes you might want to safekeep for reference:
-          sleepyLog will help you track it all. and all on your phone, from the
+          sleepyLog will help you track it all. And all on your phone, from the
           comfort of your bed!
         </p>
       </div>
