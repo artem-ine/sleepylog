@@ -58,11 +58,19 @@ main{
   .dummy-chart-wrapper {
     width: 300px; 
   }
+  
+  .dream-journal-container {
+    width: 350px;
+  }
 }
 
 @media (min-width: 769px) {
   .dummy-chart-wrapper {
     width: 400px; 
+  }
+
+  .dream-journal-container {
+    width: 350px;
   }
 }
 
