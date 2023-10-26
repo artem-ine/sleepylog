@@ -100,7 +100,7 @@
   padding: 10px 6.6667px;
   background: none;
   text-align: center;
-  line-height: 12px;
+  line-height: 8px;
 }
 
 .react-calendar__tile:disabled {
